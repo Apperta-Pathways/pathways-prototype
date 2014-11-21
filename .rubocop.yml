@@ -1,0 +1,43 @@
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+
+# Limit lines to 80 characters.
+LineLength:
+  Max: 120
+
+StringLiterals:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 25
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassVars:
+  Enabled: false
+
+Style/LineEndConcatenation:
+  Enabled: false
+
+# Use `fail` instead of `raise` to signal exceptions.
+# Not convinced we want/need that
+SignalException:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: false
+
+Style/Not:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
