@@ -1,3 +1,34 @@
 // Place all the styles related to the patients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h3 {
+  text-align: center;
+}
+
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.blocks {
+  width: 100%;
+  margin-top: 50px;
+
+  .block {
+    float: left;
+    min-height: 200px;
+    display: block-inline;
+    text-align: center;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 50px;
+  }
+
+  .fa {
+    font-size: 100pt;
+  }
+}
+

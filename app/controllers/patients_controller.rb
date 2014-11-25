@@ -1,9 +1,10 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_patient!
 
   def index
-    @patients = Patient.all
-    respond_with(@patients)
+    @patient = current_patient
+    respond_with @patient
   end
 
   def show

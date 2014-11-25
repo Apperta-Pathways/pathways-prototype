@@ -1,23 +1,22 @@
-<h1>Listing patients</h1>
+<div class="container">
+  <h3>Welcome to your hub, <% @patient.name %> </h3>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @patients.each do |patient| %>
-      <tr>
-        <td><%= link_to 'Show', patient %></td>
-        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Patient', new_patient_path %>
+<div class="blocks container">
+  <div class="block">
+    <i class="fa fa-medkit"></i>
+    <h4>Treatment Information</h4>
+  </div>
+  <div class="block">
+    <i class="fa fa-cutlery"></i>
+    <h4>Nutrition Information</h4>
+  </div>
+  <div class="block">
+    <i class="fa fa-stethoscope"></i>
+    <h4>Symptom Information</h4>
+  </div>
+  <div class="block">
+    <i class="fa fa-question"></i>
+    <h4>Help</h4>
+  </div>
+</div>
