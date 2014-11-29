@@ -5,9 +5,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   respond_to :html
 
+  # @@categories = ['Initial Visit',
+  #                 'Surgery',
+  #                 'Chemoradiation',
+  #                 'Follow Up',
+  #                 'Radiotherapy']
+
   protected
-
-
 
   # Allow users to sign in with NHS number instead
   def configure_permitted_parameters

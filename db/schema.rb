@@ -11,16 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141118145253) do
+ActiveRecord::Schema.define(version: 20141128170733) do
+
+  create_table "doctors", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pathways", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "patient_id"
     t.string   "disease"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "pathways", ["user_id"], name: "index_pathways_on_user_id"
+  add_index "pathways", ["patient_id"], name: "index_pathways_on_user_id"
 
   create_table "patients", force: true do |t|
     t.datetime "created_at"
@@ -43,14 +48,24 @@ ActiveRecord::Schema.define(version: 20141118145253) do
   add_index "patients", ["nhs_number"], name: "index_patients_on_nhs_number"
   add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
 
-  create_table "treatments", force: true do |t|
+  create_table "treatment_modules", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "category"
     t.integer  "pathway_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "treatments", ["pathway_id"], name: "index_treatments_on_pathway_id"
+  add_index "treatment_modules", ["pathway_id"], name: "index_treatment_modules_on_pathway_id"
+
+  create_table "treatment_states", force: true do |t|
+    t.integer  "timeframe"
+    t.integer  "pathway_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "treatment_states", ["pathway_id"], name: "index_treatment_states_on_pathway_id"
 
 end

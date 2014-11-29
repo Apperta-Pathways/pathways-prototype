@@ -1,0 +1,30 @@
+<div class="content container">
+  <h2>Medical Professional Hub</h2>
+
+
+  <div class="recent_patients">
+    <ul>
+      <% for @patient in @recent_patients %>
+
+        <%= link_to "info", controller: "Doctors", action: "info", id: @patient.id do %>
+        <li>
+          <%= @patient.name %> :: <%= @patient.nhs_number %>
+        </li>
+      <% end -%>
+    <% end -%>
+    </ul>
+  </div>
+
+  <div class="patient_status">
+    <% if @focused_patient %>
+      <h4>Patient Selected: <%= @focused_patient.name %> </h4>
+
+  <% else %>
+
+      No patient has been found with that ID
+
+  <% end %>
+
+  </div>
+</div>
+

@@ -4,6 +4,7 @@ class PatientsController < ApplicationController
 
   def index
     @patient = current_patient
+    @current_state = current_modules_of @patient
     respond_with @patient
   end
 
@@ -39,6 +40,11 @@ class PatientsController < ApplicationController
 
   def set_patient
     @patient = Patient.find(params[:id])
+  end
+
+  def current_modules_of(patient)
+    TreatmentModule.joins(treatment_states: { pathways: :patient })
+      .where(patients: { id: patient.id })
   end
 
   def patient_params

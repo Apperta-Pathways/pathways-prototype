@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
+
+DatabaseCleaner.clean
+
+5.times do |i|
+  Patient.create!(name: "Patient ##{i}", nhs_number: 12312312+i, email: "#{i}@gmail.com", password: "testtest")
+end

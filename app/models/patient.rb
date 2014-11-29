@@ -1,10 +1,21 @@
 class Patient < ActiveRecord::Base
   attr_accessor :login
 
+  has_one :pathway
+  has_many :treatments, through: :pathway
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def self.current_modules
+    Patient.treatments
+  end
+
+  def self.recent
+    Patient.order(:updated_at).limit(10)
+  end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
