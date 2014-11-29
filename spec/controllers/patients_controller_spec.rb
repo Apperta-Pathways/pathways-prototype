@@ -152,6 +152,16 @@ RSpec.describe PatientsController, type: :controller do
     end
   end
 
+  describe "current_modules_of" do
+    it "finds the correct number of modules" do
+
+    end
+
+    it "finds the correct modules" do
+
+    end
+  end
+
   private
 
   def deleting(patient)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128170733) do
+ActiveRecord::Schema.define(version: 20141129154549) do
 
   create_table "doctors", force: true do |t|
     t.datetime "created_at"
@@ -52,15 +52,15 @@ ActiveRecord::Schema.define(version: 20141128170733) do
     t.string   "name"
     t.text     "description"
     t.string   "category"
-    t.integer  "pathway_id"
+    t.integer  "treatment_state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "treatment_modules", ["pathway_id"], name: "index_treatment_modules_on_pathway_id"
+  add_index "treatment_modules", ["treatment_state_id"], name: "index_treatment_modules_on_treatment_state_id"
 
   create_table "treatment_states", force: true do |t|
-    t.integer  "timeframe"
+    t.string   "timeframe"
     t.integer  "pathway_id"
     t.datetime "created_at"
     t.datetime "updated_at"

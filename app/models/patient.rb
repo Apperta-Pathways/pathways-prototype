@@ -2,7 +2,8 @@ class Patient < ActiveRecord::Base
   attr_accessor :login
 
   has_one :pathway
-  has_many :treatments, through: :pathway
+  has_many :treatment_states, through: :pathway
+  has_many :treatment_modules, through: :treatment_states
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

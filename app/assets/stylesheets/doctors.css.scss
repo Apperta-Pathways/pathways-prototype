@@ -3,13 +3,36 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .content {
+  height: 500px;
+  background-color: #eeeeee;
+
   .recent_patients{
+    margin-top: 20px;
+    float: left;
     width: 25%;
-    height: 300px;
+    height: 100%;
     overflow-y: scroll;
 
     ul {
       list-style: none;
+
+      li {
+        margin-bottom: 5px;
+      }
     }
   }
+
+  .patient_status {
+    margin-top: 20px;
+    width: 70%;
+    float: right;
+    overflow-y: scroll;
+
+    .module {
+      width: 200px;
+      background-color: #fefefe;
+      padding: 10px;
+    }
+  }
+
 }

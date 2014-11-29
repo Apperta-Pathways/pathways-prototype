@@ -12,6 +12,26 @@ DatabaseCleaner.strategy = :truncation
 
 DatabaseCleaner.clean
 
-5.times do |i|
-  Patient.create!(name: "Patient ##{i}", nhs_number: 12312312+i, email: "#{i}@gmail.com", password: "testtest")
+@patient = FactoryGirl.create(:patient)
+@pathway = FactoryGirl.create(:pathway, patient: @patient)
+
+@states = []
+
+2.times do |i|
+  @states << FactoryGirl.create(:treatment_state, timeframe: 'past')
+end
+
+3.times do |i|
+  @states << FactoryGirl.create(:treatment_state, timeframe: 'present')
+end
+
+2.times do |i|
+  @states << FactoryGirl.create(:treatment_state, timeframe: 'future')
+end
+
+@states.each do |s|
+  # create two treatment modules for each stata
+  2.times do |i|
+    FactoryGirl.create(:treatment_module, treatment_state: s)
+  end
 end
