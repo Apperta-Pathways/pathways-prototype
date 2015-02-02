@@ -1,6 +1,14 @@
-<%= form_for @treatment_module, url: { action: "create" }, html: { class: "module" } do |f| %>
-  <%= f.text_field :name %>
-  <%= f.text_area :description, size: "60x12" %>
-  <%= f.text_field :user_id %>
-  <%= f.submit "Create" %>
-<% end %>
+<div class="container">
+
+  <%= form_for @treatment_module, url: { action: "create" }, html: { class: "module" } do |f| %>
+    Name: <%= f.text_field :name %> </br>
+    Description: <%= f.text_area :description, size: "60x12" %></br>
+
+    <% for @category in @categories %>
+      <li><%= f.check_box :category %></li>
+    <% end -%>
+
+    <%= f.submit "Create" %>
+  <% end %>
+
+</div>

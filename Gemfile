@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'devise'
+gem "rails-erd"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
@@ -41,4 +42,5 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.3.0'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'capybara'
 end

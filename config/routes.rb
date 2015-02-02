@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :doctors
+  devise_for :patients
+
   # show current modules of each patient by timeframe
   get '/admin/patient/:id', to: 'doctors#info'
 
@@ -8,6 +11,8 @@ Rails.application.routes.draw do
   get '/admin/module/new', to: 'treatment_modules#new'
   post '/admin/module/new', to: 'treatment_modules#create'
 
-  devise_for :patients
+  get '/treatments/all', to: 'treatment_modules#all'
+
   resources :patients
+  resources :treatment_modules
 end

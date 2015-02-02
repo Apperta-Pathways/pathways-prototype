@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>Welcome to your hub, <% @patient.name %> </h3>
+  <h3>Welcome to your hub, Mr. X</h3>
 </div>
 
 <div class="blocks container">
@@ -19,4 +19,14 @@
     <i class="fa fa-question"></i>
     <h4>Help</h4>
   </div>
+</div>
+
+<div class="modules container">
+  <h2>Modules Currently Available</h2>
+  <% @current_state.each do |s| %>
+    <div class="module">
+      <h3><%= s.name %></h3>
+      <p> <%= s.description %> </p>
+    </div>
+  <% end -%>
 </div>

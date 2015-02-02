@@ -18,15 +18,15 @@ DatabaseCleaner.clean
 @states = []
 
 2.times do |i|
-  @states << FactoryGirl.create(:treatment_state, timeframe: 'past')
+  @states << FactoryGirl.create(:treatment_state, pathway: @pathway, timeframe: 'past')
 end
 
 3.times do |i|
-  @states << FactoryGirl.create(:treatment_state, timeframe: 'present')
+  @states << FactoryGirl.create(:treatment_state, pathway: @pathway, timeframe: 'present')
 end
 
 2.times do |i|
-  @states << FactoryGirl.create(:treatment_state, timeframe: 'future')
+  @states << FactoryGirl.create(:treatment_state, pathway: @pathway, timeframe: 'future')
 end
 
 @states.each do |s|
@@ -34,4 +34,16 @@ end
   2.times do |i|
     FactoryGirl.create(:treatment_module, treatment_state: s)
   end
+end
+
+@patient_new = FactoryGirl.create(:patient, password: "test_pass", email: 'test@test.com')
+@pathway = FactoryGirl.create(:pathway, patient: @patient_new)
+@state = FactoryGirl.create(:treatment_state, timeframe: 'present', pathway: @pathway)
+
+10.times do |i|
+  FactoryGirl.create(:treatment_module, treatment_state: @state)
+end
+
+30.times do |i|
+  FactoryGirl.create(:patient)
 end

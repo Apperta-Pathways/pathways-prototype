@@ -3,15 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .content {
-  height: 500px;
   background-color: #eeeeee;
+  height: 500px;
+  position: relative;
+  margin: 20px auto !important;
 
   .recent_patients{
-    margin-top: 20px;
+    height: 100%;
     float: left;
     width: 25%;
-    height: 100%;
     overflow-y: scroll;
+    padding-top: 20px;
+    border-right: 1px dotted #000000;
 
     ul {
       list-style: none;
@@ -23,15 +26,23 @@
   }
 
   .patient_status {
-    margin-top: 20px;
-    width: 70%;
+    width: 75%;
+    height: 100%;
     float: right;
     overflow-y: scroll;
+    padding: 20px;
 
     .module {
-      width: 200px;
+      width: 40%;
+      margin: 20px;
       background-color: #fefefe;
-      padding: 10px;
+      padding: 20px;
+      display: inline-block;
+      vertical-align: top;
+
+      p {
+      font-size:9pt;
+      }
     }
   }
 

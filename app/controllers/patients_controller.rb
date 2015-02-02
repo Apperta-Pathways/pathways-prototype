@@ -3,9 +3,8 @@ class PatientsController < ApplicationController
   before_action :authenticate_patient!
 
   def index
-    @patient = current_patient
-    @current_state = current_modules_of @patient
-    respond_with @patient
+    @patient = Patient.find(current_patient)
+    @current_state = @patient.treatment_states.first.treatment_modules
   end
 
   def show
@@ -43,8 +42,7 @@ class PatientsController < ApplicationController
   end
 
   def current_modules_of(patient)
-    TreatmentModule.joins(treatment_states: { pathways: :patient })
-      .where(patients: { id: patient.id })
+    @patient.treatment_states.first.treatment_modules
   end
 
   def patient_params

@@ -9,7 +9,7 @@ FactoryGirl.define do
 
   factory :treatment_module do
     name { Faker::Lorem.word }
-    description { Faker::Lorem.paragraph }
+    description { Faker::Lorem.paragraph(5) + ' ' + Faker::Internet.url('macmillan.org.uk') }
     treatment_state
   end
 
