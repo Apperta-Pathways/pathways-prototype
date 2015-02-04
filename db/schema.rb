@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150122164711) do
     t.datetime "updated_at"
   end
 
-  add_index "pathways", ["patient_id"], name: "index_pathways_on_user_id"
+  add_index "pathways", ["patient_id"], name: "index_pathways_on_patient_id"
 
   create_table "patients", force: true do |t|
     t.datetime "created_at"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20150122164711) do
   create_table "treatment_modules", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.string   "category"
     t.integer  "treatment_state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
