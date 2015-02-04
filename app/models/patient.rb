@@ -5,6 +5,9 @@ class Patient < ActiveRecord::Base
   has_many :treatment_states, through: :pathway
   has_many :treatment_modules, through: :treatment_states
 
+  has_and_belongs_to_many :teams
+  has_and_belongs_to_many :doctors, through: :teams
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
