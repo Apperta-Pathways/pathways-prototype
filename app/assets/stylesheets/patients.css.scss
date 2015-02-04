@@ -14,17 +14,23 @@ h3 {
 
 .blocks {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
 
   .block {
     float: left;
-    min-height: 200px;
+    min-height: 150px;
     display: block-inline;
     text-align: center;
+    background-color: #e1d985;
     width: 40%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     margin-left: 5%;
     margin-right: 5%;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
+    border-style: solid;
+    box-shadow: 5px 5px 5px #888888;
+    border-width: 3px;
   }
 
   .fa {
@@ -36,11 +42,13 @@ h3 {
 
   .module {
     width: 400px;
-    background-color: #efefef;
+    background-color: #e1d985;
     padding: 20px;
     margin: 40px;
     display: inline-block;
     vertical-align: top;
+    border-style: solid;
+    border-width: 3px;
   }
 
 }

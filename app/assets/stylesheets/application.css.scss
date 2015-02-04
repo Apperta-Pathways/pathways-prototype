@@ -20,6 +20,7 @@
 
 
 .header {
+  
   img.nhs_logo{
     margin: 17px;
     float: left;
@@ -32,3 +33,11 @@
 
 }
 
+hr { 
+    display: block;
+    margin-top: 85px;
+    margin-left: -500px;
+    margin-right: -500px;
+    border-color: #333333;
+    border-width: 3px;
+}
