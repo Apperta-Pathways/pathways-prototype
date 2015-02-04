@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122164711) do
+ActiveRecord::Schema.define(version: 20150204121154) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20150122164711) do
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true
   add_index "doctors", ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
+
+  create_table "doctors_teams", id: false, force: true do |t|
+    t.integer "team_id",   null: false
+    t.integer "doctor_id", null: false
+  end
+
+  add_index "doctors_teams", ["doctor_id"], name: "index_doctors_teams_on_doctor_id"
+  add_index "doctors_teams", ["team_id"], name: "index_doctors_teams_on_team_id"
 
   create_table "pathways", force: true do |t|
     t.integer  "patient_id"
@@ -67,6 +75,21 @@ ActiveRecord::Schema.define(version: 20150122164711) do
   add_index "patients", ["email"], name: "index_patients_on_email", unique: true
   add_index "patients", ["nhs_number"], name: "index_patients_on_nhs_number"
   add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
+
+  create_table "patients_teams", id: false, force: true do |t|
+    t.integer "team_id",    null: false
+    t.integer "patient_id", null: false
+  end
+
+  add_index "patients_teams", ["patient_id"], name: "index_patients_teams_on_patient_id"
+  add_index "patients_teams", ["team_id"], name: "index_patients_teams_on_team_id"
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "treatment_modules", force: true do |t|
     t.string   "name"
