@@ -1,6 +1,6 @@
 class CreateTreatments < ActiveRecord::Migration
   def change
-    create_table :treatments do |t|
+    create_table :treatment_modules do |t|
       t.string :name
       t.text :description
 
