@@ -110,19 +110,23 @@ ActiveRecord::Schema.define(version: 20150207144316) do
   end
 
   create_table "treatment_modules", force: true do |t|
+    t.integer  "treatment_state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "data_module_id"
-    t.integer  "subcategory_id"
     t.integer  "category_id"
-    t.integer  "treatment_state_id"
+    t.integer  "subcategory_id"
+    t.integer  "data_module_id"
   end
+
+  add_index "treatment_modules", ["treatment_state_id"], name: "index_treatment_modules_on_treatment_state_id"
 
   create_table "treatment_states", force: true do |t|
     t.string   "timeframe"
+    t.integer  "pathway_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "pathway_id"
   end
+
+  add_index "treatment_states", ["pathway_id"], name: "index_treatment_states_on_pathway_id"
 
 end
