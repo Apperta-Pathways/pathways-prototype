@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207144316) do
+ActiveRecord::Schema.define(version: 20150210181347) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -113,8 +113,6 @@ ActiveRecord::Schema.define(version: 20150207144316) do
     t.integer  "treatment_state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category_id"
-    t.integer  "subcategory_id"
     t.integer  "data_module_id"
   end
 
