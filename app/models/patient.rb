@@ -2,9 +2,6 @@ class Patient < ActiveRecord::Base
   attr_accessor :login
 
   has_one :pathway
-  has_many :treatment_states, through: :pathway
-  has_many :treatment_modules, through: :treatment_states
-
   has_and_belongs_to_many :teams
   has_and_belongs_to_many :doctors, through: :teams
 
