@@ -1,2 +1,29 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h1><%=@category.name%></h1>
+
+
+<div class="present_treatment_state">
+
+            <div>
+                <% subcategories = @patient.pathway.treatment_states.find_by(id: @treatment_state).data_per_subcategory(@category) %>
+                <% @patient.pathway.treatment_states.find_by(id: @treatment_state).subcategories(@category).each do |i|%>
+                   <h2> <%= i.name %> </h2>
+                    <% subcategories[i.name].each do |f| %>
+                        <p><%= f.data %></p>
+                    <% end %>
+                <% end %>
+            </div>
+
+</div>
+
+<div class="bar"></div>
+<div class="timeline">
+        <% @patient.pathway.treatment_states.each do |i| %>
+            <% if i.categories.include? @category %>
+                <%= link_to(category_url(@category.id,treatment_state: i.id)) do %>
+                    <div class="entry">
+                        <h1><%= i.timeframe  %></h1>
+                        </div>
+                <% end %>
+            <% end %>
+        <% end %>
+</div>
