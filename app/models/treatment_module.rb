@@ -1,4 +1,4 @@
 class TreatmentModule < ActiveRecord::Base
   belongs_to :treatment_state
-  has_one :category
+  belongs_to :data_module
 end

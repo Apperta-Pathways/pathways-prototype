@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'categories/show'
+
   devise_for :doctors
   devise_for :patients
 
@@ -17,4 +19,5 @@ Rails.application.routes.draw do
 
   resources :patients
   resources :treatment_modules
+  resources :categories
 end

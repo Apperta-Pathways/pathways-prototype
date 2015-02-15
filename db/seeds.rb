@@ -12,38 +12,74 @@ DatabaseCleaner.strategy = :truncation
 
 DatabaseCleaner.clean
 
-@patient = FactoryGirl.create(:patient)
-@pathway = FactoryGirl.create(:pathway, patient: @patient)
+@category = []
+@subcategory= []
+@datamodule = []
+
+10.times do |i|
+  @category << FactoryGirl.create(:category)
+end
+
+50.times do |i|
+  @subcategory << FactoryGirl.create(:subcategory, category: @category.sample)
+end
+
+1000.times do |i|
+  @datamodule << FactoryGirl.create(:data_module, subcategory: @subcategory.sample)
+end
+
+@pathway=[]
+
+30.times do |i|
+  @patient = FactoryGirl.create(:patient)
+  @pathway << FactoryGirl.create(:pathway, patient: @patient)
+end
 
 @states = []
 
-2.times do |i|
-  @states << FactoryGirl.create(:treatment_state, pathway: @pathway, timeframe: 'past')
+@pathway.each do |i|
+    2.times do |s|
+        @states << FactoryGirl.create(:treatment_state, pathway: i, timeframe: 'past') 
+    end
+
+    3.times do |s|
+        @states << FactoryGirl.create(:treatment_state, pathway: i, timeframe: 'present')
+    end
+
+    2.times do |s|
+        @states << FactoryGirl.create(:treatment_state, pathway: i, timeframe: 'future')
+    end
 end
 
-3.times do |i|
-  @states << FactoryGirl.create(:treatment_state, pathway: @pathway, timeframe: 'present')
+@states.each do |i|
+    3.times do |s|
+        FactoryGirl.create(:treatment_module, treatment_state: i, data_module: @datamodule.sample)
+    end
 end
 
-2.times do |i|
-  @states << FactoryGirl.create(:treatment_state, pathway: @pathway, timeframe: 'future')
+@test_patient = FactoryGirl.create(:patient, password: "test_pass", email: 'test@test.com')
+@test_pathway = FactoryGirl.create(:pathway, patient: @test_patient)
+@test_states = []
+
+2.times do |s|
+    @test_states << FactoryGirl.create(:treatment_state, pathway: @test_pathway, timeframe: 'past') 
 end
 
-@states.each do |s|
-  # create two treatment modules for each stata
-  2.times do |i|
-    FactoryGirl.create(:treatment_module, treatment_state: s)
-  end
+3.times do |s|
+    @test_states << FactoryGirl.create(:treatment_state, pathway: @test_pathway, timeframe: 'present')
 end
 
-@patient_new = FactoryGirl.create(:patient, password: "test_pass", email: 'test@test.com')
-@pathway = FactoryGirl.create(:pathway, patient: @patient_new)
-@state = FactoryGirl.create(:treatment_state, timeframe: 'present', pathway: @pathway)
-
-10.times do |i|
-  FactoryGirl.create(:treatment_module, treatment_state: @state)
+2.times do |s|
+    @test_states << FactoryGirl.create(:treatment_state, pathway: @test_pathway, timeframe: 'future')
 end
 
-30.times do |i|
-  FactoryGirl.create(:patient)
+@test_states.each do |i|
+    3.times do |s|
+        FactoryGirl.create(:treatment_module, treatment_state: i, data_module: @datamodule.sample)
+    end
 end
+
+
+
+
+
