@@ -1,0 +1,43 @@
+.hero
+  .container
+    .row
+      h3.col-md-6.col-md-offset-3 The pathways website is a way for you to view information about your treatment plan at Guy's and St. Thomas' Hospital
+    .row
+      .col-md-4.info_block
+        .col-md-10.col-md-offset-1
+          = icon 'user-md'
+          .caption
+            | As part of your treatment plan at GSTT,
+            | you can view all the information presented to you during 
+            | your consultations on this website
+      .col-md-4.info_block
+        .col-md-10.col-md-offset-1
+          = icon 'heartbeat'
+          .caption
+            | In addition to seeing your current treatment status,
+            | you can also view information on past and potential 
+            | future plans as advised by your care team
+      .col-md-4.info_block
+        .col-md-10.col-md-offset-1
+          = icon 'lock'
+          .caption
+            | Your information is held safely and securely
+            | at industry standard security levels on Microsoft
+            | Azure servers, given government 'official' level clearance
+  / row
+
+.container.sign_in
+  .row
+    .col-md-5.col-md-offset-2
+      h2 Login now to gain access to your personalised treatment pathway
+    .col-md-2
+      = form_tag session_path(:patient) do
+        .form-group
+          = nhs_number_form_field
+        .form-group
+          = password_form_field
+        .form-group.remember
+          = check_box_tag 'patient[remember_me]'
+          = label_tag 'patient[remember_me]', 'Remember me'
+        button.btn.btn-default Sign in
+

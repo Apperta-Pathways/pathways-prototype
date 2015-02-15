@@ -13,31 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-
-.header {
-  
-  img.nhs_logo{
-    margin: 17px;
-    float: left;
-  }
-
-  img.gstt_logo {
-    margin: 17px;
-    float: right;
-  }
-
+body {
+    // background-color: #fafafa;
+  font-family: Whitney, sans-serif;
 }
 
-hr { 
-    display: block;
-    margin-top: 85px;
-    margin-left: -500px;
-    margin-right: -500px;
-    border-color: #333333;
-    border-width: 3px;
+.header {
+  .row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0
+  }
+
+  img {
+    margin: 0 auto;
+    display: block
+  }
+
+  // background-color: #dddddd;
+
 }

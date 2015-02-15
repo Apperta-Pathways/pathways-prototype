@@ -1,0 +1,19 @@
+.welcome
+  h2 = "Welcome to your hub, #{@patient.name}"
+  h4 Below are the different categories of information made available to you by the team at GSTT
+
+.categories
+  .container
+    .row
+      .col-md-4
+        .col-md-10.col-md-offset-1.category
+          = icon "medkit"
+          .title Treatment
+      .col-md-4
+        .col-md-10.col-md-offset-1.category
+          = icon "cutlery"
+          .title Nutrition
+      .col-md-4
+        .col-md-10.col-md-offset-1.category
+          = icon "hospital-o"
+          .title Help

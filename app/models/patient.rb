@@ -21,8 +21,8 @@ class Patient < ActiveRecord::Base
     Patient.includes(pathway: { treatment_states: :treatment_modules }).where(treatment_states: { timeframe: 'present' }).find_by_id(id)
   end
 
-  def self.recent
-    Patient.order(:updated_at).limit(30)
+  def self.recent(how_many)
+    Patient.order(:updated_at).limit(how_many)
   end
 
   def self.find_for_database_authentication(warden_conditions)

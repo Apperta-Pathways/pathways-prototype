@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :doctors
   devise_for :patients
 
+  root 'home#index'
+
   # show current modules of each patient by timeframe
   get '/admin/patient/:id', to: 'doctors#info'
 

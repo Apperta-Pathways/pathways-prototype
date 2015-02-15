@@ -1,0 +1,22 @@
+doctype 5
+
+html
+  head
+    title GSTT Oncology
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+body
+  .header
+    .container
+      .row
+        .col-md-4
+          = image_tag "nhs_logo.png", { height: 50, class: 'nhs_logo' }
+        .col-md-4
+          h2 PATHWAYS
+        .col-md-4
+          = image_tag "gstt_logo.png", { height: 50, class: 'gstt_logo' }
+
+  == yield
+

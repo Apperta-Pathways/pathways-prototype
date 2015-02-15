@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :category do
-    name "MyString"
-    icon "MyString"
+    sequence(:name) { |n| "Category #{n}"}
+    icon ""
   end
 end
