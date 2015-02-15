@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 
     @treatment_state = params[:treatment_state] || present_treatment_state
 
-    if(@treatment_state.nil? || TreatmentState.find_by(id:@treatment_state).nil?)
+    if(@treatment_state.nil? || TreatmentState.find_by(id:@treatment_state).nil? || !TreatmentState.find_by(id:@treatment_state).categories.include?(@category))
        redirect_to patients_url and return
     end
   end
