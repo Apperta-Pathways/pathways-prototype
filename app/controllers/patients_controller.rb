@@ -4,7 +4,8 @@ class PatientsController < ApplicationController
 
   def index
     @patient = Patient.find(current_patient)
-    @current_state = @patient.treatment_states.first.treatment_modules
+    @categories = Category.categories_of @patient
+    # @current_state = @patient.treatment_states.first.treatment_modules
   end
 
   def show

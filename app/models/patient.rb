@@ -5,10 +5,21 @@ class Patient < ActiveRecord::Base
   has_and_belongs_to_many :teams
   has_and_belongs_to_many :doctors, through: :teams
 
+  has_many :treatment_states, through: :pathway
+  has_many :treatment_modules, through: :treatment_states
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def self.categories_of_treatment_modules
+    Category.joins(subcategories:
+                   { data_modules:
+                     { treatment_modules:
+                       { treatment_state: {
+                          pathway: :patient }}}}).where(patients: { id: self.id })
+  end
 
   def self.current_modules
     Patient.treatments

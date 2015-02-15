@@ -2,11 +2,9 @@ class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
   def info
-    @recent_patients = Patient.recent
+    @recent_patients = Patient.recent 30
     @focused_patient = Patient.focused_patient params[:id]
-    if @focused_patient
-      @current_modules = @focused_patient.treatment_states.first.treatment_modules
-    end
+    @treatment_states = TreatmentState.includes(treatment_modules: :data_module).where(pathway: @focused_patient.pathway)
   end
 
   def show
