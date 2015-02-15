@@ -32,18 +32,26 @@
     overflow-y: scroll;
     padding: 20px;
 
-    .module {
-      width: 40%;
-      margin: 20px;
-      background-color: #fefefe;
-      padding: 20px;
-      display: inline-block;
-      vertical-align: top;
-
-      p {
-      font-size:9pt;
+    .treatment_state {
+      .row {
+        padding: 10px;
+        background-color: white;
+        
+        .module_title {
+          font-size: 15pt;
+        }
       }
+
     }
+
+    .title {
+      margin-top: 40px;
+    }
+
+    .module {
+      background-color: white;
+    }
+
   }
 
 }

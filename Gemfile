@@ -45,4 +45,6 @@ group :development, :test do
   gem 'faker'
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'pry-rails'
+  gem 'awesome_print'
 end

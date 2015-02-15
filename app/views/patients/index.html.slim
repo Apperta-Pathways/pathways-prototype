@@ -4,16 +4,8 @@
 
 .categories
   .container
-    .row
-      .col-md-4
-        .col-md-10.col-md-offset-1.category
-          = icon "medkit"
-          .title Treatment
-      .col-md-4
-        .col-md-10.col-md-offset-1.category
-          = icon "cutlery"
-          .title Nutrition
-      .col-md-4
-        .col-md-10.col-md-offset-1.category
-          = icon "hospital-o"
-          .title Help
+      .row
+        - @categories.each do |cat|
+          .col-md-4.category
+            .title = cat.name
+            = icon "medkit"
