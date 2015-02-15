@@ -24,7 +24,7 @@ end
   @subcategory << FactoryGirl.create(:subcategory, category: @category.sample)
 end
 
-100.times do |i|
+1000.times do |i|
   @datamodule << FactoryGirl.create(:data_module, subcategory: @subcategory.sample)
 end
 
@@ -58,5 +58,26 @@ end
 end
 
 @test_patient = FactoryGirl.create(:patient, password: "test_pass", email: 'test@test.com')
+@test_pathway = FactoryGirl.create(:pathway, patient: @test_patient)
+@test_states = []
 
-@test_pathway = FactoryGirl.create(:full_pathway, patient: @test_patient)
+2.times do |s|
+    @test_states << FactoryGirl.create(:treatment_state, pathway: @test_pathway, timeframe: 'past') 
+end
+
+3.times do |s|
+    @test_states << FactoryGirl.create(:treatment_state, pathway: @test_pathway, timeframe: 'present')
+end
+
+2.times do |s|
+    @test_states << FactoryGirl.create(:treatment_state, pathway: @test_pathway, timeframe: 'future')
+end
+
+@test_states.each do |i|
+    3.times do |s|
+        FactoryGirl.create(:treatment_module, treatment_state: i, data_module: @datamodule.sample)
+    end
+end
+
+
+

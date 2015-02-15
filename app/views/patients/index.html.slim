@@ -1,11 +1,14 @@
 .welcome
   h2 = "Welcome to your hub, #{@patient.name}"
-  h4 The information assigned to you can be accessed via the buttons below.
+  h4 Below are the different categories of information made available to you by the team at GSTT
 
 .categories
   .container
-      .row
-        - @categories.each do |cat|
-          .col-md-4.category
-            .title = cat.name
+    .row
+    - for category in @categories
+      a href = category_path(category)
+        .col-md-4
+          .col-md-10.col-md-offset-1.category
             = icon "medkit"
+            .title
+              = category.name
