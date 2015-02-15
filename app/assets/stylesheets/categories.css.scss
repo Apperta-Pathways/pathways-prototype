@@ -3,7 +3,14 @@ a:hover, a:focus {
 }
 
 .present_treatment_state{
-  margin: 0 0 15% 0;
+  margin: 0 0 5% 0;
+
+}
+
+.category_title {
+    font-size:30px;
+    background:#96a4df;
+    text-align: center;
 }
 
 .timeline {
@@ -16,19 +23,19 @@ a:hover, a:focus {
 .entry {
     display:inline-block;
     vertical-align:top;
-    background:#13519C;
     color:#fff;
     padding:10px;
     font-size:12px;
+    background:#96a4df;
     text-align:center;
     position:relative;
-    border-top:4px solid #06182E;
-    border-radius:3px;
+    border-top:2px solid #06182E;
+    border-radius:2px;
     min-width:200px;
     max-width:500px;
     &:hover{
         h1{
-            color:red;
+            color:blue;
         }
     }
     
@@ -64,8 +71,6 @@ a:hover, a:focus {
 .entry h1 {
     color:#fff;
     font-size:18px;
-    font-family:Georgia, serif;
-    font-weight:bold;
     margin-bottom:10px;
 }
 

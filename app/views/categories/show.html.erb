@@ -1,5 +1,6 @@
-<h1><%=@category.name%></h1>
-
+<div class="category_title">
+    <%=@category.name%>
+</div>
 
 <div class="present_treatment_state">
 
@@ -15,15 +16,20 @@
 
 </div>
 
+.container
+    .row
+      h3.col-md-6.col-md-offset-3 All your treatment information in one place. Safe, secure and forever.
+
+
 <div class="bar"></div>
 <div class="timeline">
-        <% @patient.pathway.treatment_states.each do |i| %>
-            <% if i.categories.include? @category %>
-                <%= link_to(category_url(@category.id,treatment_state: i.id)) do %>
-                    <div class="entry">
-                        <h1><%= i.timeframe  %></h1>
-                        </div>
-                <% end %>
+    <% @patient.pathway.treatment_states.each do |i| %>
+        <% if i.categories.include? @category %>
+            <%= link_to(category_url(@category.id,treatment_state: i.id)) do %>
+                <div class="entry">
+                    <h1><%= i.timeframe  %></h1>
+                    </div>
             <% end %>
         <% end %>
+    <% end %>
 </div>
