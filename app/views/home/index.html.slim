@@ -1,35 +1,34 @@
 .hero
   .container
     .row
-      h3.col-md-6.col-md-offset-3 The pathways website is a way for you to view information about your treatment plan at Guy's and St. Thomas' Hospital
-    .row
+      h3.col-md-6.col-md-offset-3 All your treatment information in one place. Safe, secure and forever.
       .col-md-4.info_block
         .col-md-10.col-md-offset-1
           = icon 'user-md'
           .caption
-            | As part of your treatment plan at GSTT,
-            | you can view all the information presented to you during 
-            | your consultations on this website
+            | Pathways from Guy's and St. Thomas' Hospital Trust 
+            | is a trial project. We want to simplify information delivery 
+            | for oncology patients across London.
       .col-md-4.info_block
         .col-md-10.col-md-offset-1
-          = icon 'heartbeat'
+          = icon 'cloud'
           .caption
-            | In addition to seeing your current treatment status,
-            | you can also view information on past and potential 
-            | future plans as advised by your care team
+            | You can access information about your past, current, 
+            | and potential future treatment plans from anywhere you 
+            | have an internet connection.
       .col-md-4.info_block
         .col-md-10.col-md-offset-1
           = icon 'lock'
           .caption
-            | Your information is held safely and securely
-            | at industry standard security levels on Microsoft
-            | Azure servers, given government 'official' level clearance
+            | All your information is stored securely. It will only 
+            | be shared with you, your doctor and nurses. You can ask 
+            | to be removed at any time.
   / row
 
 .container.sign_in
   .row
     .col-md-5.col-md-offset-2
-      h2 Login now to gain access to your personalised treatment pathway
+      h2 Login now and access your treatment pathway
     .col-md-2
       = form_tag session_path(:patient) do
         .form-group
