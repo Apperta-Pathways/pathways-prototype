@@ -1,25 +1,32 @@
 
-<div class="category_title">
-    <%=@category.name%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 col-md-offset-5">
+            <h1><%=@category.name%></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="present_treatment_state">
+                  <div>
+                    <% subcategories = @patient.pathway.treatment_states.find_by(id: @treatment_state).data_per_subcategory(@category) %>
+                    <% @patient.pathway.treatment_states.find_by(id: @treatment_state).subcategories(@category).each do |i|%>
+                    <h2> <%= i.name %> </h2>
+                    <% subcategories[i.name].each do |f| %>
+                      <p><%= f.data %></p>
+                    <% end %>
+                  <% end %>
+                  </div>
+            </div>
+        </div>
+    </div>
+  
+
+
+
 </div>
 
-
-<div class="present_treatment_state">
-  <div>
-    <% subcategories = @patient.pathway.treatment_states.find_by(id: @treatment_state).data_per_subcategory(@category) %>
-    <% @patient.pathway.treatment_states.find_by(id: @treatment_state).subcategories(@category).each do |i|%>
-    <h2> <%= i.name %> </h2>
-    <% subcategories[i.name].each do |f| %>
-      <p><%= f.data %></p>
-    <% end %>
-  <% end %>
-  </div>
-
-</div>
-
-.container
-    .row
-      h3.col-md-6.col-md-offset-3 All your treatment information in one place. Safe, secure and forever.
 
 
 <div class="bar"></div>
