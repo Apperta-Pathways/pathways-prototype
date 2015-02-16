@@ -21,4 +21,10 @@ module TreatmentStatesHelper
     "module[#{dm.id}]"
   end
 
+  def display_category(category)
+    link_to url_for_category(category), class: class_for_category(category) do
+      category.name
+    end
+  end
+
 end

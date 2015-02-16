@@ -3,6 +3,7 @@ class TreatmentState < ActiveRecord::Base
   has_many :treatment_modules
   validates :timeframe, inclusion: { in: %w(future present past) }
 
+  # for patient hub
   def self.for_category(category)
     TreatmentStates.joins(treatment_modules: { data_modules: { subcategory: :category}}).where(category: { id: category })
   end

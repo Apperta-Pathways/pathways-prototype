@@ -11,4 +11,9 @@ class Category < ActiveRecord::Base
                        { treatment_state: {
                           pathway: :patient }}}}).where(patients: { id: patient.id })
   end
+
+  def assigned_tms_in_state(state)
+    TreatmentModule.joins(data_module: { subcategory: :category }).where(categories: { id: self.id }, treatment_state_id: state.id)
+  end
+
 end

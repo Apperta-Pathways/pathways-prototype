@@ -1,19 +1,22 @@
 .list-group
-  = form_tag treatment_state_path, method: 'POST' do
-    = hidden_field_tag 'category', @active_cat.id
-    = hidden_field_tag 'subcategory', @active_subcat.id
-    - @active_subcat.data_modules.each do |dm|
+  - if !@active_subcat.data_modules.blank?
+    = form_tag treatment_state_path, method: 'POST' do
+      = hidden_field_tag 'category', @active_cat.id
+      = hidden_field_tag 'subcategory', @active_subcat.id
+      - @active_subcat.data_modules.each do |dm|
+        .list-group-item
+          .row
+            .checkbox.col-md-6
+              label
+                = hidden_field_tag field_name(dm), 'no'
+                - if @state.has_module(dm)
+                  = check_box_tag field_name(dm), 'yes', true
+                - else
+                  = check_box_tag field_name(dm), 'yes', false
+                = dm.title
+            .col-md-6
+              .something something
       .list-group-item
-        .row
-          .checkbox.col-md-6
-            label
-              = hidden_field_tag field_name(dm), 'no'
-              - if @state.has_module(dm)
-                = check_box_tag field_name(dm), 'yes', true
-              - else
-                = check_box_tag field_name(dm), 'yes', false
-              = dm.title
-          .col-md-6
-            .something something
-    .list-group-item
-      = submit_tag "Update Treatment State", class: 'btn btn-default'
+        = submit_tag "Update Treatment State", class: 'btn btn-default'
+  - else
+    .list-group-item No information modules under this category
