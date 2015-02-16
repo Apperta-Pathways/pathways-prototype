@@ -37,6 +37,11 @@ gem 'spring',        group: :development
 gem 'devise'
 gem "rails-erd"
 
+gem 'formtastic', '~> 3.0'
+gem 'rich'
+gem 'paperclip'
+
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rubocop', require: false

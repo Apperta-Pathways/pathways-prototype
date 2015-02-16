@@ -29,9 +29,11 @@ end
 end
 
 @pathway=[]
+@patients=[]
 
 30.times do |i|
   @patient = FactoryGirl.create(:patient)
+  @patients << @patient
   @pathway << FactoryGirl.create(:pathway, patient: @patient)
 end
 
@@ -79,5 +81,16 @@ end
     end
 end
 
+@doctors = []
 
+30.times do |s|
+  @doctors << FactoryGirl.create(:doctor)
+end
 
+3.times do|s|
+  @team =  FactoryGirl.create(:team)
+  3.times do |i|
+    @team.doctors << @doctors.sample
+    @team.patients << @patients.sample
+  end
+end

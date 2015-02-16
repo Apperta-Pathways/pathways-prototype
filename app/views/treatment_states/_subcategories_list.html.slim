@@ -1,0 +1,3 @@
+.list-group
+  - @active_cat.subcategories.each do |sc|
+    = link_to sc.name, url_for_subcategory(sc), class: class_for_subcategory(sc)

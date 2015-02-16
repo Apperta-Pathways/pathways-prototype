@@ -7,6 +7,14 @@ class TreatmentState < ActiveRecord::Base
     TreatmentStates.joins(treatment_modules: { data_modules: { subcategory: :category}}).where(category: { id: category })
   end
 
+  def has_module(dm)
+    !DataModule.joins(treatment_modules: :treatment_state).where(id: dm.id, treatment_states: {id: self.id }).blank?
+  end
+
+  def has_module_with_id(id)
+    !DataModule.joins(treatment_modules: :treatment_state).where(id: id, treatment_states: {id: self.id }).blank?
+  end
+
   def categories
     @categories = []
     treatment_modules.each {|i| @categories << i.data_module.subcategory.category}
