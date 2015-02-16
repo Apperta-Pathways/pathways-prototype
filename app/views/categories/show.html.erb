@@ -1,11 +1,9 @@
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-2 col-md-offset-5">
-            <h1><%=@category.name%></h1>
-        </div>
+<div class="row">
+    <div class="category_title">
+        <h1><%=@category.name%></h1>
     </div>
+</div>
+<div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="present_treatment_state">
@@ -21,26 +19,32 @@
             </div>
         </div>
     </div>
-  
-
-
-
+    <div class="row">
+        <div class="subtext">
+            <p>Use the buttons below to see information about your past and potential future treatment by navigating through your treatment timeline.</p>
+        </div>
+    </div>
 </div>
+<div class="row">        
+    <div class="timeline">  
+        <div class="container">
+            <div class="row">        
+                <div class="entries">
+                    <% @patient.pathway.treatment_states.each do |i| %>
+                        <% if i.categories.include? @category %>
+                            <%= link_to(category_url(@category.id,treatment_state: i.id)) do %>
+                                <div class="entry">
+                                    <h1><%= i.timeframe  %></h1>
+                                </div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>        
+</div>    
 
 
 
-<div class="bar"></div>
-<div class="timeline">
 
-
-    <% @patient.pathway.treatment_states.each do |i| %>
-        <% if i.categories.include? @category %>
-            <%= link_to(category_url(@category.id,treatment_state: i.id)) do %>
-                <div class="entry">
-                    <h1><%= i.timeframe  %></h1>
-                    </div>
-            <% end %>
-        <% end %>
-    <% end %>
-
-</div>
