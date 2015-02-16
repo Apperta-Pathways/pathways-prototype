@@ -7,4 +7,6 @@ module HomeHelper
   def password_form_field
     password_field_tag 'patient[password]', nil, class: "form-control", placeholder: 'Enter Password'
   end
+
+
 end

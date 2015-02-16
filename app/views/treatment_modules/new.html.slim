@@ -1,4 +1,6 @@
-<div class="container">
+
+.container
+  = form_for @treatment_module, 
 
   <%= form_for @treatment_module, url: { action: "create" }, html: { class: "module" } do |f| %>
     Name: <%= f.text_field :name %> </br>

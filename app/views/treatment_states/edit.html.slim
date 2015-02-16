@@ -1,0 +1,13 @@
+.edit_box.container
+  .row
+    #categories.col-md-4
+      h2 Categories
+      = render partial: 'categories_list'
+    #subcategories.col-md-4
+      h2 Subcategories
+      - if @active_cat
+        = render partial: 'subcategories_list'
+    #modules.col-md-4
+      h2 Information Modules
+      - if @active_subcat
+        = render partial: 'modules_list'
