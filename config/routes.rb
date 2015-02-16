@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get '/admin/module/new', to: 'treatment_modules#new'
   post '/admin/module/new', to: 'treatment_modules#create'
+  
+  get '/admin/teams', to: 'team#index'
 
   get '/treatments/all', to: 'treatment_modules#all'
 

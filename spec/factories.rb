@@ -7,6 +7,11 @@ FactoryGirl.define do
     password { Faker::Internet.password(10) }
   end
   
+  factory :doctor do
+    email{ Faker::Internet.safe_email }
+    password { Faker::Internet.password(10) }
+  end
+  
   factory :category do
     name { Faker::Lorem.word }
   end
