@@ -6,7 +6,7 @@
       - @active_subcat.data_modules.each do |dm|
         .list-group-item
           .row
-            .checkbox.col-md-6
+            .checkbox.col-md-8
               label
                 = hidden_field_tag field_name(dm), 'no'
                 - if @state.has_module(dm)
@@ -14,8 +14,11 @@
                 - else
                   = check_box_tag field_name(dm), 'yes', false
                 = dm.title
-            .col-md-6
-              .something something
+            .col-md-4
+              a.btn.btn-primary data-toggle='collapse' href="#collapse#{dm.id}" aria-expanded='false' aria-controls="#collapse#{dm.id}" Preview
+          .collapse.preview id="collapse#{dm.id}"
+            .well
+              div = dm.data
       .list-group-item
         = submit_tag "Update Treatment State", class: 'btn btn-default'
   - else
