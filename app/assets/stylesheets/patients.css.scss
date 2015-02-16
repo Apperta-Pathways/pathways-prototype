@@ -6,10 +6,12 @@
   text-align: center;
   font-size: 15pt;
   color: white;
-  background-color: #7b87b8;
+  background-color: #337ab7;
   width: 100%;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #666;
+  border-top: 1px solid #666;
 
   h4 {
     font-weight: lighter;
@@ -18,19 +20,19 @@
 
 .categories {
   width: 100%;
-  background-color: #96a4df;
+  background-color: white;
 
   .category {
     padding: 20px;
     text-align: center;
+    color: #666;
     margin-top: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+
     background-color: white;
-    // border-bottom: 6px solid #3c425c;
     border-radius: 2px;
-    transition: 0.2s box-shadow;
-    box-shadow: 2px 2px 3px #3c452c;
-    
+        
     .title {
       font-size: 15pt;
       margin-top: 10px;
@@ -42,7 +44,9 @@
   }
 
   .category:hover {
-    box-shadow: 8px 8px 5px #3c452c;
-    pointer: point;
+    background-color: #337ab7;
+    color: white;
+    
+    
   }
 }
