@@ -9,6 +9,7 @@ class PatientsController < ApplicationController
   end
 
   def show
+    @patient = Patient.find_by_id params[:id]
     respond_with(@patient)
   end
 

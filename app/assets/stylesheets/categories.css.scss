@@ -8,71 +8,73 @@ a:hover, a:focus {
 
 .category_title {
     font-size:30px;
+    text-align: center;
+    background-color: #7b87b8;
+    padding: 10px;
+    color: white;
 }
 
 .timeline {
     white-space:nowrap;
-    padding:30px 0 10px 0;
+    padding:10px 0 10px 0;
+    text-align: center;
+    background-color: #7b87b8;
+    margin:0 auto;
     position:relative;
-   /* text-align: center; */
 }
 
-.entry {
+.entries {
+
+  .entry {
     display:inline-block;
     vertical-align:top;
-    color:#fff;
-    padding:10px;
-    font-size:12px;
-    background:#96a4df;
-    text-align:center;
-    position:relative;
-    border-top:2px solid #06182E;
-    border-radius:2px;
-    min-width:200px;
-    max-width:500px;
-    &:hover{
-        h1{
-            color:blue;
-        }
+    padding: 14px;
+    padding: 20px;
+    min-width: 200px;
+    max-width: 200px;
+    color: black;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    background-color: white;
+    // border-bottom: 6px solid #3c425c;
+    border-radius: 2px;
+    transition: 0.2s box-shadow;
+    box-shadow: 2px 2px 3px #3c452c;
+    
+    font-size: 15pt;
+    margin-top: 10px;
+
     }
+
+  .entry:hover {
+    box-shadow: 8px 8px 5px #3c452c;
+    pointer: point;
+  }
 }
 
-.entry:after {
-    content:'';
-    display:block;
-    background:#eee;
-    width:10px;
-    height:10px;
-    border-radius:6px;
-    border:3px solid #06182E;
-    position:absolute;
-    left:50%;
-    top:-30px;
-    margin-left:-6px;
-}
 
-.entry:before {
-    content:'';
-    display:block;
-    background:#06182E;
-    width:5px;
-    height:20px;
-    position:absolute;
-    left:49%;
-    top:-20px;
-    margin-left:-2px;
-}
 
 
 .entry h1 {
-    color:#fff;
+    color:#000;
     font-size:18px;
     margin-bottom:10px;
 }
 
+.centered_entries {
+    text-align: center;
+}
+
+.subtext {
+    font-size:10px;
+    text-align: center;
+}
+
 .bar {
     height:4px;
-    background:#eee;
+    margin-bottom:2px;
+    background:#474747;
     width:100%;
     position:relative;
     top:13px;

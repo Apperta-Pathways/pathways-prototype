@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get '/admin/module/new', to: 'treatment_modules#new'
   post '/admin/module/new', to: 'treatment_modules#create'
+  
+  get '/admin/teams', to: 'team#index'
 
   get '/admin/state/:state', to: 'treatment_states#edit'
   get '/admin/state/:state/:category', to: 'treatment_states#edit'
