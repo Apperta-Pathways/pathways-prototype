@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/admin/patient/:id/module/new', to: 'patient#edit'
 
   get '/admin/teams', to: 'team#index'
+  get '/admin/teams/:id', to: 'team#show', as: 'team' 
+
 
   get '/admin/state/:state', to: 'treatment_states#edit'
   get '/admin/state/:state/:category', to: 'treatment_states#edit'
@@ -31,4 +33,5 @@ Rails.application.routes.draw do
   resources :patients
   resources :treatment_modules
   resources :categories
+
 end

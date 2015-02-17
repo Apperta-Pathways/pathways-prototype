@@ -35,3 +35,19 @@ class PatientsController < ApplicationController
   def destroy
     @patient.destroy
     respond_with(@patient)
+  end
+
+  private
+
+  def set_patient
+    @patient = Patient.find(params[:id])
+  end
+
+  def current_modules_of(patient)
+    @patient.treatment_states.first.treatment_modules
+  end
+
+  def patient_params
+    params[:patient]
+  end
+end
