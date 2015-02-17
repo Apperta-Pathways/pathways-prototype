@@ -10,13 +10,12 @@
           .caption
             h3.col-md-6.col-md-offset-3 Doctors:
             - @team.doctors.each do |doctor|
-              .row
-                p.col-md-12
+              .row.team_form.col-md-12
                   = icon 'check'
                   |Name:  
                   a href= '#'
                     = doctor.name
-                  = form_for(@team, url: team_path(@team), method: :delete) do |f|
+                  = form_for(@team, url: team_path(@team), method: :delete, html:{class:"team_member_form"}) do |f|
                     = hidden_field_tag :doctor, doctor.id
                     = f.submit "Delete", class:"btn btn-danger"
     
