@@ -1,0 +1,33 @@
+.hero
+  .container
+    .row
+      h3.col-md-6.col-md-offset-3
+        = @team.name
+    .row
+      .col-md-6.info_block
+        .col-md-10.col-md-offset-1
+          = icon 'user-md'
+          .caption
+            h3.col-md-6.col-md-offset-3 Doctors:
+            - @team.doctors.each do |doctor|
+              .row
+                p.col-md-12
+                  = icon 'check'
+                  |Name:  
+                  a href= '#'
+                    = doctor.name
+                  = link_to 'Destroy', patient_url(doctor), method: :delete, data: { confirm: 'Are you sure?' }
+    
+      .col-md-6.info_block
+        .col-md-10.col-md-offset-1
+          = icon 'user'
+          .caption
+            h3.col-md-6.col-md-offset-3 Patients:
+            - @team.patients.each do |patient|
+              .row
+                p.col-md-12
+                  = icon 'check'
+                  |Name:  
+                  a href= patient_path(patient)
+                    = patient.name
+                  = link_to 'Destroy', patient_url(patient), method: :delete, data: { confirm: 'Are you sure?' }
