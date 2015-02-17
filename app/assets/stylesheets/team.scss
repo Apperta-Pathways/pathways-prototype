@@ -1,3 +1,16 @@
-// Place all the styles related to the team controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.hero .team_form {
+  margin: 0 10px 0px 0;
+  font-size: 17pt;
+  text-align: initial;
+  & .fa{
+    margin: 0 10px 0px 0;
+    font-size: 20pt;
+  }
+  & .team_member_form{
+    display: inline;
+    & .btn{
+      margin: 0 0 0 8pt;
+      font-size: 8pt;
+    }
+  }
+}

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get '/admin/teams', to: 'team#index'
   get '/admin/teams/:id', to: 'team#show', as: 'team' 
+  delete '/admin/teams/:id', to: 'team#remove'
+  
 
 
   get '/admin/state/:state', to: 'treatment_states#edit'

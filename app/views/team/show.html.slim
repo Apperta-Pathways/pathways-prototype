@@ -16,7 +16,9 @@
                   |Name:  
                   a href= '#'
                     = doctor.name
-                  = link_to 'Destroy', patient_url(doctor), method: :delete, data: { confirm: 'Are you sure?' }
+                  = form_for(@team, url: team_path(@team), method: :delete) do |f|
+                    = hidden_field_tag :doctor, doctor.id
+                    = f.submit "Delete", class:"btn btn-danger"
     
       .col-md-6.info_block
         .col-md-10.col-md-offset-1
@@ -24,10 +26,12 @@
           .caption
             h3.col-md-6.col-md-offset-3 Patients:
             - @team.patients.each do |patient|
-              .row
-                p.col-md-12
-                  = icon 'check'
-                  |Name:  
-                  a href= patient_path(patient)
-                    = patient.name
-                  = link_to 'Destroy', patient_url(patient), method: :delete, data: { confirm: 'Are you sure?' }
+              .row.team_form.col-md-12
+                = icon 'check'
+                |Name:  
+                a href= patient_path(patient)
+                  = patient.name
+                = form_for(@team, url: team_path(@team), method: :delete, html:{class:"team_member_form"}) do |f|
+                  = hidden_field_tag :patient, patient.id
+                  = f.submit "Delete", class:"btn btn-danger"
+                    
