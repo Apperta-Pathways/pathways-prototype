@@ -13,4 +13,13 @@
     float: right;
   }
 
+
+  .count {
+    color: #27ae60;
+  }
+
+  .active .count {
+    color: white;
+  }
+
 }

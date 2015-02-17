@@ -13,9 +13,6 @@ Rails.application.routes.draw do
   # add existing modules to a patient
   get '/admin/patient/:id/module/new', to: 'patient#edit'
 
-  get '/admin/module/new', to: 'treatment_modules#new'
-  post '/admin/module/new', to: 'treatment_modules#create'
-  
   get '/admin/teams', to: 'team#index'
 
   get '/admin/state/:state', to: 'treatment_states#edit'
@@ -24,8 +21,11 @@ Rails.application.routes.draw do
 
   post '/admin/state/:state', to: 'treatment_states#update', as: :treatment_state
 
+  get '/admin/module/new', to: 'data_modules#new'
+  post '/admin/module/new', to: 'data_modules#create', as: :data_modules
 
-  get '/treatments/all', to: 'treatment_modules#all'
+  # get '/treatments/all', to: 'treatment_modules#all'
+
 
 
   resources :patients

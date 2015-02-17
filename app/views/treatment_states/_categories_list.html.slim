@@ -1,3 +1,7 @@
 .list-group
   - @categories.each do |category|
-    = link_to category.name, url_for_category(category), class: class_for_category(category)
+    a class=class_for_category(category) href=url_for_category(category)
+      .row
+        .col-md-10 = category.name
+        .col-md-2.count
+          .active_count = icon 'check', category.assigned_tms_in_state(@state).size

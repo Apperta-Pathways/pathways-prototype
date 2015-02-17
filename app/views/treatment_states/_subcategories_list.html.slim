@@ -1,3 +1,7 @@
 .list-group
   - @active_cat.subcategories.each do |sc|
-    = link_to sc.name, url_for_subcategory(sc), class: class_for_subcategory(sc)
+    a class=class_for_subcategory(sc) href=url_for_subcategory(sc)
+      .row
+        .col-md-10 = sc.name
+        .col-md-2.count
+          .active_count = icon 'check', sc.assigned_tms_in_state(@state).size
