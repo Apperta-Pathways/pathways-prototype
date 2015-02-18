@@ -18,7 +18,11 @@
                   = form_for(@team, url: team_path(@team), method: :delete, html:{class:"team_member_form"}) do |f|
                     = hidden_field_tag :doctor, doctor.id
                     = f.submit "Delete", class:"btn btn-danger"
-    
+            button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-member="Doctor"
+              i class="glyphicon glyphicon-plus"
+              |Add Doctor
+            = render 'team/modal'  
+            
       .col-md-6.info_block
         .col-md-10.col-md-offset-1
           = icon 'user'
@@ -33,4 +37,8 @@
                 = form_for(@team, url: team_path(@team), method: :delete, html:{class:"team_member_form"}) do |f|
                   = hidden_field_tag :patient, patient.id
                   = f.submit "Delete", class:"btn btn-danger"
+            button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-member="Patient"
+              i class="glyphicon glyphicon-plus"
+              |Add Patient      
+            = render 'team/modal'
                     
