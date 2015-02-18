@@ -3,10 +3,9 @@ $(document).ready(function() {
     var button = $(event.relatedTarget)
     var recipient = button.data('member')
     var modal = $(this)
-    modal.find('#member').empty()
-    modal.find('#member').append("<i class=\"glyphicon glyphicon-plus\"></i>")
-    modal.find('#member').append('Add ' + recipient)
-    $('#member').on('click', function() {
+    modal.find('#submit').empty()
+    modal.find('#submit').append("<i class=\"glyphicon glyphicon-plus\"></i>" + "Add" + recipient)
+    $('#submit').on('click', function() {
       modal.find('#typeAdded').val(recipient);
       $('#myForm').submit(); 
     });
