@@ -1,6 +1,5 @@
 .edit_box.container
   .row
-    #introduction = "You are modifying the treatment state of: #{@activepatient.name}."
   .row
     #introduction
       'Information you select here will be available to this patient on their hub.
@@ -11,7 +10,6 @@
       h2 Subcategories
     .col-md-4
       h2 Information Modules
-
   .row
     #categories.col-md-4
       = render partial: 'categories_list'
