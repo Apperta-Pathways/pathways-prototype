@@ -20,15 +20,11 @@ module DataModulesHelper
     end
   end
 
-  def subcategory_input
-    content_tag 'select', class: 'form-control' do
-      content_tag_for :option, @subcategories do |sc|
-        sc.name
-      end
-    end
+  def subcategory_input(f)
+    f.collection_select :subcategory_id, @subcategories, :id, :name, {}, class: 'form-control'
   end
 
-  def title_input
-    text_field_tag 'name', nil, placeholder: 'Enter information module title', class: 'form-control'
+  def title_input(f)
+    f.text_field :title, placeholder: 'Enter information module title', class: 'form-control'
   end
 end

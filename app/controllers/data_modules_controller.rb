@@ -5,23 +5,30 @@ class DataModulesController < ApplicationController
   def show
   end
 
-  def new_set_cat
-    @category = Category.find_by_id(strong_params[:category_id])
-    if @category
-      return redirect_to action: :new, id: strong_params[:category_id]
-    end
-    return redirect_to :back
+  def edit
+    @data_module = DataModule.find_by_id(params[:id])
+  end
+
+  def all
+    @categories = Category.includes(subcategories: :data_modules)
   end
 
   def new
-    @data_module = DataModule.new
+    @category = Category.find_by_id(strong_params)
+    if @category
+      @data_module = DataModule.new
+      render and return
+    end
+
+    flash[:error] = "Invalid category"
+    redirect_to :back
   end
 
   def create
     @data_module = DataModule.new(data_module_params)
     @data_module.save
     flash[:success] = "Successfully created new data module"
-
+    redirect_to action: :all
   end
 
   private
@@ -31,11 +38,11 @@ class DataModulesController < ApplicationController
   end
 
   def data_module_params
-    params.require(:data_module).permit(:title, :subcategory, :data)
+    params.require(:data_module).permit(:title, :subcategory_id, :data)
   end
 
   def strong_params
-    params.require(:category)
+    params.require(:category_id)
   end
 
   def populate_form
