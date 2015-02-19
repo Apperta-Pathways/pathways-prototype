@@ -1,7 +1,7 @@
 .hero
   .container
     .row
-      h3.col-md-6.col-md-offset-3
+      h3.col-md-10.col-md-offset-1
         = @team.name
     .row
       .col-md-6.info_block
@@ -23,7 +23,7 @@
                       td 
                         = form_for(@team, url: team_path(@team), method: :delete, html:{class:"team_member_form"}) do |f|
                           = hidden_field_tag :doctor, doctor.id
-                          = f.submit "Delete", class:"btn btn-danger btn-sm"
+                          = f.submit "Delete", class:"btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
               button type="button" class="btn btn-success showModal" data-toggle="modal" data-target="#exampleModal" data-member="Doctor"
                 i class="glyphicon glyphicon-plus"
                 |Add Doctor      
