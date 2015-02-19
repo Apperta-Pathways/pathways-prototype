@@ -6,24 +6,25 @@ FactoryGirl.define do
     nhs_number { Faker::Number.number(10) }
     password { Faker::Internet.password(10) }
   end
-  
+
   factory :doctor do
     name { Faker::Name.name }
     email{ Faker::Internet.safe_email }
     password { Faker::Internet.password(10) }
   end
-  
+
   factory :category do
     name { Faker::Lorem.word }
   end
-  
+
   factory :subcategory do
     name { Faker::Lorem.word }
     category
   end
-  
+
   factory :data_module do
-    data { Faker::Lorem.paragraph(5)}  
+    title { Faker::Lorem.word }
+    data { Faker::Lorem.paragraph(5)}
     subcategory
   end
 
@@ -31,9 +32,9 @@ FactoryGirl.define do
     disease { Faker::Lorem.word }
     patient
   end
-  
+
   factory :treatment_state do
-    timeframe 'past'
+    assigned_date { rand(-200..200).days.ago }
     pathway
   end
 
@@ -41,6 +42,5 @@ FactoryGirl.define do
     treatment_state
     data_module
   end
-
 
 end

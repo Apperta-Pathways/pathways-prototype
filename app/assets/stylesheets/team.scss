@@ -1,3 +1,8 @@
+.modal .modal-body{
+  text-align: initial;
+  color: black;
+}
+
 .hero .team_form {
   margin: 0 10px 0px 0;
   font-size: 17pt;
@@ -13,4 +18,31 @@
       font-size: 8pt;
     }
   }
+}
+
+.hero .info_block table{
+  margin: 0 auto;
+  td{
+      text-align: initial;
+      font-size:17pt;
+      a{
+        color:white;
+      }
+      a:hover{
+        color:#FFD700;
+      }
+      .fa{
+        font-size:20pt;
+      }
+      .btn{
+        float:right;
+      }
+      &:nth-child(3){
+        width:90px;
+      }
+  }
+}
+
+.hero .info_block .caption .showModal{
+    margin: 20px 0 0 0;
 }

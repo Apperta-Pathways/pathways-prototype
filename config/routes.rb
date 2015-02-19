@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Rich::Engine => '/rich', :as => 'rich'
   get 'categories/show'
 
   devise_for :doctors
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
   get '/admin/teams', to: 'team#index'
   get '/admin/teams/:id', to: 'team#show', as: 'team' 
   delete '/admin/teams/:id', to: 'team#remove'
+  post '/admin/teams/:id', to: 'team#add'
   
 
 
@@ -25,15 +25,21 @@ Rails.application.routes.draw do
 
   post '/admin/state/:state', to: 'treatment_states#update', as: :treatment_state
 
-  get '/admin/module/new', to: 'data_modules#new'
+  get '/admin/module/new/cat/:id', to: 'data_modules#new', as: :data_module_cat
+  get '/admin/module/:id', to: 'data_modules#show'
   post '/admin/module/new', to: 'data_modules#create', as: :data_modules
 
-  # get '/treatments/all', to: 'treatment_modules#all'
-
-
+  get '/treatments/all', to: 'data_modules#all'
 
   resources :patients
   resources :treatment_modules
-  resources :categories
+
+  resources :categories do
+    resources :data_modules, only: [:new, :create]
+  end
+
+  namespace :admin do
+
+  end
 
 end

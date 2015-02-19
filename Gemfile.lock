@@ -89,10 +89,10 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     json (1.8.2)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
@@ -117,9 +117,9 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.3)
       pry (>= 0.9.10)
+    quill-rails (0.1.4)
+      railties (>= 3.1.0, < 5.0)
     rack (1.5.2)
-    rack-raw-upload (1.1.1)
-      multi_json
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.7)
@@ -148,14 +148,6 @@ GEM
       json (~> 1.4)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
-    rich (1.4.6)
-      jquery-rails
-      kaminari
-      mime-types
-      paperclip
-      rack-raw-upload
-      rails (>= 3.2.0)
-      sass-rails
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.4)
@@ -246,11 +238,12 @@ DEPENDENCIES
   formtastic (~> 3.0)
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-turbolinks
   paperclip
   pry-rails
+  quill-rails (~> 0.1.0)
   rails (= 4.1.7)
   rails-erd
-  rich
   rspec-rails (~> 3.0.0)
   rubocop
   sass-rails (>= 3.2)

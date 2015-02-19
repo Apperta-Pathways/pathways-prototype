@@ -4,6 +4,7 @@ html
   head
     title GSTT Oncology
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag "http://cdn.quilljs.com/0.19.8/quill.snow.css"
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
@@ -22,14 +23,10 @@ body
       == render_flash
   == yield
 
-
-html
-  .container
-    .row
-      .footer
-        |Patient Pathways by Guy's and St. Thomas' Hospital Trust.
-      .p
-        |Pathways a tool for you to access your past, present and future treatment information, it is not a substitute for your doctor. In an emergency call 999.
-      .p
-        |© 2015 Guy's and St Thomas' NHS Foundation Trust.
-
+  .footer.container
+    p
+    |Patient Pathways by Guy's and St. Thomas' Hospital Trust.
+    p
+    |Pathways a tool for you to access your past, present and future treatment information, it is not a substitute for your doctor. In an emergency call 999.
+    p
+    |© 2015 Guy's and St Thomas' NHS Foundation Trust.

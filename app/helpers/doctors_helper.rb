@@ -6,4 +6,8 @@ module DoctorsHelper
     end
   end
 
+  def category_input
+    collection_select :category, :category_id, all_cats, :id, :name, {}, class: 'form-control'
+  end
+
 end

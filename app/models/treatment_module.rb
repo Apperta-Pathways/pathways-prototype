@@ -8,5 +8,4 @@ class TreatmentModule < ActiveRecord::Base
   delegate :subcategory, to: :data_module
   delegate :category, to: :data_module
 
-
 end

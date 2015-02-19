@@ -1,0 +1,7 @@
+form.form-inline.col-md-8 action='/admin/module/new_set_cat' method='POST'
+= form_tag data_module_set_cat_path, method: 'POST', class: 'form-inline' do
+  .form-group
+    p.form-control-static Create a new information module under category:
+  .form-group
+    = category_input
+  = submit_tag 'Create...', class: 'btn btn-default'

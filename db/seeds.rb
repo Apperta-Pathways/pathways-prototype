@@ -61,6 +61,7 @@ end
 
 @test_patient = FactoryGirl.create(:patient, password: "test_pass", email: 'test@test.com')
 @test_pathway = FactoryGirl.create(:pathway, patient: @test_patient)
+
 @test_states = []
 
 2.times do |s|
@@ -76,9 +77,9 @@ end
 end
 
 @test_states.each do |i|
-    3.times do |s|
-        FactoryGirl.create(:treatment_module, treatment_state: i, data_module: @datamodule.sample)
-    end
+  3.times do |s|
+      FactoryGirl.create(:treatment_module, treatment_state: i, data_module: @datamodule.sample)
+  end
 end
 
 @doctors = []
