@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150217143140) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "name"
   end
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true

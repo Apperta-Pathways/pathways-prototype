@@ -1,5 +1,6 @@
 class TreatmentStatesController < ApplicationController
   before_action :set_state
+  before_action :set_patient
 
   def new
 
@@ -56,6 +57,10 @@ class TreatmentStatesController < ApplicationController
 
   def set_state
     @state = TreatmentState.find_by_id(strong_params[:state])
+  end
+
+  def set_patient
+    @activepatient = @state.patient
   end
 
   def set_active_cat

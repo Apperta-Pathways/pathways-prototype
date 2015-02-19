@@ -8,6 +8,7 @@ FactoryGirl.define do
   end
 
   factory :doctor do
+    name { Faker::Name.name }
     email{ Faker::Internet.safe_email }
     password { Faker::Internet.password(10) }
   end

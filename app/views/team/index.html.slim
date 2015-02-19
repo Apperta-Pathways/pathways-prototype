@@ -1,0 +1,18 @@
+- @team = Team.find_by(id:"1")
+.hero
+  .container
+    .row.col-md-10.col-md-offset-1.info_block
+      = icon 'user'
+      .caption
+        h3.col-md-10.col-md-offset-1 
+          |You may see below all the existing teams:
+    .row.col-md-10.col-md-offset-1.info_block
+      table
+        tbody
+          - Team.all.each do |team|
+            tr
+              td = icon 'check'
+              td 
+                |Name:  
+                = link_to team_path(team)
+                  = team.name
