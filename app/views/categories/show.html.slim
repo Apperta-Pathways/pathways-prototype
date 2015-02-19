@@ -4,12 +4,13 @@
 
 .container
   .row
-    .present_treatment_state
-      - @subcategories.each do |sc|
-        h2 = sc.name
-        - sc.assigned_tms_in_state(@state).each do |tm|
-          h3 = tm.title
-          == tm.data
+	.col-md-8.col-md-offset-2    
+	    .present_treatment_state
+	      - @subcategories.each do |sc|
+	        h2 = sc.name
+	        - sc.assigned_tms_in_state(@state).each do |tm|
+	          h3 = tm.title
+	          == tm.data
 
 
 
