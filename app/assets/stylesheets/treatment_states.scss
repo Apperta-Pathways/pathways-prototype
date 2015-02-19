@@ -10,7 +10,7 @@
   }
 
   #introduction {
-    color: black;
+    color: white;
     text-align: center;
   }
 
@@ -33,4 +33,14 @@
     color: white;
   }
 
+}
+
+.bluebar {
+  background-color: #337ab7;
+  width: 100%;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #666;
+  border-top: 1px solid #666;
+  color: white;
 }
