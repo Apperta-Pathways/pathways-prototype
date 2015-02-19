@@ -1,5 +1,10 @@
 class TeamController < ApplicationController
   
+  def destroy
+    Team.find_by(id:params[:id]).destroy
+    redirect_to teams_url
+  end
+  
   def add
     @team = Team.find_by(id:params[:id])
     @patient = Patient.find_by(email: params[:team_member][:email])
