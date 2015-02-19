@@ -1,16 +1,16 @@
 .container-fluid
   - @categories.each do |c|
     .row
-      h2 = c.name
+      h2.title = c.name
       .container
         - c.subcategories.each do |sc|
           .row
-            h3 = sc.name
+            h3.title = sc.name
           - sc.data_modules.each_slice(2) do |dm_ar|
             .row
               - dm_ar.each do |dm|
                 .col-md-6
                   .data_module_card.col-md-10.col-md-offset-1
-                    h4 = dm.title
+                    h4.title = dm.title
                     .data == dm.data
 

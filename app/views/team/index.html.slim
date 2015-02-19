@@ -16,3 +16,7 @@
                 |Name:  
                 = link_to team_path(team)
                   = team.name
+              td
+                = form_for(team, url: teams_path, method: :delete, html:{class:"team_member_form"}) do |f|
+                          = hidden_field_tag :id, team.id
+                          = f.submit "Delete", class:"btn btn-danger btn-sm", data: { confirm: "Are you sure?" }

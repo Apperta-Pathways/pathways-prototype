@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   # add existing modules to a patient
   get '/admin/patient/:id/module/new', to: 'patient#edit'
 
-  get '/admin/teams', to: 'team#index'
+  get '/admin/teams', to: 'team#index', as: 'teams'
   get '/admin/teams/:id', to: 'team#show', as: 'team' 
   delete '/admin/teams/:id', to: 'team#remove'
   post '/admin/teams/:id', to: 'team#add'
+  delete 'admin/teams', to: 'team#destroy'
   
   get '/admin/state/:state', to: 'treatment_states#edit'
   get '/admin/state/:state/:category', to: 'treatment_states#edit'
