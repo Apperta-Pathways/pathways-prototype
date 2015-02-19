@@ -42,7 +42,7 @@ class DataModulesController < ApplicationController
   end
 
   def strong_params
-    params.require(:category_id)
+    params.require(:id)
   end
 
   def populate_form

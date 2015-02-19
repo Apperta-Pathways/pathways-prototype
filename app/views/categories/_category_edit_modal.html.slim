@@ -1,0 +1,12 @@
+.modal.fade id="cat_#{category.id}" tabindex='-1' aria-labelledby='myModalLabel' aria-hidden='true'
+  .modal-dialog
+    = form_for category, html: { class: 'modal-content' } do |f|
+      .modal-header
+        button.close data-dismiss='modal' aria-label='Close'
+          span aria-hidden='true'
+        h4.modal-title Editing category
+      .modal-body
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+      .modal-footer
+        = f.submit class: 'btn-primary btn form-control'

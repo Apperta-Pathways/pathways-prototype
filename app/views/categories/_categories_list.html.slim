@@ -1,0 +1,12 @@
+.list-group
+  - @categories.each do |category|
+    .row.list-group-item
+      .col-md-6 = category.name
+      .col-md-2.count
+        .active_count = category.subcategories.size
+      .col-md-4
+        button.btn.btn-default data-toggle='modal' data-target='#cat_#{category.id}' Edit
+    = render partial: 'category_edit_modal', locals: { category: category }
+
+
+

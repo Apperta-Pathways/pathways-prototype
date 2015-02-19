@@ -13,11 +13,7 @@ module DataModulesHelper
   end
 
   def category_input
-    content_tag 'select', class: 'form-control' do
-      content_tag_for :option, @categories do |c|
-        c.name
-      end
-    end
+    f.collection_select :category_id, @categories, :id, :name, {}, class: 'form-control'
   end
 
   def subcategory_input(f)

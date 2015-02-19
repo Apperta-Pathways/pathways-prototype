@@ -3,12 +3,29 @@ class CategoriesController < ApplicationController
   before_action :set_patient
   before_action :set_state
 
+  def edit
+    @categories = Category.all
+  end
+
+  def update
+    @category = Category.find_by_id(params[:id])
+
+    if @category
+      @category.update(strong_params)
+    end
+    redirect_to action: :edit
+  end
+
   def show
     @category = Category.find_by(id: params[:id])
     @subcategories = @state.subcategories_of(@category)
   end
 
   private
+
+  def strong_params
+    params.require(:category).permit(:name)
+  end
 
   def set_patient
     @patient = current_patient

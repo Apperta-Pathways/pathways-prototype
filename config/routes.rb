@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   post '/admin/teams/:id', to: 'team#add'
   delete 'admin/teams', to: 'team#destroy'
   
-
-
   get '/admin/state/:state', to: 'treatment_states#edit'
   get '/admin/state/:state/:category', to: 'treatment_states#edit'
   get '/admin/state/:state/:category/:subcategory', to: 'treatment_states#edit'
