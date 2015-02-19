@@ -27,3 +27,38 @@
   }
 
 }
+
+h2.title {
+  color:white;
+  background-color: #337ab7;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-bottom: 1px solid #666;
+  border-top: 1px solid #666;
+  text-align: center; 
+}
+
+h3.title{
+  font-weight: bold;
+  text-align: center; 
+}
+
+h4.title{
+  font-weight: bold;
+  //background-color: #85AFD4;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  margin-bottom: 0px;
+  padding: 10px;
+}
+
+.data{
+  //padding-top: 0px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  //background-color: #85AFD4;
+
+}
