@@ -3,13 +3,29 @@ class TreatmentState < ActiveRecord::Base
   has_many :treatment_modules
   validates :timeframe, inclusion: { in: %w(future present past) }
 
+  delegate :patient, to: :pathway
+
+  def self.most_recent_for_patient(patient)
+    TreatmentState.joins(pathway: :patient).
+      where(patients: { id: patient.id}).
+      where('assigned_date < ?', Time.now).
+      order(assigned_date: :desc).take
+  end
+
   # for patient hub
   def self.for_category(category)
     TreatmentStates.joins(treatment_modules: { data_modules: { subcategory: :category}}).where(category: { id: category })
   end
 
+  def subcategories_of(category)
+    Subcategory.joins(data_modules:
+                         { treatment_modules: :treatment_state }).
+    where(category_id: category.id,
+          treatment_states: { id: self.id }).distinct
+  end
+
   def has_module(dm)
-    !DataModule.joins(treatment_modules: :treatment_state).where(id: dm.id, treatment_states: {id: self.id }).blank?
+    !DataModule.joins(treatment_modules: :treatment_state).where(id: dm.id, treatment_states: { id: self.id }).blank?
   end
 
   def has_module_with_id(id)

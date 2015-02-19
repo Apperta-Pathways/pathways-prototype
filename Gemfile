@@ -38,9 +38,9 @@ gem 'devise'
 gem "rails-erd"
 
 gem 'formtastic', '~> 3.0'
-gem 'rich'
 gem 'paperclip'
 
+gem 'quill-rails', '~> 0.1.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'

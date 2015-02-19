@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def all_cats
+    Category.all
+  end
+
   def flash_message(type, msg)
     flash[type] ||= []
     flash[type] << msg

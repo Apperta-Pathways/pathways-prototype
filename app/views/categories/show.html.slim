@@ -1,0 +1,15 @@
+.row
+  .category_title
+    = @category.name
+
+.container
+  .row
+    .present_treatment_state
+      - @subcategories.each do |sc|
+        h2 = sc.name
+        - sc.assigned_tms_in_state(@state).each do |tm|
+          h3 = tm.title
+          == tm.data
+
+
+

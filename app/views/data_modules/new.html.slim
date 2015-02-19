@@ -1,4 +1,15 @@
-= semantic_form_for @data_module do |f|
-  = f.inputs do
-    = f.input :title
-    = f.input :data, as: :rich
+.container.data_module_container
+  .row
+    .col-md-6.col-md-offset-3
+      h2 = "Editing for #{@category.name}"
+      = form_tag data_module_path, method: 'POST'
+        .form-group
+          = label_tag 'subcategories', 'Which subcategory?'
+          = subcategory_input
+        .form-group
+          /= label_tag 'title', 'Give the information module a title'
+          = title_input
+        .editor-container
+          = quill_editor 'data'
+        = submit_tag 'Create module', class: 'btn btn-default'
+

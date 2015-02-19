@@ -5,4 +5,5 @@ class Subcategory < ActiveRecord::Base
   def assigned_tms_in_state(state)
     TreatmentModule.joins(data_module: :subcategory).where(subcategories: { id: self.id }, treatment_state_id: state.id)
   end
+
 end
