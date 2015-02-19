@@ -2,14 +2,20 @@ class CategoriesController < ApplicationController
   before_action :authenticate_patient!
   before_action :set_patient
   before_action :set_state
+  before_action :set_category, only: [:edit, :update]
+
+  def index
+
+  end
 
   def edit
     @categories = Category.all
+    if @category
+      @subcategories = @category.subcategories
+    end
   end
 
   def update
-    @category = Category.find_by_id(params[:id])
-
     if @category
       @category.update(strong_params)
     end
@@ -17,11 +23,14 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(id: params[:id])
     @subcategories = @state.subcategories_of(@category)
   end
 
   private
+
+  def set_category
+    @category = Category.find_by_id(params[:id])
+  end
 
   def strong_params
     params.require(:category).permit(:name)

@@ -17,7 +17,7 @@ module DataModulesHelper
   end
 
   def subcategory_input(f)
-    f.collection_select :subcategory_id, @subcategories, :id, :name, {}, class: 'form-control'
+    f.collection_select :subcategory_id, @category.subcategories, :id, :name, {}, class: 'form-control'
   end
 
   def title_input(f)

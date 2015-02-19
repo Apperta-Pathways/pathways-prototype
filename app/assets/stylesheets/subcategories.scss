@@ -1,0 +1,32 @@
+// Place all the styles related to the subcategories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.show-subcat {
+  h2.title {
+    color:white;
+    background-color: #337ab7;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center; 
+  }
+
+  h3.title{
+    text-align: center; 
+  }
+
+  .data-module{
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 10px;
+
+    button {
+      margin-left: 5px;
+      float: right;
+    }
+
+    .data {
+      margin-top: 20px;
+    }
+  }
+}
+

@@ -26,14 +26,19 @@ Rails.application.routes.draw do
 
   get '/admin/module/new/cat/:id', to: 'data_modules#new', as: :data_module_cat
   get '/admin/module/:id', to: 'data_modules#show'
-  post '/admin/module/new', to: 'data_modules#create', as: :data_modules
+  # post '/admin/module/new', to: 'data_modules#create', as: :data_modules
 
-  get '/treatments/all', to: 'data_modules#all'
+  get '/categories', to: 'categories#edit', as: :categories_all_edit
 
   resources :patients
   resources :treatment_modules
 
+  resources :subcategories, only: [:update, :show]
+
+  resources :data_modules
+
   resources :categories do
+    resources :subcategories, only: [:new, :create]
     resources :data_modules, only: [:new, :create]
   end
 

@@ -1,0 +1,18 @@
+.container-fluid.show-subcat
+  .row
+    h2.title = @category.name
+    h3.title = @subcat.name
+    .container
+      - @data_modules.each_slice(2) do |dm_ar|
+        .row
+          - dm_ar.each do |dm|
+            .col-md-6
+              .data-module
+                .row
+                  h4.title.col-md-5 = dm.title
+                  .col-md-7
+                    = data_module_delete_button dm.id
+                    = data_module_edit_button dm.id
+                    = data_module_preview_button dm.id
+                .data == dm.data
+

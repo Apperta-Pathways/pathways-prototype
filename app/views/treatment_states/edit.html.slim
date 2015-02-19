@@ -1,9 +1,19 @@
 .edit_box.container
+
   .row
     #introduction = "You are modifying the treatment state of: #{@activepatient.name}."
   .row
     #introduction
       'Information you select here will be available to this patient on their hub.
+
+  .date-picker
+    = form_for @state, method: 'PATCH', html: { class: 'form-inline' } do |f|
+      .input-group.date
+        input#date-picker.form-control type='text' name='treatment_state[assigned_date]'
+          span.input-group-addon
+            .glyphicon.glyphicon-th
+      = f.submit 'Update date', class: 'btn btn-default form-control'
+
   .row.headers
     .col-md-4
       h2 Categories

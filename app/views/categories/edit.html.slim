@@ -4,18 +4,18 @@
     #introduction
       'Information you select here will be available to this patient on their hub.
   .row.headers
-    .col-md-4
+    .col-md-6
       h2 Categories
-    .col-md-4
+    .col-md-6
       h2 Subcategories
-    .col-md-4
-      h2 Information Modules
   .row
-    #categories.col-md-4
-      = render partial: 'categories_list'
-    #subcategories.col-md-4
-      - if @active_cat
-        = render partial: 'subcategories_list'
-    #modules.col-md-4
-      - if @active_subcat
-        = render partial: 'modules_list'
+    #categories.col-md-6
+      .col-md-10.col-md-offset-1
+        = render partial: 'categories_list'
+    #subcategories.col-md-6
+      .col-md-10.col-md-offset-1
+        - if @subcategories
+          = render partial: 'subcategories_list'
+    /#modules.col-md-4
+    /  - if @active_subcat
+    /    = render partial: 'modules_list'
