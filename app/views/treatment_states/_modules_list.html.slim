@@ -1,6 +1,6 @@
 .list-group
   - if @active_subcat.data_modules.present?
-    = form_tag treatment_state_path, method: 'POST' do
+    = form_tag treatment_state_path(@state), method: 'PATCH' do
       = hidden_field_tag 'category', @active_cat.id
       = hidden_field_tag 'subcategory', @active_subcat.id
       - @active_subcat.data_modules.each do |dm|

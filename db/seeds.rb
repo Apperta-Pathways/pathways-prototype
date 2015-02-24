@@ -20,11 +20,11 @@ DatabaseCleaner.clean
   @category << FactoryGirl.create(:category)
 end
 
-50.times do |i|
+10.times do |i|
   @subcategory << FactoryGirl.create(:subcategory, category: @category.sample)
 end
 
-1000.times do |i|
+10.times do |i|
   @datamodule << FactoryGirl.create(:data_module, subcategory: @subcategory.sample)
 end
 

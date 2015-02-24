@@ -13,12 +13,13 @@ class Patient < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def self.categories_of_treatment_modules
+  def categories
     Category.joins(subcategories:
                    { data_modules:
                      { treatment_modules:
                        { treatment_state: {
-                          pathway: :patient }}}}).where(patients: { id: self.id })
+                          pathway: :patient }}}}).
+                          where(patients: { id: self.id }).distinct
   end
 
   def self.current_modules

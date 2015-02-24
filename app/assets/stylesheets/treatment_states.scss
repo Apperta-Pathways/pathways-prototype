@@ -14,12 +14,6 @@
     text-align: center;
   }
 
-  .date-picker {
-    .form-inline {
-      text-align: center;
-      margin: 10px auto;
-    }
-  }
 
   button {
     float: right;
@@ -38,9 +32,29 @@
 .bluebar {
   background-color: #337ab7;
   width: 100%;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  padding: 20px;
   border-bottom: 1px solid #666;
   border-top: 1px solid #666;
   color: white;
+
+  .date-picker {
+    .form-inline {
+      margin-top: 20px;
+      text-align: center;
+    }
+  }
+}
+
+.states-timeline {
+  width: 100%;
+  overflow-x: scroll;
+  height: 100px;
+  background: #eee;
+  padding-top: 40px;
+  margin: 0;
+
+  a {
+    display: inline;
+    margin-left: 10px;
+  }
 }

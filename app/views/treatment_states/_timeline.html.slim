@@ -1,0 +1,9 @@
+- @states.each do |s|
+  - if s.future?
+    a.btn.btn-lg.btn-primary href=category_treatment_state_path(@category, s) 
+      = "Approximately #{s.british_assigned_date}"
+  - else
+    a.btn.btn-lg.btn-default href=category_treatment_state_path(@category, s) 
+      = "#{s.british_assigned_date}"
+
+

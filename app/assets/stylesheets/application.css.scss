@@ -70,9 +70,19 @@ body {
   font-size: 30px;
   background-color: #337ab7;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #666;
+  padding: 20px;
+  margin-bottom: 30px;
   border-top: 1px solid #666;
   margin-bottom: 15px;
+}
+
+.signin-form {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  box-shadow: 0px 0px 10px #ccc;
+
 }

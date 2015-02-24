@@ -14,6 +14,10 @@ class SubcategoriesController < ApplicationController
     @data_modules = @subcat.data_modules
   end
 
+  def create
+
+  end
+
   private
 
   def strong_params

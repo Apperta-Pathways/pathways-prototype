@@ -1,0 +1,22 @@
+.row
+  .category_title
+    = @category.name
+
+.container
+  .row
+    .col-md-8.col-md-offset-2
+      #accordion.panel-group.present_treatment_state
+        - @subcategories.each do |sc|
+          .panel.panel-default
+            .panel-heading id="subcat-heading-#{sc.id}"
+              h2.panel-title
+                a data-toggle='collapse' data-parent='#accordion' href="#subcat-#{sc.id}" aria-expanded='false' aria-controls="subcat-#{sc.id}"
+                  = sc.name
+            .panel-collapse.collapse.in id="subcat-#{sc.id}" aria-labelledby="subcat-heading-#{sc.id}"
+              - sc.assigned_tms_in_state(@state).each do |tm|
+                h3 = tm.title
+                == tm.data
+
+.container-fluid
+  .row.states-timeline
+    = render partial: 'timeline'

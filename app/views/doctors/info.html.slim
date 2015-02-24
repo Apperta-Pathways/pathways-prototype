@@ -1,21 +1,25 @@
-.container
-  .row
-  h2.col-md-4 Medical Professional Hub
-  = render partial: 'new_module_form'
+.doctor-hub
+  .container
+    .row.header_row
+      h2.col-md-8 Medical Professional Hub
+      .col-md-4
+        a.btn.btn-lg.btn-default.manage-button href=edit_categories_path Manage Treatment Information
 
-.content.container
-  .recent_patients
-    ul
-      - @recent_patients.each do |patient|
-        = link_to "/admin/patient/#{patient.id}" do
-          li
-            .name = patient.name
-            .nhs_number = patient.nhs_number
+    /= render partial: 'new_module_form'
 
-  .patient_status
-    - if @focused_patient
-      h4 = "Patient Selected: #{@focused_patient.name}"
-      p These are the current modules for the patient
+  .content.container
+    .recent_patients
+      ul
+        - @recent_patients.each do |patient|
+          = link_to "/admin/patient/#{patient.id}" do
+            li
+              .name = patient.name
+              .nhs_number = patient.nhs_number
 
-      = render partial: 'ts_table'
+    .patient_status
+      - if @focused_patient
+        h4 = "Patient Selected: #{@focused_patient.name}"
+        p These are the current modules for the patient
+
+        = render partial: 'ts_table'
 

@@ -1,18 +1,26 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_patient!
   before_action :set_patient
-  before_action :set_state
-  before_action :set_category, only: [:edit, :update]
+  # before_action :set_state, only: [:edit]
+  before_action :set_category, only: [:edit, :update, :show]
 
   def index
-
+    @categories = @patient.categories
   end
 
   def edit
     @categories = Category.all
     if @category
+      @active_cat = @category
       @subcategories = @category.subcategories
     end
+  end
+
+  def create
+    @category = Category.new(strong_params)
+    @category.save
+    flash[:success] = "Successfully created a new category"
+    redirect_to action: :edit
   end
 
   def update
@@ -23,7 +31,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @subcategories = @state.subcategories_of(@category)
   end
 
   private
@@ -38,15 +45,6 @@ class CategoriesController < ApplicationController
 
   def set_patient
     @patient = current_patient
-  end
-
-  def set_state
-    if params[:state]
-      # need to add verification patient owns state
-      @state = TreatmentState.find_by_id(params[:state])
-    else
-      @state = TreatmentState.most_recent_for_patient @patient
-    end
   end
 
   # def present_treatment_state

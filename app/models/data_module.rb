@@ -4,4 +4,6 @@ class DataModule < ActiveRecord::Base
 
   delegate :category, to: :subcategory
 
+  has_many :treatment_states
+
 end

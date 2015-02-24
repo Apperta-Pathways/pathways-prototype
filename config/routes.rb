@@ -13,22 +13,18 @@ Rails.application.routes.draw do
   get '/admin/patient/:id/module/new', to: 'patient#edit'
 
   get '/admin/teams', to: 'team#index', as: 'teams'
-  get '/admin/teams/:id', to: 'team#show', as: 'team' 
+  get '/admin/teams/:id', to: 'team#show', as: 'team'
   delete '/admin/teams/:id', to: 'team#remove'
   post '/admin/teams/:id', to: 'team#add'
   delete 'admin/teams', to: 'team#destroy'
-  
-  get '/admin/state/:state', to: 'treatment_states#edit'
-  get '/admin/state/:state/:category', to: 'treatment_states#edit'
-  get '/admin/state/:state/:category/:subcategory', to: 'treatment_states#edit'
 
-  post '/admin/state/:state', to: 'treatment_states#update', as: :treatment_state
+  get '/admin/state/:id', to: 'treatment_states#edit'
+  get '/admin/state/:id/:category_id', to: 'treatment_states#edit'
+  get '/admin/state/:id/:category_id/:subcategory_id', to: 'treatment_states#edit'
 
   get '/admin/module/new/cat/:id', to: 'data_modules#new', as: :data_module_cat
   get '/admin/module/:id', to: 'data_modules#show'
-  # post '/admin/module/new', to: 'data_modules#create', as: :data_modules
-
-  get '/categories', to: 'categories#edit', as: :categories_all_edit
+  get '/admin/categories/edit', to: 'categories#edit', as: :edit_categories
 
   resources :patients
   resources :treatment_modules
@@ -40,7 +36,10 @@ Rails.application.routes.draw do
   resources :categories do
     resources :subcategories, only: [:new, :create]
     resources :data_modules, only: [:new, :create]
+    resources :treatment_states, only: [:show, :index, :new, :create]
   end
+
+  resources :treatment_states, only: [:edit, :update]
 
   namespace :admin do
 

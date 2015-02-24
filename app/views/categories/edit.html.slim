@@ -4,18 +4,26 @@
     #introduction
       'Information you select here will be available to this patient on their hub.
   .row.headers
-    .col-md-6
+    .col-md-3
       h2 Categories
-    .col-md-6
-      h2 Subcategories
+    .col-md-3
+      a.btn.btn-default.btn-lg.pull-right data-toggle='modal' href='#new-category-modal' New Category
+    - if @subcategories
+      .col-md-3
+        h2 Subcategories
+      .col-md-3
+        a.btn.btn-default.btn-lg.pull-right data-toggle='modal' href='#new-subcategory-modal' New Subcategory
   .row
     #categories.col-md-6
-      .col-md-10.col-md-offset-1
-        = render partial: 'categories_list'
+      /.col-md-10.col-md-offset-1
+      = render partial: 'categories_list'
+      = render partial: 'new_category_modal'
     #subcategories.col-md-6
-      .col-md-10.col-md-offset-1
-        - if @subcategories
-          = render partial: 'subcategories_list'
+      /.col-md-10.col-md-offset-1
+      - if @subcategories
+        = render partial: 'subcategories_list'
+        = render partial: 'subcategories/new_subcategory_modal'
     /#modules.col-md-4
     /  - if @active_subcat
     /    = render partial: 'modules_list'
+

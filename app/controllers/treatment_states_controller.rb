@@ -2,8 +2,20 @@ class TreatmentStatesController < ApplicationController
   before_action :set_state
   before_action :set_patient
 
+  def index
+    set_category
+    @states = TreatmentState.for_category @category
+    render 'treatment_states/show'
+  end
+
   def new
 
+  end
+
+  def show
+    set_category
+    @states = TreatmentState.for_category @category
+    @subcategories = @state.subcategories_of @category
   end
 
   def edit
@@ -12,12 +24,21 @@ class TreatmentStatesController < ApplicationController
   end
 
   def update
-    update_treatment_state
+    if params[:treatment_state]
+      @state.update(treatment_state_params)
+      flash[:success] = "Date successfully altered"
+    else
+      update_treatment_state
+    end
 
-    redirect_to action: 'edit', state: @state.id, category: params[:category], subcategory: params[:subcategory]
+    redirect_to action: 'edit', category_id: params[:category], subcategory_id: params[:subcategory]
   end
 
   private
+
+  def treatment_state_params
+    params.require(:treatment_state).permit(:assigned_date)
+  end
 
   def update_treatment_state
     update_params.each do |data_module_id, v|
@@ -56,7 +77,18 @@ class TreatmentStatesController < ApplicationController
   end
 
   def set_state
-    @state = TreatmentState.find_by_id(strong_params[:state])
+    @patient = current_patient
+    if params[:id]
+      # need to add verification patient owns state
+      @state = TreatmentState.find_by_id(params[:id])
+    else
+      @state = TreatmentState.most_recent_for_patient @patient, params[:category_id]
+    end
+  end
+
+  def set_category
+    @category = Category.find_by_id(params[:category_id])
+    @subcategories = @state.subcategories_of @category
   end
 
   def set_patient
@@ -64,12 +96,12 @@ class TreatmentStatesController < ApplicationController
   end
 
   def set_active_cat
-    @active_cat = Category.includes(:subcategories).find_by_id(strong_params[:category])
-    set_active_subcat if @active_cat
+    @active_cat = Category.includes(:subcategories).find_by_id(params[:category_id]) || Category.first
+    set_active_subcat
   end
 
   def set_active_subcat
-    @active_subcat = Subcategory.find_by_id(strong_params[:subcategory])
+    @active_subcat = Subcategory.find_by_id(params[:subcategory_id]) || @active_cat.subcategories.first
   end
 
 end

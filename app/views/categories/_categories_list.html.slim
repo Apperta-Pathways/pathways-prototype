@@ -1,6 +1,6 @@
 .list-group
   - @categories.each do |category|
-    .row.list-group-item
+    .row class=class_for_category(category)
       .col-md-6 = category.name
       .col-md-6
         a.btn.btn-default href=link_to_edit_category(category) Edit Subcats

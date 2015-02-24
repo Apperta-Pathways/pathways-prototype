@@ -4,7 +4,7 @@ html
   head
     title GSTT Oncology
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag "http://cdn.quilljs.com/0.19.8/quill.snow.css"
+    /= stylesheet_link_tag "http://cdn.quilljs.com/0.19.8/quill.snow.css"
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
@@ -15,7 +15,7 @@ body
         .col-md-4
           = image_tag "nhs_logo.png", { height: 50, class: 'nhs_logo' }
         .col-md-4
-          h2 Pathways
+          h2 P A T H W A Y S
         .col-md-4
           a href='http://www.guysandstthomas.nhs.uk/Home.aspx'
             = image_tag "gstt_logo.png", { height: 50, class: 'gstt_logo' }
