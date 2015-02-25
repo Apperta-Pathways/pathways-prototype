@@ -46,6 +46,9 @@ gem 'quill-rails', '~> 0.1.0'
 gem 'ransack'
 
 gem 'capistrano-rvm'
+gem 'capistrano-rails-console'
+
+gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
