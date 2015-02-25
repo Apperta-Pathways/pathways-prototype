@@ -1,21 +1,71 @@
 a:hover, a:focus {
-  text-decoration: none !important;
+  text-decoration: none /!important;
 }
 
 .present_treatment_state{
    margin: 0 0 5% 0;
 }
 
-.category_title {
-    font-size:30px;
-    text-align: center;
-    background-color: #337ab7;
-    padding: 10px;
-    padding-bottom: 15px;
+/*.hero {
+  width: 100%;
+  background-color: #337ab7;
+  padding-bottom: 60px;
+  border-bottom: 1px solid #666;
+  border-top: 1px solid #666;
+
+  .title{
+    text-align: center;  
     color: white;
+    font-size: 30px;
+  }
+
+  .back {
+    text-align: center;
+    color: white; 
+    font-size: 15px; 
+  }
+
+}*/
+
+
+.title_bar {  
+    padding-top: 20px;
+    padding-bottom: 50px;
+    background-color: #337ab7;
     border-bottom: 1px solid #666;
     border-top: 1px solid #666;
+    margin-bottom: 20px;
 }
+
+.category_title{
+    text-align: center;  
+    color: white;
+    font-size: 30px;
+    margin: 20px;
+}
+
+.title_text{
+    margin-bottom: 30px;
+    text-align: center;
+    color: white; 
+    font-size: 30px; 
+}
+
+.a {
+    color: white;
+}
+
+.back_text a{
+    margin-top: 350px;
+    text-align: center;
+    color: white; 
+    font-size: 15px; 
+}
+
+
+
+
+
 
 .timeline {
     white-space:nowrap;

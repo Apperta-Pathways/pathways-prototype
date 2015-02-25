@@ -1,10 +1,17 @@
-.breadcrumb
-  .li
-    a href=categories_path category
+/.breadcrumb
+/  .li
+/    a href=categories_path category
 
-.row
-  .category_title
-    = @category.name
+
+container
+  .title_bar
+    .col-md-2.col-md-offset-1
+      .back_text
+        a href=categories_path back
+    .col-md-6.col
+      .title_text
+        = @category.name
+
 
 .container
   .row
