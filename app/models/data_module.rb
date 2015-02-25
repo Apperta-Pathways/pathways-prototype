@@ -6,4 +6,8 @@ class DataModule < ActiveRecord::Base
 
   has_many :treatment_states
 
+  def preview
+    /<p>([\w]*)<\/p>/.match(self.data) || self.data
+  end
+
 end

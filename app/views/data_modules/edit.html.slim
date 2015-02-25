@@ -1,14 +1,14 @@
 .container.data_module_container
-  .row
-    .col-md-6.col-md-offset-3
-      h2 = "Editing for #{@category.name}"
-      = form_for @module, method: 'PATCH' do |f|
+  h2 = "Editing for #{@category.name}"
+  = form_for @module, method: 'PATCH' do |f|
+    .row
+      .col-md-6.col-md-offset-3
         .form-group
           = label_tag 'subcategories', 'Which subcategory?'
           = subcategory_input f
         .form-group
           = title_input f
-        .editor-container
-          = quill_editor nil, { name: 'data_module[data]', value: @module.data }
-        = submit_tag 'Update module', class: 'btn btn-default'
+    .editor-container
+      = quill_editor nil, { name: 'data_module[data]', value: @module.data }
+    = submit_tag 'Update module', class: 'btn btn-default'
 

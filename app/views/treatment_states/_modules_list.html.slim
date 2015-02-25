@@ -19,7 +19,7 @@
                 = icon 'eye', 'Preview'
           .collapse.preview id="collapse#{dm.id}"
             .well
-              div = dm.data
+              div == dm.preview
       .list-group-item
         = submit_tag "Update Treatment State", class: 'btn btn-default'
   - else
