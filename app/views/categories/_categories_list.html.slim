@@ -1,11 +1,10 @@
 .list-group
   - @categories.each do |category|
     .row class=class_for_category(category)
-      .col-md-4 = category.name
-      .col-md-8
-        a.btn.btn-default href=data_module_cat_path(category) New information module
+      .col-md-7 = category.name
+      .col-md-5
         a.btn.btn-default href=link_to_edit_category(category) Edit Subcats
-        button.btn.btn-default data-toggle='modal' data-target='#cat_#{category.id}' Edit
+        button.btn.btn-default data-toggle='modal' data-target='#cat_#{category.id}' Edit Name
     = render partial: 'category_edit_modal', locals: { category: category }
 
 
