@@ -34,12 +34,12 @@ Rails.application.routes.draw do
   resources :data_modules
 
   resources :categories do
-    resources :subcategories, only: [:new, :create]
+    resources :subcategories, only: [:new, :create, :index]
     resources :data_modules, only: [:new, :create]
-    resources :treatment_states, only: [:show, :index, :new, :create]
+    resources :treatment_states, only: [:show, :index]
   end
 
-  resources :treatment_states, only: [:edit, :update]
+  resources :treatment_states, only: [:edit, :update, :create, :new]
 
   namespace :admin do
 

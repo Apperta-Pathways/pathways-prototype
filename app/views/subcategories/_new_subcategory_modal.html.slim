@@ -1,6 +1,6 @@
 .modal.fade id="new-subcategory-modal" tabindex='-1' aria-labelledby='newSubcategoryModal' aria-hidden='true'
   .modal-dialog
-    = form_for category_subcategories_path(@category), method: 'POST', html: { class: 'modal-content' } do |f|
+    = form_for Subcategory.new, url: category_subcategories_path(@category), method: 'POST', html: { class: 'modal-content' } do |f|
       .modal-header
         button.close data-dismiss='modal' aria-label='Close'
           span aria-hidden='true'
@@ -8,5 +8,6 @@
       .modal-body
         = f.label :name
         = f.text_field :name, class: 'form-control'
+        = f.hidden_field :category_id, value: @active_cat.id
       .modal-footer
         = f.submit 'Create', class: 'btn-primary btn form-control'

@@ -45,6 +45,10 @@
   }
 }
 
+#accordion {
+  margin: 20px;
+}
+
 .states-timeline {
   width: 100%;
   overflow-x: scroll;
@@ -52,6 +56,7 @@
   background: #eee;
   padding-top: 40px;
   margin: 0;
+  text-align: center;
 
   a {
     display: inline;

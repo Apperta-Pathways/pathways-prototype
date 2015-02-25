@@ -27,4 +27,12 @@ module TreatmentStatesHelper
     end
   end
 
+  def timeline_button_class(state)
+    if state == @state
+      return 'btn-primary'
+    end
+    return 'btn-default'
+  end
+
+
 end

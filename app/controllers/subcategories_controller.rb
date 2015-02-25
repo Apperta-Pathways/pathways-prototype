@@ -15,13 +15,17 @@ class SubcategoriesController < ApplicationController
   end
 
   def create
+    @subcategory = Subcategory.new(strong_params)
+    @subcategory.save
+    flash[:success] = "Successfully added subcategory #{@subcategory.name}"
 
+    redirect_to edit_category_path(strong_params[:category_id])
   end
 
   private
 
   def strong_params
-    params.require(:subcategory).permit(:name)
+    params.require(:subcategory).permit(:name, :category_id)
   end
 
   def set_subcat

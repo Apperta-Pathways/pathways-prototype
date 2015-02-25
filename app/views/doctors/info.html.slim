@@ -18,8 +18,13 @@
 
     .patient_status
       - if @focused_patient
-        h4 = "Patient Selected: #{@focused_patient.name}"
-        p These are the current modules for the patient
+        .row
+          .col-md-8
+            h4 = "Patient Selected: #{@focused_patient.name}"
+          .col-md-4
+            = form_for TreatmentState.new, url: treatment_states_path, method: 'POST' do |f|
+              = f.submit 'Create new state', class: 'btn btn-default'
 
+        p These are the current modules for the patient
         = render partial: 'ts_table'
 
