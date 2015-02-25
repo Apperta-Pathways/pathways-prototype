@@ -1,6 +1,6 @@
-.breadcrumb
-  .li
-  	.a href=categories categories
+/.breadcrumb
+/  .li
+/    a href=category_path(@active_cat) category
 
 .row
   .category_title
@@ -9,6 +9,6 @@
 .container
   .row
     .present_treatment_state
-        h3 = @subcategory.name
+        h2 = @subcategory.name
         h3 = @module.title
         .data == @module.data
