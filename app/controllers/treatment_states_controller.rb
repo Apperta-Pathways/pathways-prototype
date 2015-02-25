@@ -83,7 +83,7 @@ class TreatmentStatesController < ApplicationController
 
   def set_state
     @patient = current_patient
-    if params[:id]
+    if !params[:category_id]
       # need to add verification patient owns state
       @state = TreatmentState.find_by_id(params[:id])
     else
