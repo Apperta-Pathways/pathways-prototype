@@ -43,6 +43,10 @@ gem 'paperclip'
 
 gem 'quill-rails', '~> 0.1.0'
 
+gem 'ransack'
+
+gem 'capistrano-rvm'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rubocop', require: false
@@ -53,4 +57,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry-rails'
   gem 'awesome_print'
+  gem 'capistrano',  '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
 end

@@ -2,7 +2,7 @@ class TreatmentState < ActiveRecord::Base
   belongs_to :pathway
   has_many :treatment_modules
   delegate :patient, to: :pathway
-  validates :timeframe, inclusion: { in: %w(future present past) }
+  # validates :timeframe, inclusion: { in: %w(future present past) }
   has_many :data_modules, through: :treatment_modules
   has_many :subcategories, through: :data_modules
 
@@ -16,8 +16,8 @@ class TreatmentState < ActiveRecord::Base
   end
 
   # for patient hub
-  def self.for_category(category)
-    TreatmentState.joins(treatment_modules: { data_module: { subcategory: :category}}).where(categories: { id: category }).order(assigned_date: :asc).distinct
+  def self.for_category(category, patient)
+    TreatmentState.joins(pathway: :patient, treatment_modules: { data_module: { subcategory: :category}}).where(categories: { id: category }, patients: { id: patient }).order(assigned_date: :asc).distinct
   end
 
   def subcategories_of(category)

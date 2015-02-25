@@ -24,9 +24,10 @@ container
                 a data-toggle='collapse' data-parent='#accordion' href="#subcat-#{sc.id}" aria-expanded='false' aria-controls="subcat-#{sc.id}"
                   = sc.name
             .panel-collapse.collapse.in id="subcat-#{sc.id}" aria-labelledby="subcat-heading-#{sc.id}"
-              - sc.assigned_tms_in_state(@state).each do |tm|
-                h3 = tm.title
-                == tm.data
+              .panel-body
+                - sc.assigned_tms_in_state(@state).each do |tm|
+                  h3 = tm.title
+                  == tm.data
 
 .container-fluid
   .row.states-timeline

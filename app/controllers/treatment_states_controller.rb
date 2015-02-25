@@ -1,20 +1,25 @@
 class TreatmentStatesController < ApplicationController
-  before_action :set_state
+  before_action :set_state, except: [:create]
   before_action :set_patient
 
   def index
     set_category
-    @states = TreatmentState.for_category @category
+    @states = TreatmentState.for_category @category, @patient
     render 'treatment_states/show'
   end
 
-  def new
+  def create
+    @state = TreatmentState.new(pathway: @patient.pathway, assigned_date: Time.now)
+    @state.save
+    # ok to save
+    # as it will not show up anywhere because it has no assigned modules
 
+    redirect_to edit_treatment_state_path(@state.id)
   end
 
   def show
     set_category
-    @states = TreatmentState.for_category @category
+    @states = TreatmentState.for_category @category, @patient
     @subcategories = @state.subcategories_of @category
   end
 
@@ -92,7 +97,7 @@ class TreatmentStatesController < ApplicationController
   end
 
   def set_patient
-    @activepatient = @state.patient
+    @patient = current_patient || @state.patient
   end
 
   def set_active_cat

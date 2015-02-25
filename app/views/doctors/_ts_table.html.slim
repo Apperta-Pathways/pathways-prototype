@@ -5,14 +5,14 @@
       thead
         tr
           th.col-md-1 #
-          th.col-md-4 Module Name
-          th.col-md-6 Category
-          th.col-md-1
+          th.col-md-3 Module Name
+          th.col-md-3 Category
+          th.col-md-2
             = edit_link_for_ts ts
+
 
       - ts.treatment_modules.each_with_index do |tm, i|
         tr
           td.col-md-1 = i+1
-          td.col-md-4.module_title = tm.title
-          td.col-md-6.category = tm.category.name
-          td.col-md-2
+          td.col-md-3.module_title = tm.title
+          td.col-md-3.category = tm.category.name
