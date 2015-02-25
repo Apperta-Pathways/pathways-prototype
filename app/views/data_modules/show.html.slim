@@ -3,9 +3,8 @@
     = @category.name
 
 .container
-  a.btn.btn-default href=data_module_cat(@category) Create a new information module
   .row
-    .present_treatment_state
-        h2 = @subcategory.name
-        h3 = @module.title
-        .data == @module.data
+    .col-md-8.col-md-offset-2
+      h2 = @subcategory.name
+      h3 = @module.title
+      .data == @module.data
