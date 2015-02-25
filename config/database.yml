@@ -24,4 +24,4 @@ production:
   adapter: postgresql
   encoding: unicode
   database: gstt
-  username: gstt-dev
+  username: gsttdev
