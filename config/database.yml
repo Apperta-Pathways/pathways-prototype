@@ -25,3 +25,4 @@ production:
   encoding: unicode
   database: gstt
   username: gsttdev
+  password: nutrition
