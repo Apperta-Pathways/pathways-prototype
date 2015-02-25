@@ -8,6 +8,8 @@ class Patient < ActiveRecord::Base
   has_many :treatment_states, through: :pathway
   has_many :treatment_modules, through: :treatment_states
 
+  after_save :create_pathway
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -42,5 +44,11 @@ class Patient < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  private
+
+  def create_pathway
+    TreatmentState.create(patient_id: self.id)
   end
 end
