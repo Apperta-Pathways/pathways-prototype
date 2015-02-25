@@ -11,7 +11,7 @@ class TreatmentState < ActiveRecord::Base
   def self.most_recent_for_patient(patient, category_id)
     TreatmentState.joins({ pathway: :patient }, { treatment_modules: { data_module: { subcategory: :category }}}).
       where(patients: { id: patient.id}, categories: { id: category_id }).
-      where('assigned_date < ?', Time.now).
+      where('assigned_date <= ?', Time.now).
       order(assigned_date: :desc).take
   end
 

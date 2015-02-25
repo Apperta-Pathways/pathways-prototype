@@ -84,7 +84,8 @@ class TreatmentStatesController < ApplicationController
 
   def set_most_recent_state
     @patient = current_patient
-    @state = TreatmentState.most_recent_for_patient @patient, params[:category_id]
+    @state = TreatmentState.most_recent_for_patient(@patient, params[:category_id]) || TreatmentState.for_category(@category, @patient).first
+
   end
 
   def set_state
