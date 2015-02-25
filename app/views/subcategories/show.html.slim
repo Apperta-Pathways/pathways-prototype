@@ -10,9 +10,9 @@
               .data-module
                 .row
                   h4.title.col-md-5 = dm.title
-                  .col-md-7
-                    = data_module_delete_button dm.id
-                    = data_module_edit_button dm.id
+                  .col-md-6.col-md-offset-1
                     = data_module_preview_button dm.id
+                    = data_module_edit_button dm.id
+                    = data_module_delete_button dm.id
                 .data == dm.data
 

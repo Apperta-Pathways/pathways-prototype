@@ -1,3 +1,7 @@
+.breadcrumb
+  .li
+  	.a href=categories categories
+
 .row
   .category_title
     = @category.name
@@ -5,6 +9,6 @@
 .container
   .row
     .present_treatment_state
-        h2 = @subcategory.name
+        h3 = @subcategory.name
         h3 = @module.title
         .data == @module.data
