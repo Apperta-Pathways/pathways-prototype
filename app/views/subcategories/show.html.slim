@@ -3,6 +3,7 @@
     h2.title = @category.name
     h3.title = @subcat.name
     .container
+      a.btn.btn-default href=data_module_cat_path(@category) Create a new information module
       - @data_modules.each_slice(2) do |dm_ar|
         .row
           - dm_ar.each do |dm|
