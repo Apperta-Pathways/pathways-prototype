@@ -48,6 +48,8 @@ gem 'ransack'
 gem 'capistrano-rvm'
 gem 'capistrano-rails-console'
 
+gem 'pg'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rubocop', require: false
