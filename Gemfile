@@ -47,6 +47,7 @@ gem 'ransack'
 
 gem 'capistrano-rvm'
 gem 'capistrano-rails-console'
+gem 'capistrano-passenger'
 
 gem 'pg'
 

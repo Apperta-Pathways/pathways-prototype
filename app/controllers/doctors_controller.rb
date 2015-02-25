@@ -3,7 +3,7 @@ class DoctorsController < ApplicationController
 
   def info
     @recent_patients = Patient.recent 30
-    @focused_patient = Patient.focused_patient params[:id]
+    @focused_patient = Patient.find_by_id params[:id]
     @treatment_states = TreatmentState.includes(treatment_modules: :data_module).where(pathway: @focused_patient.pathway)
   end
 
