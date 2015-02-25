@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # add existing modules to a patient
   get '/admin/patient/:id/module/new', to: 'patient#edit'
 
+  get '/eula', to: 'home#eula'
+
   get '/admin/teams', to: 'team#index', as: 'teams'
   get '/admin/teams/:id', to: 'team#show', as: 'team'
   delete '/admin/teams/:id', to: 'team#remove'
