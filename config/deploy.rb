@@ -1,5 +1,4 @@
 # config valid only for current version of Capistrano
-require "rvm/capistrano"
 
 lock '3.3.5'
 
@@ -14,8 +13,7 @@ set :format, :pretty
 set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 
 set :rvm_ruby_string, :local
-
-
+set :rvm_autolibs_flag, "read-only"
 
 namespace :deploy do
 
