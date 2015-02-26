@@ -1,6 +1,7 @@
 class TreatmentStatesController < ApplicationController
-  before_action :set_state, except: [:create]
+  before_action :set_state, except: [:create, :index]
   before_action :set_patient
+  before_action :set_most_recent_state, only: [:index]
 
   def index
     set_category
@@ -81,14 +82,14 @@ class TreatmentStatesController < ApplicationController
     params.require(:module).permit!
   end
 
-  def set_state
+  def set_most_recent_state
     @patient = current_patient
-    if params[:id]
-      # need to add verification patient owns state
-      @state = TreatmentState.find_by_id(params[:id])
-    else
-      @state = TreatmentState.most_recent_for_patient @patient, params[:category_id]
-    end
+    @state = TreatmentState.most_recent_for_patient(@patient, params[:category_id]) || TreatmentState.for_category(@category, @patient).first
+
+  end
+
+  def set_state
+    @state = TreatmentState.find_by_id(params[:id])
   end
 
   def set_category

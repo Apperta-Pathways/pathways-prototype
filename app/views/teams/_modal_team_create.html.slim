@@ -1,0 +1,27 @@
+- team = Team.new
+.modal.fade id="team_create" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true"
+  .modal-dialog
+    = form_for(team, method: :post, html:{class:"form-horizontal"}) do |f|
+      .modal-content
+      
+        .modal-header
+          button.close type="button" data-dismiss="modal" aria-label="Close"
+            span aria-hidden="true"
+              |&times;
+
+        .modal-body
+          .form-group
+            = f.label 'Please enter a name:', class:"col-sm-6 control-label"
+            .col-sm-6
+              = f.text_field :name, class:"form-control"
+          .form-group
+            = f.label 'Please enter a description:', class:"col-sm-6 control-label"
+            .col-sm-6
+              = f.text_field :description, class:"form-control"
+
+
+        .modal-footer
+          button.btn.btn-default type="button" data-dismiss="modal"
+            i.glyphicon.glyphicon-remove
+            |Close
+          = f.submit "Create Team", class:"btn btn-success"

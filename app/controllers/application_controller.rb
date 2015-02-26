@@ -10,6 +10,15 @@ class ApplicationController < ActionController::Base
   #                 'Chemoradiation',
   #                 'Follow Up',
   #                 'Radiotherapy']
+  #
+
+  def after_sign_in_path_for(resource)
+    if resource.instance_of? Patient
+      return categories_path
+    else
+      return '/admin/patient/1'
+    end
+  end
 
   protected
 

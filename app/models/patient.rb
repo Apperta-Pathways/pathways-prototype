@@ -49,6 +49,6 @@ class Patient < ActiveRecord::Base
   private
 
   def create_pathway
-    TreatmentState.create(patient_id: self.id)
+    Pathway.create(patient_id: self.id)
   end
 end
