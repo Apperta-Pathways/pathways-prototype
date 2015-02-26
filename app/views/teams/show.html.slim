@@ -1,0 +1,10 @@
+.hero
+  .container
+    .row
+      h3.col-md-10.col-md-offset-1
+        = @team.name
+      h3.col-md-10.col-md-offset-1
+        = "\"#{@team.description}\""
+    .row
+      = render 'teams/members', :type => "doctor"  
+      = render 'teams/members', :type => "patient"
