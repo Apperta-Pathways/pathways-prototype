@@ -1,5 +1,5 @@
 .date-picker
-  = form_for category_treatment_states_path(0, @state.id), method: 'PATCH', html: { class: 'form-inline' } do |f|
+  = form_for @state, url: treatment_state_path(@state), method: 'PATCH', html: { class: 'form-inline' } do |f|
     .input-group.date
       input#date-picker.form-control type='text' name='treatment_state[assigned_date]' value=@state.british_assigned_date
         span.input-group-addon
