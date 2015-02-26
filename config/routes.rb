@@ -14,12 +14,6 @@ Rails.application.routes.draw do
 
   get '/eula', to: 'home#eula'
 
-  get '/admin/teams', to: 'team#index', as: 'teams'
-  get '/admin/teams/:id', to: 'team#show', as: 'team'
-  delete '/admin/teams/:id', to: 'team#remove'
-  post '/admin/teams/:id', to: 'team#add'
-  delete 'admin/teams', to: 'team#destroy'
-
   get '/admin/state/:id', to: 'treatment_states#edit'
   get '/admin/state/:id/:category_id', to: 'treatment_states#edit'
   get '/admin/state/:id/:category_id/:subcategory_id', to: 'treatment_states#edit'
@@ -30,6 +24,8 @@ Rails.application.routes.draw do
 
   resources :patients
   resources :treatment_modules
+
+  resources :teams, only: [:index, :create, :show, :update, :destroy]
 
   resources :subcategories, only: [:update, :show]
 

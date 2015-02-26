@@ -3,23 +3,6 @@
   color: black;
 }
 
-.hero .team_form {
-  margin: 0 10px 0px 0;
-  font-size: 17pt;
-  text-align: initial;
-  & .fa{
-    margin: 0 10px 0px 0;
-    font-size: 20pt;
-  }
-  & .team_member_form{
-    display: inline;
-    & .btn{
-      margin: 0 0 0 8pt;
-      font-size: 8pt;
-    }
-  }
-}
-
 .hero .info_block table{
   margin: 0 auto;
   td{
@@ -41,6 +24,10 @@
         width:90px;
       }
   }
+}
+
+.hero .info_block .add_or_create{
+  margin: 10px 0 0 0;
 }
 
 .hero .info_block .caption .showModal{
