@@ -1,24 +1,22 @@
 class DataModulesController < ApplicationController
+  before_action :authenticate_doctor!
+
   before_action :populate_form, only: [:show]
   before_action :set_module, only: [:show, :edit, :destroy, :update]
   before_action :set_cat, only: [:show, :edit, :destroy]
 
   def show
+    # show preview of data module
   end
 
   def edit
-
-  end
-
-  def all
-    @categories = Category.includes(subcategories: :data_modules)
+    # edit data module
   end
 
   def update
     if @module
       @module.update(data_module_params)
     end
-
     redirect_to subcategory_path(@module.subcategory.id)
   end
 

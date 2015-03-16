@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_patient!
+  before_action :authenticate_patient!, only: [:index]
+  before_action :authenticate_doctor!, only: [:edit, :create, :update]
+
   before_action :set_patient
   # before_action :set_state, only: [:edit]
   before_action :set_category, only: [:edit, :update, :show]
@@ -28,9 +30,6 @@ class CategoriesController < ApplicationController
       @category.update(strong_params)
     end
     redirect_to action: :edit
-  end
-
-  def show
   end
 
   private

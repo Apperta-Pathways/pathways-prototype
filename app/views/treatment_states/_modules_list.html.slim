@@ -1,6 +1,6 @@
 .list-group
   - if @active_subcat.data_modules.present?
-    = form_tag treatment_state_path(@state), method: 'PATCH' do
+    = form_tag treatment_state_path(@state), method: 'PATCH', onSubmit: "return confirm_submit();" do
       = hidden_field_tag 'category', @active_cat.id
       = hidden_field_tag 'subcategory', @active_subcat.id
       - @active_subcat.data_modules.each do |dm|
@@ -10,7 +10,7 @@
               label
                 = hidden_field_tag field_name(dm), 'no'
                 - if @state.has_module(dm)
-                  = check_box_tag field_name(dm), 'yes', true
+                  = check_box_tag field_name(dm), 'yes', true, class: 'selected'
                 - else
                   = check_box_tag field_name(dm), 'yes', false
                 = dm.title

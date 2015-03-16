@@ -2,10 +2,6 @@ class TreatmentModulesController < ApplicationController
   # before_action :assert_user_exists, only: [:create]
   before_action :authenticate_doctor!
 
-  def all
-    @t_modules = TreatmentModule.all
-  end
-
   def new
     @categories = Categories.all
     @treatment_module = TreatmentModule.new

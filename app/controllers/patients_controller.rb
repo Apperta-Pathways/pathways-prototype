@@ -1,12 +1,7 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_patient!
+  before_action :authenticate_doctor!, except: [:new]
 
-  def index
-    @patient = Patient.find(current_patient)
-    @categories = Category.categories_of @patient
-    # @current_state = @patient.treatment_states.first.treatment_modules
-  end
+  before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def show
     @patient = Patient.find_by_id params[:id]

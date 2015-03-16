@@ -32,7 +32,7 @@
 
     background-color: white;
     border-radius: 2px;
-        
+
     .title {
       font-size: 15pt;
       margin-top: 10px;
@@ -46,7 +46,16 @@
   .category:hover {
     background-color: #337ab7;
     color: white;
-    
-    
   }
+}
+
+.patient-form {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px;
+  padding-top: 20px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  box-shadow: 0px 0px 10px #ccc;
 }

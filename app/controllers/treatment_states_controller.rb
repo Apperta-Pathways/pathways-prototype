@@ -1,4 +1,7 @@
 class TreatmentStatesController < ApplicationController
+  before_action :authenticate_patient!, only: [:index, :show]
+  before_action :authenticate_doctor!, only: [:create, :edit, :update]
+
   before_action :set_state, except: [:create, :index]
   before_action :set_patient
   before_action :set_most_recent_state, only: [:index]

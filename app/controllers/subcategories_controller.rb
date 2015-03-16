@@ -1,4 +1,5 @@
 class SubcategoriesController < ApplicationController
+  before_action :authenticate_doctor!
   before_action :set_subcat
 
   def update

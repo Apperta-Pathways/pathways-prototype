@@ -52,6 +52,7 @@ gem 'capistrano-passenger'
 gem 'pg'
 
 group :development, :test do
+  gem 'railroady'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rubocop', require: false
   gem 'database_cleaner', '~> 1.3.0'
