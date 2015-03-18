@@ -3,7 +3,8 @@ rvm:
 - 2.2.0
 cache: bundler
 after_success:
-- openssl aes-256-cbc -k '$DEPLOY_KEY' -in config/deploy_id_rsa_enc_travis -d -a -out config/deploy_id_rsa
+- openssl aes-256-cbc -k '$DEPLOY_KEY' -in config/deploy_id_rsa_enc_travis -d -a -out
+  config/deploy_id_rsa
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production deploy"
 notifications:
   email: false
@@ -11,4 +12,4 @@ notifications:
     secure: AiSiRI7TZQzAPXDRDR7n2TgFfV5CY1KDnutfzliyTm+Cj/cccwycVldJ/6H29pwyQevwpKKbmLstpV4/G6vQTcAxRq/EG/HGny3LpZW8CsrM3V24M9rny03cQQ6Jl0I1MNpsvX2OZsvVrj20tTu5c4gPkPWC7OUS1zU9m86YBnM=
 env:
   global:
-    secure: B5aGnpz+fB2idet0ovgzSo+pKaU9/VFvppKcu07SGBOjpuKrdwMrLKBrm7bOjWx7ZjosfL5T2YMrwdZboJWv3GuVVyn4hG7ErIStUORiNRv8XXzaGapilfLCWTFB24IUIw7l0GQ5kc+vfTICTBYSy6oTZRdfKjL9X9QSFhlalgs=
+    secure: fQHiMM6Ls7Yo4UsDQnC3l++Feq0qZlf1YoJjYBPG3IizwInMstnrCO7q7Y4H9pPACHPW0ny6IFrwPDEirmbbATaIPIxeAzSo7O/cvc0viFfXgbqjjqJBKzdxlyKD2UEH2gDOH1VcjInmLESVVYLWPKz8dejTf3/PMAc1y9oHr7I=
