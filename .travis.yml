@@ -1,3 +1,6 @@
+env:
+  global:
+    secure: UeyDaaIS+lfsyY87XShoUjVQvCyEot5tNjmkP3FEez631FoiRVOeEP7WvwpwRz1/Ktp4RyGrhECF7kJjMOJ57v5yG4b41TGYGnN9EVFYVdlDVDMTzMWf1aFpPTn0dxWNVI7tdTpLH2amDb0M0hU97otJOfzFrFoX1KitjRID7vQ=
 language: ruby
 rvm:
 - 2.2.0
@@ -9,6 +12,3 @@ notifications:
   email: false
   slack:
     secure: AiSiRI7TZQzAPXDRDR7n2TgFfV5CY1KDnutfzliyTm+Cj/cccwycVldJ/6H29pwyQevwpKKbmLstpV4/G6vQTcAxRq/EG/HGny3LpZW8CsrM3V24M9rny03cQQ6Jl0I1MNpsvX2OZsvVrj20tTu5c4gPkPWC7OUS1zU9m86YBnM=
-env:
-  global:
-    secure: UeyDaaIS+lfsyY87XShoUjVQvCyEot5tNjmkP3FEez631FoiRVOeEP7WvwpwRz1/Ktp4RyGrhECF7kJjMOJ57v5yG4b41TGYGnN9EVFYVdlDVDMTzMWf1aFpPTn0dxWNVI7tdTpLH2amDb0M0hU97otJOfzFrFoX1KitjRID7vQ=
