@@ -15,6 +15,8 @@ set :default_env, { rvm_bin_path: '~/.rvm/bin' }
 set :rvm_ruby_string, :local
 set :rvm_autolibs_flag, "read-only"
 
+set :ssh_options, keys: ["config/deploy_id_rsa"] if File.exist?("config/deploy_id_rsa")
+
 namespace :deploy do
 
   after :restart, :clear_cache do
