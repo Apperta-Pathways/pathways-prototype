@@ -1,5 +1,6 @@
 env:
-  secure: UeyDaaIS+lfsyY87XShoUjVQvCyEot5tNjmkP3FEez631FoiRVOeEP7WvwpwRz1/Ktp4RyGrhECF7kJjMOJ57v5yG4b41TGYGnN9EVFYVdlDVDMTzMWf1aFpPTn0dxWNVI7tdTpLH2amDb0M0hU97otJOfzFrFoX1KitjRID7vQ=
+  global:
+    secure: UeyDaaIS+lfsyY87XShoUjVQvCyEot5tNjmkP3FEez631FoiRVOeEP7WvwpwRz1/Ktp4RyGrhECF7kJjMOJ57v5yG4b41TGYGnN9EVFYVdlDVDMTzMWf1aFpPTn0dxWNVI7tdTpLH2amDb0M0hU97otJOfzFrFoX1KitjRID7vQ=
 language: ruby
 rvm:
 - 2.2.0
