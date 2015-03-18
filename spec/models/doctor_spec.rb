@@ -4,7 +4,7 @@ RSpec.describe Doctor, type: :model do
 
   context 'associations' do
     it { should have_and_belong_to_many(:teams) }
-    it { should have_and_belong_to_many(:patients) }
+    it { should have_many(:patients) }
   end
 
 end
