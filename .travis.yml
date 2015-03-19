@@ -1,14 +1,13 @@
-env:
-  global:
-    secure: UeyDaaIS+lfsyY87XShoUjVQvCyEot5tNjmkP3FEez631FoiRVOeEP7WvwpwRz1/Ktp4RyGrhECF7kJjMOJ57v5yG4b41TGYGnN9EVFYVdlDVDMTzMWf1aFpPTn0dxWNVI7tdTpLH2amDb0M0hU97otJOfzFrFoX1KitjRID7vQ=
 language: ruby
 rvm:
 - 2.2.0
 cache: bundler
 after_success:
-- "openssl aes-256-cbc -K $encrypted_8a394d7c42b8_key -iv $encrypted_8a394d7c42b8_iv -in config/deploy_id_rsa.enc -out config/deploy_id_rsa -d"
 - "[[ $TRAVIS_BRANCH = 'master' ]] && bundle exec cap production deploy"
 notifications:
   email: false
   slack:
     secure: AiSiRI7TZQzAPXDRDR7n2TgFfV5CY1KDnutfzliyTm+Cj/cccwycVldJ/6H29pwyQevwpKKbmLstpV4/G6vQTcAxRq/EG/HGny3LpZW8CsrM3V24M9rny03cQQ6Jl0I1MNpsvX2OZsvVrj20tTu5c4gPkPWC7OUS1zU9m86YBnM=
+before_install:
+- openssl aes-256-cbc -K $encrypted_8a394d7c42b8_key -iv $encrypted_8a394d7c42b8_iv
+  -in deploy_id_rsa.enc -out config/deploy_id_rsa -d
