@@ -4,7 +4,7 @@
       #introduction = "You are modifying the treatment state of: #{@patient.name}."
     .row
       #introduction
-        'Information you select here will be available to this patient on their hub.
+        'Information you select here will be available to #{@patient.name} on their hub.
 
   = render partial: 'date_picker_form'
 
