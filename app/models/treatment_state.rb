@@ -3,6 +3,10 @@ class TreatmentState < ActiveRecord::Base
   has_many :treatment_modules
   delegate :patient, to: :pathway
   # validates :timeframe, inclusion: { in: %w(future present past) }
+  #
+
+  validates :assigned_date, presence: true
+
   has_many :data_modules, through: :treatment_modules
   has_many :subcategories, through: :data_modules
 
