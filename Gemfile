@@ -52,6 +52,7 @@ gem 'capistrano-rails-console'
 gem 'capistrano-passenger'
 
 gem 'pg'
+gem 'faker'
 
 group :development, :test do
   gem 'railroady'
@@ -59,7 +60,6 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'database_cleaner', '~> 1.3.0'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'capybara'
   gem 'shoulda-matchers'
   gem 'pry-rails'
