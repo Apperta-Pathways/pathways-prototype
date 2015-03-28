@@ -44,6 +44,15 @@ class TreatmentStatesController < ApplicationController
     redirect_to action: 'edit', category_id: params[:category], subcategory_id: params[:subcategory]
   end
 
+  def destroy
+    if @state.destroy
+      flash[:success] = 'Successfully deleted treatment state'
+    else
+      flash[:error] = 'Unable to delete treatment state'
+    end
+    redirect_to :back
+  end
+
   private
 
   def set_pathway

@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :treatment_states, only: [:show, :index]
   end
 
-  resources :treatment_states, only: [:edit, :update, :create, :new]
+  resources :treatment_states, only: [:edit, :update, :create, :new, :destroy]
 
   scope :admin do
     get "/" => "doctors#info", id: 1
