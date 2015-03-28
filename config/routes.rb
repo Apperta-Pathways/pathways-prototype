@@ -39,8 +39,8 @@ Rails.application.routes.draw do
 
   resources :treatment_states, only: [:edit, :update, :create, :new]
 
-  namespace :admin do
-
+  scope :admin do
+    get "/" => "doctors#info", id: 1
   end
 
 end
