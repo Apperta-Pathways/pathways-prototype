@@ -3,7 +3,7 @@ class TreatmentStatesController < ApplicationController
   before_action :authenticate_doctor!, only: [:create, :edit, :update]
 
   before_action :set_state, except: [:create, :index]
-  before_action :set_patient
+  before_action :set_patient, except: [:create]
   before_action :set_most_recent_state, only: [:index]
 
   def index
@@ -13,6 +13,7 @@ class TreatmentStatesController < ApplicationController
   end
 
   def create
+    @patient = Patient.find_by_id(strong_patient_params[:patient_id])
     @state = TreatmentState.new(pathway: @patient.pathway, assigned_date: Time.now)
     @state.save
     # ok to save
@@ -44,6 +45,14 @@ class TreatmentStatesController < ApplicationController
   end
 
   private
+
+  def set_pathway
+    @pathway = Pathway.find_by_id(strong_pathway_params)
+  end
+
+  def strong_pathway_params
+    params.require(:treatment_state).permit(:pathway_id)
+  end
 
   def treatment_state_params
     params.require(:treatment_state).permit(:assigned_date)
@@ -98,6 +107,10 @@ class TreatmentStatesController < ApplicationController
   def set_category
     @category = Category.find_by_id(params[:category_id])
     @subcategories = @state.subcategories_of @category
+  end
+
+  def strong_patient_params
+    params.require(:treatment_state).permit(:patient_id)
   end
 
   def set_patient

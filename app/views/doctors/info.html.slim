@@ -12,23 +12,30 @@
 
   .content.container
     .recent_patients
-      ul
-        li
-          h4 Recently changed patients
-        - @recent_patients.each do |patient|
-          = link_to "/admin/patient/#{patient.id}" do
-            li
-              .name = patient.name
-              .nhs_number = patient.nhs_number
+      .patient_list
+        ul
+          li
+            h4 Recently changed patients
+          - @recent_patients.each do |patient|
+            = link_to "/admin/patient/#{patient.id}" do
+              li
+                .name = patient.name
+                .nhs_number = patient.nhs_number
+      .row.manage-row
+        a.btn.btn-default href=new_patient_path Create Patient
 
     .patient_status
       - if @focused_patient
         .row
-          .col-md-5
-            h3 = "#{@focused_patient.name}"
-          .col-md-7
+          .col-md-6
+            h4 = "#{@focused_patient.name}"
+          .col-md-6
             = render partial: 'new_treatment_state_button_form'
-            a.btn.btn-default.manage-button href=edit_categories_path Manage Global Treatment Information
+            a.btn.btn-default Edit Patient
 
-        = render partial: 'ts_table'
+      = render partial: 'ts_table'
+
+      .row.manage-row
+        a.btn.btn-default.manage-button href=edit_categories_path Manage Global Treatment Information
+
 
