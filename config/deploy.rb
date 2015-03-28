@@ -1,6 +1,6 @@
 # config valid only for current version of Capistrano
 
-lock '3.3.5'
+lock '3.4.0'
 
 set :application, 'gstt-rails'
 set :repo_url, 'git@github.com:agamble/gstt-rails.git'
