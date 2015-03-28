@@ -5,6 +5,7 @@ class TreatmentStatesController < ApplicationController
   before_action :set_state, except: [:create, :index]
   before_action :set_patient, except: [:create]
   before_action :set_most_recent_state, only: [:index]
+  before_action :check_doctor, only: [:create, :edit, :update, :destroy]
 
   def index
     set_category
@@ -133,6 +134,15 @@ class TreatmentStatesController < ApplicationController
 
   def set_active_subcat
     @active_subcat = Subcategory.find_by_id(params[:subcategory_id]) || @active_cat.subcategories.first
+  end
+
+  def check_doctor
+    @state = set_state
+    @patient = @state.patient unless @state == nil
+    @doctor = current_doctor
+    if(!@doctor.patients.include?(@patient) && @state != nil)
+      redirect_to doctor_hub_path
+    end
   end
 
 end

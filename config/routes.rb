@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # show current modules of each patient by timeframe
   get '/admin/patient/:id', to: 'doctors#info', as: 'doctor_hub'
+  get '/admin/patient/', to: 'doctors#info'
 
   # add existing modules to a patient
   get '/admin/patient/:id/module/new', to: 'patient#edit'
