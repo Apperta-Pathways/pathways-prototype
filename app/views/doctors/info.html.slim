@@ -31,7 +31,7 @@
             h4 = "#{@focused_patient.name}"
           .col-md-6.text-right
             = render partial: 'new_treatment_state_button_form'
-            a.btn.btn-default Edit Patient
+            a.btn.btn-default href=edit_patient_path(@focused_patient) Edit Patient
 
       = render partial: 'ts_table'
 

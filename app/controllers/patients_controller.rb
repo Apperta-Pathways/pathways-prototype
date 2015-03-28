@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
   before_action :authenticate_doctor!, except: [:new]
 
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_patient, only: [:show, :edit, :update, :destroy, :reset_password]
 
   def show
     @patient = Patient.find_by_id params[:id]

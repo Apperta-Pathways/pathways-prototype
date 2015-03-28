@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/admin/module/:id', to: 'data_modules#show'
   get '/admin/categories/edit', to: 'categories#edit', as: :edit_categories
 
+  get '/patients/:id/password/new', to: 'patients#reset_password'
   post '/patients/search', to: 'patients#search'
 
   resources :patients
