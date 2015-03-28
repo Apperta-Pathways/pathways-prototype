@@ -1,14 +1,18 @@
+.bluebar
+  h2.text-center = "Editing for #{@category.name}"
 .container.data_module_container
-  .row
-    h2 = "Editing for #{@category.name}"
-    = form_for @data_module, method: 'POST' do |f|
-      .row
-        .col-md-6.col-md-offset-3
-          .form-group
-            = label_tag 'subcategories', 'Which subcategory?'
-            = subcategory_input f
-          .form-group
-            = title_input f
-      .editor-container
-        = quill_editor 'data_module[data]'
-      = submit_tag 'Create module', class: 'btn btn-default'
+  = form_for @data_module, method: 'POST' do |f|
+    .row
+      .col-md-6.col-md-offset-3
+        .form-group
+          = label_tag 'subcategories', 'Which subcategory?'
+          = subcategory_input f
+        .form-group
+          = title_input f
+    .row
+      .pull-left
+        a.btn.btn-default target='_blank' href='/images' = icon 'external-link', "Upload or fetch images"
+      .pull-right
+        = submit_tag 'Create module', class: 'btn btn-primary'
+  .editor-container
+    = quill_editor 'data_module[data]'

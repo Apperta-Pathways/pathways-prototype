@@ -3,6 +3,7 @@
     h1 Upload new image
     = form_for Image.new, url: images_path, html: { multipart: true } do |f|
       = f.file_field :file
+      .alert.alert-warning Do not upload images larger than 500 pixels wide, as it may distort the layout of the page
       = f.submit "Upload", class: 'btn btn-default'
 
   .container
