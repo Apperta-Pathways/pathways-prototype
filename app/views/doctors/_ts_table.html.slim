@@ -9,7 +9,7 @@
             th.col-md-1 #
             th.col-md-3 Module Name
             th.col-md-3 Category
-            th.col-md-4.col-md-offset-2
+            th.col-md-4.col-md-offset-2.text-right
               = edit_link_for_ts ts
               = button_to 'Delete', ts, method: :delete, class: 'btn btn-danger'
         - ts.treatment_modules.each_with_index do |tm, i|
@@ -17,5 +17,6 @@
             td.col-md-1 = i+1
             td.col-md-3.module_title = tm.title
             td.col-md-3.category = tm.category.name
+            td.col-md-4
 - else
   h5.well No treatment states have been created for #{@focused_patient.name}
