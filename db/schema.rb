@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217143140) do
+ActiveRecord::Schema.define(version: 20150328172518) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 20150217143140) do
 
   add_index "doctors_teams", ["doctor_id"], name: "index_doctors_teams_on_doctor_id"
   add_index "doctors_teams", ["team_id"], name: "index_doctors_teams_on_team_id"
+
+  create_table "images", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
 
   create_table "pathways", force: true do |t|
     t.integer  "patient_id"
