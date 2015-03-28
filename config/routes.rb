@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     resources :treatment_states, only: [:show, :index]
   end
 
+  resources :images, only: [:edit, :create, :destroy, :index]
+
   resources :treatment_states, only: [:edit, :update, :create, :new, :destroy]
 
   scope :admin do

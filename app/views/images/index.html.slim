@@ -1,0 +1,12 @@
+#image-upload
+  .card#image-upload
+    h1 Upload new image
+    = form_for Image.new, url: images_path, html: { multipart: true } do |f|
+      = f.file_field :file
+      = f.submit "Upload", class: 'btn btn-default'
+
+  .container
+    - @images.each do |i|
+      .col-md-2
+        = image_tag i.file.url, class: 'img-thumbnail'
+        .text-center = i.created_at.strftime('%d.%m.%y')

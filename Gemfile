@@ -39,8 +39,8 @@ gem 'devise'
 gem "rails-erd"
 
 gem 'formtastic', '~> 3.0'
-gem 'paperclip'
 
+gem "paperclip", "~> 4.2"
 gem 'quill-rails', '~> 0.1.0'
 
 gem 'ransack'
