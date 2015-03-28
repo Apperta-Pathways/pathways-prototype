@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     if resource.instance_of? Patient
       return categories_path
     else
-      return '/admin/patient/1'
+      return '/admin/patient/'
     end
   end
 

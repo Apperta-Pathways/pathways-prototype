@@ -59,8 +59,6 @@ end
     end
 end
 
-@test_doctor = FactoryGirl.create(:doctor, password: "test_pass", email: "test@test.com")
-
 @test_patient = FactoryGirl.create(:patient, password: "test_pass", email: 'test@test.com')
 @test_pathway = FactoryGirl.create(:pathway, patient: @test_patient)
 
@@ -85,6 +83,7 @@ end
 end
 
 @doctors = []
+@test_doctor = FactoryGirl.create(:doctor, password: "test_pass", email: 'doctor@test.com')
 
 30.times do |s|
   @doctors << FactoryGirl.create(:doctor)

@@ -32,8 +32,8 @@
           .col-md-6.text-right
             = render partial: 'new_treatment_state_button_form'
             a.btn.btn-default href=edit_patient_path(@focused_patient) Edit Patient
-
-      = render partial: 'ts_table'
+      - unless @focused_patient == nil
+        = render partial: 'ts_table'
 
       .row.manage-row
         a.btn.btn-default.manage-button href=edit_categories_path Manage Global Treatment Information
