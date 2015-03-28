@@ -23,7 +23,7 @@ module ApplicationHelper
       rendered << content_tag(:div, success_message, class: 'alert alert-success')
     end
     if flash[:error]
-      rendered << content_tag(:div, flash[:error], class: 'alert alert-error')
+      rendered << content_tag(:div, flash[:error], class: 'alert alert-danger')
     end
     return rendered.join('')
   end
