@@ -1,0 +1,9 @@
+= form_tag "/patients/search", method: 'POST'
+  .form-inline
+    .form-group
+      .input-group
+        .input-group-addon
+          = icon 'search'
+        input.form-control name='nhs_number' type='text' placeholder='NHS Number'
+    button.btn.btn-default type='submit' Search
+

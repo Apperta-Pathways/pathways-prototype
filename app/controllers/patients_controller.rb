@@ -16,10 +16,21 @@ class PatientsController < ApplicationController
   def edit
   end
 
+  def search
+    @patient = Patient.find_by_nhs_number(params[:nhs_number])
+    redirect_to doctor_hub_path @patient.id and return if @patient
+    flash[:error] = "No patient found with NHS number #{params[:nhs_number]}"
+    redirect_to :back
+  end
+
   def create
     @patient = Patient.new(patient_params)
+    set_random_password_for @patient
     @patient.save
-    respond_with(@patient)
+
+    flash[:success] = "Successfully created patient"
+    flash[:new_password] = @password
+    render 'created'
   end
 
   def update
@@ -32,7 +43,20 @@ class PatientsController < ApplicationController
     respond_with(@patient)
   end
 
+  def reset_password
+    set_random_password_for @patient
+    flash[:success] = "Successfully reset password"
+    flash[:new_password] = @password
+    render 'created'
+  end
+
   private
+
+  def set_random_password_for(patient)
+    @password = Faker::Lorem.words(2).join('-')
+    patient.password = @password
+    patient.password_confirmation = @password
+  end
 
   def set_patient
     @patient = Patient.find(params[:id])
@@ -43,6 +67,6 @@ class PatientsController < ApplicationController
   end
 
   def patient_params
-    params[:patient]
+    params.require(:patient).permit(:name, :nhs_number, :email)
   end
 end

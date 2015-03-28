@@ -1,18 +1,20 @@
-- @treatment_states.each do |ts|
-  .treatment_state
-    .h4 Treatment State
-    table.table.table-striped
-      thead
-        tr
-          th.col-md-1 #
-          th.col-md-3 Module Name
-          th.col-md-3 Category
-          th.col-md-2
-            = edit_link_for_ts ts
-
-
-      - ts.treatment_modules.each_with_index do |tm, i|
-        tr
-          td.col-md-1 = i+1
-          td.col-md-3.module_title = tm.title
-          td.col-md-3.category = tm.category.name
+- unless @treatment_states.empty?
+  p = "These are the current modules that #{@focused_patient.name} will see: "
+  - @treatment_states.each do |ts|
+    .treatment_state
+      .h4 Treatment State
+      table.table.table-striped
+        thead
+          tr
+            th.col-md-1 #
+            th.col-md-3 Module Name
+            th.col-md-3 Category
+            th.col-md-2
+              = edit_link_for_ts ts
+        - ts.treatment_modules.each_with_index do |tm, i|
+          tr
+            td.col-md-1 = i+1
+            td.col-md-3.module_title = tm.title
+            td.col-md-3.category = tm.category.name
+- else
+  h4 No treatment states have been created for #{@focused_patient.name}

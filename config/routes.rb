@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   get 'categories/show'
 
   devise_for :doctors
-  devise_for :patients
+
+  devise_for :patients, skip: :registrations
 
   root 'home#index'
 
   # show current modules of each patient by timeframe
-  get '/admin/patient/:id', to: 'doctors#info'
+  get '/admin/patient/:id', to: 'doctors#info', as: 'doctor_hub'
 
   # add existing modules to a patient
   get '/admin/patient/:id/module/new', to: 'patient#edit'
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
   get '/admin/module/new/cat/:id', to: 'data_modules#new', as: :data_module_cat
   get '/admin/module/:id', to: 'data_modules#show'
   get '/admin/categories/edit', to: 'categories#edit', as: :edit_categories
+
+  post '/patients/search', to: 'patients#search'
 
   resources :patients
   resources :treatment_modules

@@ -1,15 +1,20 @@
 .doctor-hub
+  .row.header_row.bluebar
+    h2.text-center Medical Professional Hub
+    .row.text-center
+      = render partial: 'search_form'
   .container
-    .row.header_row
-      h2.col-md-8 Medical Professional Hub
+    .row
       .col-md-4
-        a.btn.btn-lg.btn-default.manage-button href=edit_categories_path Manage Treatment Information
+      .col-md-4.col-md-offset-4
 
     /= render partial: 'new_module_form'
 
   .content.container
     .recent_patients
       ul
+        li
+          h4 Recently changed patients
         - @recent_patients.each do |patient|
           = link_to "/admin/patient/#{patient.id}" do
             li
@@ -19,12 +24,11 @@
     .patient_status
       - if @focused_patient
         .row
-          .col-md-8
-            h4 = "Patient Selected: #{@focused_patient.name}"
-          .col-md-4
-            = form_for TreatmentState.new, url: treatment_states_path, method: 'POST' do |f|
-              = f.submit 'Create new state', class: 'btn btn-default'
+          .col-md-5
+            h3 = "#{@focused_patient.name}"
+          .col-md-7
+            = render partial: 'new_treatment_state_button_form'
+            a.btn.btn-default.manage-button href=edit_categories_path Manage Global Treatment Information
 
-        p These are the current modules for the patient
         = render partial: 'ts_table'
 
