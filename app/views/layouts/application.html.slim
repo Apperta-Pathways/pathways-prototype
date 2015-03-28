@@ -6,13 +6,15 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+    //link rel="shortcut icon" href=images/favicon.png
 
 body
   .header
     .container
       .row
         .col-md-4
-          = image_tag "nhs_logo.png", { height: 50, class: 'nhs_logo' }
+          a href='http://www.guysandstthomas.nhs.uk/Home.aspx'
+            = image_tag "nhs_logo.png", { height: 50, class: 'gstt_logo' }
         .col-md-4
           h2 P A T H W A Y S
         .col-md-4
@@ -24,10 +26,10 @@ body
 
   .footer.container
     .footerrow
-      'Patient Pathways by Guy's and St. Thomas' Hospital Trust.
+      'Patient Pathways - by the Guy's and St. Thomas' Hospital Trust.
     .footerrow
       'Pathways is a tool for you to access your past, present and future treatment information, it is not a substitute for your doctor. In an emergency always call 999.
     .footerrow
-      a href=eula_path Click to view the end user license agreement
+      a href=eula_path Click to view the End User License Agreement
     .footerrow
       '© 2015 Guy's and St. Thomas' NHS Foundation Trust.
