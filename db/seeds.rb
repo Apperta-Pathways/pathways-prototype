@@ -59,6 +59,8 @@ end
     end
 end
 
+@test_doctor = FactoryGirl.create(:doctor, password: "test_pass", email: "test@test.com")
+
 @test_patient = FactoryGirl.create(:patient, password: "test_pass", email: 'test@test.com')
 @test_pathway = FactoryGirl.create(:pathway, patient: @test_patient)
 
