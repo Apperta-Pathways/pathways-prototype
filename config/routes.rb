@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/admin/module/:id', to: 'data_modules#show'
   get '/admin/categories/edit', to: 'categories#edit', as: :edit_categories
 
+  get '/patients/:id/password/new', to: 'patients#reset_password'
   post '/patients/search', to: 'patients#search'
 
   resources :patients
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
     resources :treatment_states, only: [:show, :index]
   end
 
-  resources :treatment_states, only: [:edit, :update, :create, :new]
+  resources :treatment_states, only: [:edit, :update, :create, :new, :destroy]
 
   scope :admin do
     get "/" => "doctors#info", id: 1
