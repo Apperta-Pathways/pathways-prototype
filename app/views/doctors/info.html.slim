@@ -25,14 +25,13 @@
         a.btn.btn-default href=new_patient_path Create Patient
 
     .patient_status
-      - if @focused_patient
+      - if @patient
         .row
           .col-md-6
-            h4 = "#{@focused_patient.name}"
+            h4 = "#{@patient.name}"
           .col-md-6.text-right
             = render partial: 'new_treatment_state_button_form'
-            a.btn.btn-default href=edit_patient_path(@focused_patient) Edit Patient
-      - unless @focused_patient == nil
+            a.btn.btn-default href=edit_patient_path(@patient) Edit Patient
         = render partial: 'ts_table'
 
       .row.manage-row

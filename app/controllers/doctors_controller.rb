@@ -2,11 +2,12 @@ class DoctorsController < ApplicationController
   before_action :authenticate_doctor!
 
   before_action :set_doctor, only: [:show, :edit, :update, :destroy, :info]
+  before_action :set_patient, only: [:info]
 
   def info
     @recent_patients = same_team_patients
-    @focused_patient = set_patient
-    @treatment_states = TreatmentState.includes(treatment_modules: :data_module).where(pathway: @focused_patient.pathway) unless @focused_patient == nil
+    @focused_patient = @patient
+    @treatment_states = @patient.treatment_states
   end
 
   def show
@@ -44,7 +45,7 @@ class DoctorsController < ApplicationController
   end
 
   def set_patient
-    @patient = Patient.find_by_id params[:id] unless !@doctor.patients.include?(Patient.find_by_id params[:id])
+    @patient = Patient.find_by_id params[:id] if @doctor.patients.include?(Patient.find_by_id params[:id])
   end
 
   def doctor_params

@@ -21,7 +21,7 @@ class TreatmentState < ActiveRecord::Base
 
   # for patient hub
   def self.for_category(category, patient)
-    TreatmentState.joins(pathway: :patient, treatment_modules: { data_module: { subcategory: :category}}).where(categories: { id: category }, patients: { id: patient }).order(assigned_date: :asc).distinct
+    TreatmentState.joins(pathway: :patient, treatment_modules: { data_module: { subcategory: :category}}).where(categories: { id: category.id }, patients: { id: patient.id }).order(assigned_date: :asc).distinct
   end
 
   def subcategories_of(category)
