@@ -1,6 +1,14 @@
 - content_for :breadcrumbs
 
 .doctor-hub
+  .container
+    .row
+      .col-md-6
+        = render partial: 'search_form'
+      .col-md-6.text-right
+        - if @doctor.superuser
+          a.btn.btn-default href=doctors_path Manage Medical Professional Accounts
+
   .content.container
     .recent_patients
       .patient_list
@@ -27,8 +35,6 @@
           = render partial: 'ts_table'
 
       .manage-row
-        .pull-left
-          = render partial: 'search_form'
         .pull-right
           a.btn.btn-default.manage-button href=edit_categories_path Manage Global Treatment Information
 
