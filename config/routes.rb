@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   resources :treatment_states, only: [:edit, :update, :create, :new, :destroy]
 
   scope :admin do
-    get "/" => "doctors#info"
+    get "/" => "doctors#info", as: "default_doctor"
   end
 
 end
