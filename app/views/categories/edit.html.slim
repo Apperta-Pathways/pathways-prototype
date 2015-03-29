@@ -1,8 +1,13 @@
 .edit_box.container
-  .row
-  .row
-    #introduction
-      'Information you select here will be available to this patient on their hub.
+  ol.breadcrumb
+    li
+      a href=doctor_hub_path(1) Hub
+    - if @subcategories
+      li
+        a href=edit_categories_path(@category.id)
+          = "Edit Category: #{@category.name}"
+      li Edit Subcategories
+
   .row.headers
     .col-md-3
       h2 Categories

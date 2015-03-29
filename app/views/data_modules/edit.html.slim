@@ -14,6 +14,6 @@
         a.btn.btn-default target='_blank' href='/images' = icon 'external-link', "Upload or fetch images"
       .pull-right
         = submit_tag 'Update module', class: 'btn btn-default'
-  .editor-container
-    = quill_editor nil, { name: 'data_module[data]', value: @module.data }
+    .editor-container
+      = quill_editor nil, { name: 'data_module[data]', value: @module.data }
 

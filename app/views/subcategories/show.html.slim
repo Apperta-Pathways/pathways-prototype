@@ -1,19 +1,27 @@
-.container-fluid.show-subcat
+.container
   .row
-    h2.title = @category.name
-    h3.title = @subcat.name
-    .container
+    ol.breadcrumb.col-md-8
+      li
+        a href=doctor_hub_path(1) Hub
+        li
+          a href=edit_categories_path
+            = "Edit Category: #{@category.name}"
+        li
+          a href=edit_category_path(@category.id) = "Edit Subcategory: #{@subcat.name}"
+        li Information Cards
+
+    .col-md-4.text-right
       a.btn.btn-default href=data_module_cat_path(@category) Create a new information module
-      - @data_modules.each_slice(2) do |dm_ar|
-        .row
-          - dm_ar.each do |dm|
-            .col-md-6
-              .data-module
-                .row
-                  h4.title.col-md-5 = dm.title
-                  .col-md-6.col-md-offset-1
-                    = data_module_preview_button dm.id
-                    = data_module_edit_button dm.id
-                    = data_module_delete_button dm.id
-                .data == dm.data
+  - @data_modules.each_slice(2) do |dm_ar|
+    .row
+      - dm_ar.each do |dm|
+        .col-md-6
+          .card.data-module
+            .row
+              h4.title.col-md-5 = dm.title
+              .col-md-7
+                = data_module_preview_button dm.id
+                = data_module_edit_button dm.id
+                = data_module_delete_button dm.id
+            .data == dm.data
 

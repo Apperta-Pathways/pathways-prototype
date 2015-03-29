@@ -9,6 +9,14 @@
     .form-group
       = f.label :nhs_number, 'NHS Number'
       = f.text_field :nhs_number, class: 'form-control'
+    .form-group
+      = f.label :teams, 'Teams Assigned'
+      .teams
+        - current_doctor.teams.each do |team|
+          label.checkbox-inline
+            = check_box_tag 'patient[team_ids][]', team.id, team.in?(@patient.teams)
+            = team.name
+
     .pull-left
       = f.submit class: 'btn btn-default'
     .pull-right

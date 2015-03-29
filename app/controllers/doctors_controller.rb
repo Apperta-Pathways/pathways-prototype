@@ -2,11 +2,13 @@ class DoctorsController < ApplicationController
   before_action :authenticate_doctor!
 
   before_action :set_doctor, only: [:show, :edit, :update, :destroy, :info]
+  before_action :set_patient, only: [:info]
 
   def info
-    @recent_patients = assign_patients
-    @focused_patient = set_patient
-    @treatment_states = set_treatment_states
+
+    @recent_patients = same_team_patients
+    @treatment_states = @patient.treatment_states
+
   end
 
   def show
@@ -51,7 +53,6 @@ class DoctorsController < ApplicationController
 
   def set_doctor
     @doctor = current_doctor
-  end
 
   def doctor_params
     params[:doctor]

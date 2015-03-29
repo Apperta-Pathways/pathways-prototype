@@ -9,15 +9,6 @@
     overflow: scroll;
   }
 
-  #introduction {
-    color: white;
-    text-align: center;
-  }
-
-
-  button {
-    float: right;
-  }
 
   .count {
     color: #27ae60;
@@ -29,22 +20,6 @@
 
 }
 
-.bluebar {
-  background-color: #337ab7;
-  width: 100%;
-  padding: 20px;
-  border-bottom: 1px solid #666;
-  border-top: 1px solid #666;
-  color: white;
-
-  .date-picker {
-    .form-inline {
-      margin-top: 20px;
-      text-align: center;
-    }
-  }
-}
-
 #accordion {
   margin: 20px;
 }
@@ -53,7 +28,7 @@
   width: 100%;
   overflow-x: scroll;
   height: 100px;
-  background: #eee;
+  background: white;
   padding-top: 40px;
   margin: 0px !important;
   text-align: center;

@@ -1,8 +1,8 @@
 - unless @treatment_states.empty?
-  p = "These are the current modules that #{@focused_patient.name} will see: "
+  p = "This is the information #{@patient.name} will see: "
   - @treatment_states.each do |ts|
     .treatment_state.well
-      h5 = "Treatment State dated #{ts.british_assigned_date}"
+      h5 = "Information dated #{ts.british_assigned_date}: "
       table.table
         thead
           tr
@@ -21,4 +21,4 @@
             td.col-md-3.subcategory = tm.subcategory.name
             td.col-md-3
 - else
-  h5.well No treatment states have been created for #{@focused_patient.name}
+  h5.well No treatment states have been created for #{@patient.name}
