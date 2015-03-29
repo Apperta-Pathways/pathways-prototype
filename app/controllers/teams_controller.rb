@@ -28,7 +28,11 @@ class TeamsController < ApplicationController
     end
 
     if(params[:action_request] == "add")
-      add_member
+      if params[:add_member][:email]
+        add_doctor
+      elsif params[:add_member][:nhs_number]
+        add_patient
+      end
     end
 
     redirect_to @team
@@ -47,12 +51,15 @@ class TeamsController < ApplicationController
     @team.send(@target.pluralize).delete(@member)
   end
 
-  def add_member
-    @member = convert_into_class(@target).find_by(email: params[:add_member][:email])
-    if(!@member.nil? && @team.send(@target.pluralize).find_by(id: @member.id).nil?)
-      @team.send(@target.pluralize) << @member
-      flash[:success] = "#{@target.capitalize} successfully added"
-    end
+  def add_patient
+    @patient = Patient.find_by_nhs_number(params[:add_member][:nhs_number])
+    @team.patients << @patient
+
+  end
+
+  def add_doctor
+    @doctor = Doctor.find_by_email(params[:add_member][:email])
+    @team.doctors << @doctor
   end
 
   def set_team

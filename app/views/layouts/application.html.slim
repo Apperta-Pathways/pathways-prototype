@@ -11,6 +11,8 @@ html
     = render partial: '/layouts/header'
     .container
       == render_flash
+      = flash[:alert]
+      = flash[:notice]
     = yield :breadcrumbs
 
   == yield
