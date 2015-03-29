@@ -63,6 +63,7 @@ class DoctorsController < ApplicationController
     @password = Faker::Lorem.words(2).join('-')
     doctor.password = @password
     doctor.password_confirmation = @password
+    doctor.save
   end
 
   def set_patient

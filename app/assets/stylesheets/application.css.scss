@@ -46,6 +46,14 @@ body {
     }
   }
 
+  .login-info {
+    margin-top: 20px;
+    a {
+      margin-left: 10px;
+    }
+  }
+
+
   img {
     margin-top: 10px;
   }
@@ -124,13 +132,10 @@ img {
 
 .signintitle {
   text-align: center;
-  color: white;
   font-size: 30px;
-  background-color: #337ab7;
   width: 100%;
   padding: 20px;
   margin-bottom: 30px;
-  border-top: 1px solid #666;
   margin-bottom: 15px;
 }
 
