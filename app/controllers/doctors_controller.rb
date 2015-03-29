@@ -31,6 +31,7 @@ class DoctorsController < ApplicationController
   end
 
   def update
+    params[:doctor][:confirm_password] = params[:doctor][:password]
     @doctor.update(doctor_params)
 
     flash[:success] = "Successfully updated account for #{@doctor.name}"
@@ -81,7 +82,7 @@ class DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:name, :email, :superuser, team_ids: [])
+    params.require(:doctor).permit(:name, :email, :superuser, :password, team_ids: [])
   end
 
   def assign_patients

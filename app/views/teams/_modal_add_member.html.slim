@@ -7,9 +7,14 @@
           = hidden_field_tag :target, type
           = hidden_field_tag :action_request, "add"
           .form-group
-            = f.label 'Please enter e-mail address:', class:"col-sm-6 control-label"
-            .col-sm-6
-              = f.text_field :email, class:"form-control", :placeholder => "E-mail address"
+            - if type == "doctor"
+              = f.label 'Please enter email:', class:"col-sm-6 control-label"
+              .col-sm-6
+                = f.text_field :email, class:"form-control", :placeholder => "Email"
+            - else
+              = f.label :nhs_number, 'NHS Number:', class:"col-sm-6 control-label"
+              .col-sm-6
+                = f.text_field :nhs_number, class:"form-control", :placeholder => "NHS Number"
 
         .modal-footer
           button.btn.btn-default type="button" data-dismiss="modal" Close
