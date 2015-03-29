@@ -5,8 +5,10 @@ class DoctorsController < ApplicationController
   before_action :set_patient, only: [:info]
 
   def info
+
     @recent_patients = same_team_patients
     @treatment_states = @patient.treatment_states
+
   end
 
   def show
@@ -43,20 +45,27 @@ class DoctorsController < ApplicationController
 
   private
 
-  def set_doctor
-    @doctor = current_doctor
-  end
-
   def set_patient
     @patient = Patient.find_by_id params[:id]
   end
+
+  def set_treatment_states
+    if(@focused_patient)
+      @treatment_states = TreatmentState.includes(treatment_modules: :data_module).where(pathway: @focused_patient.pathway)
+    end
+  end
+
+  def set_doctor
+    @doctor = current_doctor
 
   def doctor_params
     params.require(:doctor).permit(:name, :email, :superuser, team_ids: [])
   end
 
-  def same_team_patients
+  def assign_patients
     @doctor.patients
   end
+
+
 
 end
