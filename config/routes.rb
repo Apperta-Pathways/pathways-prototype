@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get '/doctors/:id/password/new', to: 'doctors#reset_password'
   post '/doctors/search', to: 'doctors#search'
 
+  get '/api/patient/:id', to: 'patients#api'
+
   resources :patients
   resources :doctors
   resources :treatment_modules

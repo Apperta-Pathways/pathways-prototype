@@ -3,6 +3,8 @@ class PatientsController < ApplicationController
 
   before_action :set_patient, only: [:show, :edit, :update, :destroy, :reset_password]
 
+  before_action :only_json, only: [:api]
+
   def show
     @patient = Patient.find_by_id params[:id]
     respond_with(@patient)
@@ -50,7 +52,21 @@ class PatientsController < ApplicationController
     render 'created'
   end
 
+  def api
+    params[:format] = "json"
+    if params[:key] = "m4JZcytVFFrsVrALAjumGz5Kwm3y4zwUbHafqp7VMbfQkDg"
+      @patient = Patient.find_by_id(params[:id])
+      @states = @patient.treatment_states
+      return render 'api'
+    end
+    return render nothing: true, status: 400
+  end
+
   private
+
+  def only_json
+    request.format = :json
+  end
 
   def set_random_password_for(patient)
     @password = Faker::Lorem.words(2).join('-')
