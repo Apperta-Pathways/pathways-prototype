@@ -1,16 +1,16 @@
 .header
   .container
     .row
-      .col-md-8
+      .col-md-6
         .title-tagline
           h1 PATHWAYS
           - if current_patient
             p = "You are logged in as #{current_patient.name}"
           - elsif current_doctor
             p = "You are logged in as #{current_doctor.name}"
-      .col-md-2
+      .col-md-3
         a href='http://www.guysandstthomas.nhs.uk/Home.aspx'
-          = image_tag "nhs_logo.png", { height: 30, class: 'gstt_logo' }
-      .col-md-2
+          = image_tag "nhs_logo.png", { height: 50, class: 'gstt_logo' }
+      .col-md-3
         a href='http://www.guysandstthomas.nhs.uk/Home.aspx'
-          = image_tag "gstt_logo.png", { height: 30, class: 'gstt_logo' }
+          = image_tag "gstt_logo.png", { height: 50, class: 'gstt_logo' }

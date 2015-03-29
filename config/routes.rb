@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'categories/show'
 
-  devise_for :doctors
+  devise_for :doctors, skip: :registrations
 
   devise_for :patients, skip: :registrations
 
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post '/patients/search', to: 'patients#search'
 
   resources :patients
+  resources :doctors
   resources :treatment_modules
 
   resources :teams, only: [:index, :create, :show, :update, :destroy]

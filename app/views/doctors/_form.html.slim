@@ -1,0 +1,24 @@
+.doctor_form
+  = form_for @doctor do |f|
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :email, 'Email'
+      = f.text_field :email, class: 'form-control'
+    .form-group.checkbox
+      = f.label :superuser do
+        = f.check_box :superuser
+        | Superuser?
+    .form-group
+      = f.label :teams, 'Teams Assigned'
+      .teams
+        - Team.all.each do |team|
+          label.checkbox-inline
+            = check_box_tag 'doctor[team_ids][]', team.id, team.in?(@doctor.teams)
+            = team.name
+    .pull-left
+      = f.submit class: 'btn btn-default'
+    .pull-right
+      - unless @doctor.new_record?
+        a.btn.btn-danger href="/doctors/#{@doctor.id}/password/new" Reset Password

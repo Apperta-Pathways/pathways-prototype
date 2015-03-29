@@ -24,12 +24,16 @@ class DoctorsController < ApplicationController
   def create
     @doctor = Doctor.new(doctor_params)
     @doctor.save
-    respond_with(@doctor)
+    flash[:success] = "Successfully created new account for #{@doctor.name}"
+
+    redirect_to doctor_hub_path
   end
 
   def update
     @doctor.update(doctor_params)
-    respond_with(@doctor)
+
+    flash[:success] = "Successfully updated account for #{@doctor.name}"
+    redirect_to doctor_hub_path
   end
 
   def destroy
@@ -48,7 +52,7 @@ class DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params[:doctor]
+    params.require(:doctor).permit(:name, :email, :superuser, team_ids: [])
   end
 
   def same_team_patients
