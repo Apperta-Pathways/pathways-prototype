@@ -3,7 +3,14 @@
     .row
       .col-md-6
         .title-tagline
-          h1 PATHWAYS
+          h1
+            - if current_patient
+              a href='/categories' PATHWAYS
+            - elsif current_doctor
+              a href='/admin' PATHWAYS
+            - else
+              a href='/' PATHWAYS
+
           /- if current_patient
           /  p = "You are logged in as #{current_patient.name}"
           /- elsif current_doctor
