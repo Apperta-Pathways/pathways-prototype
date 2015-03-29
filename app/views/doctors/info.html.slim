@@ -6,7 +6,7 @@
       .col-md-6
         = render partial: 'search_form'
       .col-md-6.text-right
-        - if @doctor.superuser
+        - if current_doctor.superuser
           a.btn.btn-default href=doctors_path Manage Medical Professional Accounts
 
   .content.container

@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   # show current modules of each patient by timeframe
   get '/admin/patient/:id', to: 'doctors#info', as: 'doctor_hub'
-  get '/admin/patient/', to: 'doctors#info'
 
   # add existing modules to a patient
   get '/admin/patient/:id/module/new', to: 'patient#edit'
@@ -26,6 +25,9 @@ Rails.application.routes.draw do
 
   get '/patients/:id/password/new', to: 'patients#reset_password'
   post '/patients/search', to: 'patients#search'
+
+  get '/doctors/:id/password/new', to: 'doctors#reset_password'
+  post '/doctors/search', to: 'doctors#search'
 
   resources :patients
   resources :doctors
@@ -48,7 +50,7 @@ Rails.application.routes.draw do
   resources :treatment_states, only: [:edit, :update, :create, :new, :destroy]
 
   scope :admin do
-    get "/" => "doctors#info", id: 1
+    get "/" => "doctors#info"
   end
 
 end

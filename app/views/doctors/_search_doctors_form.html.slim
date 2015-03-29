@@ -1,0 +1,9 @@
+= form_tag "/doctors/search", method: 'POST'
+  .form-inline
+    .form-group
+      .input-group
+        .input-group-addon
+          = icon 'search'
+        input.form-control name='email' type='text' placeholder='Email'
+    button.btn.btn-default type='submit' Search
+

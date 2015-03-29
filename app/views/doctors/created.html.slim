@@ -1,0 +1,11 @@
+.container
+  .card#created-card
+    h3.text-center = @doctor.name
+    .form-group
+      label Username
+      .well.username = "#{@doctor.email}"
+    .form-group
+      label Password
+      .well.password = @password
+    .alert.alert-warning It is important you save this password to give to the medical professional.
+    a.btn.btn-default.text-right href=doctors_path Return to admin

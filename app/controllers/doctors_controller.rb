@@ -1,13 +1,13 @@
 class DoctorsController < ApplicationController
   before_action :authenticate_doctor!
 
-  before_action :set_doctor, only: [:show, :edit, :update, :destroy, :info]
+  before_action :set_doctor, only: [:show, :edit, :update, :destroy, :info, :reset_password]
   before_action :assert_superuser, only: [:edit, :update, :destroy, :new]
   before_action :set_patient, only: [:info]
 
   def info
-    @recent_patients = @doctor.patients.order(:updated_at)
-    @treatment_states = @patient.treatment_states
+    @recent_patients = current_doctor.patients.order(:updated_at)
+    @treatment_states = @patient.treatment_states if @patient
   end
 
   def show
@@ -27,14 +27,14 @@ class DoctorsController < ApplicationController
     @doctor.save
     flash[:success] = "Successfully created new account for #{@doctor.name}"
 
-    redirect_to doctor_hub_path
+    redirect_to '/admin'
   end
 
   def update
     @doctor.update(doctor_params)
 
     flash[:success] = "Successfully updated account for #{@doctor.name}"
-    redirect_to doctor_hub_path
+    redirect_to doctors_path
   end
 
   def destroy
@@ -42,10 +42,31 @@ class DoctorsController < ApplicationController
     respond_with(@doctor)
   end
 
+  def reset_password
+    set_random_password_for @doctor
+    flash.now[:success] = "Successfully reset password"
+    render '/doctors/created'
+  end
+
+  def search
+    @doctor = Doctor.find_by_email(params[:email])
+    unless @doctor
+      flash[:error] = "No doctor with that email was found"
+      redirect_to doctors_path and return
+    end
+    render :edit
+  end
+
   private
 
+  def set_random_password_for(doctor)
+    @password = Faker::Lorem.words(2).join('-')
+    doctor.password = @password
+    doctor.password_confirmation = @password
+  end
+
   def set_patient
-    @patient = Patient.find_by_id params[:id]
+    @patient = Patient.find_by_id(params[:id])
   end
 
   def set_treatment_states
@@ -55,7 +76,7 @@ class DoctorsController < ApplicationController
   end
 
   def set_doctor
-    @doctor = current_doctor
+    @doctor = Doctor.find_by_id(params[:id]) || current_doctor
   end
 
   def doctor_params
@@ -67,7 +88,7 @@ class DoctorsController < ApplicationController
   end
 
   def assert_superuser
-    unless @doctor.superuser
+    unless current_doctor.superuser
       flash[:error] = 'You do not have permission to access this page'
       redirect_to doctor_hub_path
     end

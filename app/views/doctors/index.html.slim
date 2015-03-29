@@ -1,0 +1,22 @@
+
+.container
+  .row
+    .col-md-4
+      ol.breadcrumb
+        li
+          a href=doctor_hub_path(1) Hub
+        li.active Manage Medical Professional Accounts
+
+    .col-md-4.text-center
+      a.btn.btn-default href=new_doctor_path Create Medical Professional Account
+    .col-md-4.text-right
+      = render partial: 'search_doctors_form'
+  .row
+    - Doctor.all.each do |doc|
+      .col-md-4
+        .doctor
+          .row
+            .col-md-8 = doc.name
+            .col-md-4.text-right
+              a.btn.btn-default href=edit_doctor_path(doc.id) Edit
+
