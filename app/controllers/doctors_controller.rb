@@ -5,10 +5,8 @@ class DoctorsController < ApplicationController
   before_action :set_patient, only: [:info]
 
   def info
-
     @recent_patients = same_team_patients
     @treatment_states = @patient.treatment_states
-
   end
 
   def show
@@ -57,6 +55,7 @@ class DoctorsController < ApplicationController
 
   def set_doctor
     @doctor = current_doctor
+  end
 
   def doctor_params
     params.require(:doctor).permit(:name, :email, :superuser, team_ids: [])
@@ -65,7 +64,5 @@ class DoctorsController < ApplicationController
   def assign_patients
     @doctor.patients
   end
-
-
 
 end
