@@ -47,8 +47,7 @@ class PatientsController < ApplicationController
 
   def reset_password
     set_random_password_for @patient
-    flash[:success] = "Successfully reset password"
-    flash[:new_password] = @password
+    flash.now[:success] = "Successfully reset password"
     render 'created'
   end
 
@@ -72,6 +71,7 @@ class PatientsController < ApplicationController
     @password = Faker::Lorem.words(2).join('-')
     patient.password = @password
     patient.password_confirmation = @password
+    patient.save
   end
 
   def set_patient
