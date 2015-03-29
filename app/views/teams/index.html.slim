@@ -1,27 +1,22 @@
-.hero
-  .container
+.container
+  .row
+    .col-md-8
+      ol.breadcrumb
+        li
+          a href=doctor_hub_path(1) Hub
+          li Teams
+    .col-md-4.text-right
+      button.btn.btn-success type="button" data-toggle="modal" data-target="#team_create" Create Team
 
-    .row.col-md-10.col-md-offset-1.info_block
-      = icon 'user'
-      .caption
-        h3.col-md-10.col-md-offset-1 
-          |You may see below all the existing teams:
+  .row
+    - @teams.each do |team|
+      .col-md-4
+        .team
+          .row
+            .col-md-4
+              = link_to team.name, team, class: 'team-name'
+            .col-md-8.text-right
+              a.btn.btn-default href=team_path(team.id) Manage
+              = link_to "Delete", team, method: :delete, class:"btn btn-danger", data: { confirm: "Are you sure?" }
 
-    .row.col-md-10.col-md-offset-1.info_block
-      table
-        tbody
-          - @teams.each do |team|
-            tr
-              td = icon 'check'
-              td 
-                |Name:  
-                = link_to team
-                  = team.name
-              td
-                = link_to "Delete", team, method: :delete, class:"btn btn-danger btn-sm", data: {confirm: "Are you sure?"}
-
-    .row.col-md-10.col-md-offset-1.info_block
-      button.btn.btn-success.add_or_create type="button" data-toggle="modal" data-target="#team_create"
-        i.glyphicon.glyphicon-plus
-        |Create Team
-      = render 'teams/modal_team_create'
+  = render 'teams/modal_team_create'

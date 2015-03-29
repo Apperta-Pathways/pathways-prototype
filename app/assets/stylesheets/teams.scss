@@ -4,26 +4,6 @@
 }
 
 .hero .info_block table{
-  margin: 0 auto;
-  td{
-      text-align: initial;
-      font-size:17pt;
-      a{
-        color:white;
-      }
-      a:hover{
-        color:#FFD700;
-      }
-      .fa{
-        font-size:20pt;
-      }
-      .btn{
-        float:right;
-      }
-      &:nth-child(3){
-        width:90px;
-      }
-  }
 }
 
 .hero .info_block .add_or_create{
@@ -33,3 +13,26 @@
 .hero .info_block .caption .showModal{
     margin: 20px 0 0 0;
 }
+
+.team {
+  .team-name {
+    font-size: 18pt;
+  }
+  .btn {
+    margin-left: 5px;
+  }
+  padding: 20px;
+  background-color: white
+}
+
+.team-members {
+  margin-top: 20px !important;
+  i {
+    font-size:20pt;
+  }
+  .member {
+    margin-bottom: 10px;
+  }
+}
+
+

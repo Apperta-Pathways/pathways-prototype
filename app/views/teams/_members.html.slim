@@ -1,34 +1,21 @@
-      .col-md-6.info_block
-        .row.col-md-10.col-md-offset-1
+.card.team-members
+  .text-center
+    - if type == "doctor"
+      = icon 'user-md'
+    - else
+      = icon 'user'
 
-          -if type == "doctor"
-            = icon 'user-md'
-          -else
-            = icon 'user'
+  h4.text-center = type.capitalize.pluralize
+  - @team.send(type.pluralize).each do |member|
+    .row.member
+      .col-md-6 = member.name
+      .col-md-6.text-right
+        = form_for(@team, method: :patch, html:{class:"team_member_form"}) do |f|
+          = hidden_field_tag :target, type
+          = hidden_field_tag :content, member.id
+          = hidden_field_tag :action_request, "remove"
+          = f.submit "Delete", class:"btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
 
-          .caption
-            h3.col-md-6.col-md-offset-3 
-              = type.capitalize.pluralize
-
-        .row.col-md-10.col-md-offset-1
-          table
-            tbody
-              - @team.send(type.pluralize).each do |member|
-                tr
-                  td = icon 'check'
-                  td 
-                    |Name: 
-                    a href= '#'
-                      = member.name
-                  td 
-                    = form_for(@team, method: :patch, html:{class:"team_member_form"}) do |f|
-                      = hidden_field_tag :target, type
-                      = hidden_field_tag :content, member.id
-                      = hidden_field_tag :action_request, "remove"
-                      = f.submit "Delete", class:"btn btn-danger btn-sm", data: { confirm: "Are you sure?" }
-
-        .row.col-md-10.col-md-offset-1              
-          button.btn.btn-success.add_or_create type="button" data-toggle="modal" data-target="#add_#{type}"
-            i class="glyphicon glyphicon-plus"
-            |Add #{type.capitalize}      
-          = render 'teams/modal_add_member', :type => type
+  .text-center
+    button.btn.btn-success.add_or_create type="button" data-toggle="modal" data-target="#add_#{type}" Add #{type.capitalize}
+    = render 'teams/modal_add_member', :type => type
