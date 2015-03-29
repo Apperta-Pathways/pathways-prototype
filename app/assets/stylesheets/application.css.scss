@@ -88,7 +88,6 @@ img {
   text-align: center;
   margin-top: 40px;
   font-size:10px;
-  //color: black;
 }
 
 .footerrow {
@@ -96,6 +95,24 @@ img {
   font-size:10px;
   padding: 0px;
   margin: 0px;
+}
+
+.mainbar {
+  //background-color: white;
+  text-align: center;
+  padding-top: 0px;
+  margin-top: 0px;
+  //border-top: 1px solid #666;
+  //border-bottom: 1px solid #666;
+}
+
+.fa_big {
+  font-size: 100px;
+  text-align: center;
+}
+
+.caption_home {
+  text-align: center;
 }
 
 .p {
