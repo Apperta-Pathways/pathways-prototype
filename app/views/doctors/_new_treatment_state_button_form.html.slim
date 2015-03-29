@@ -1,3 +1,3 @@
 = form_for TreatmentState.new, url: treatment_states_path, method: 'POST' do |f|
-  = f.hidden_field :patient_id, value: @focused_patient.id
+  = f.hidden_field :patient_id, value: @patient.id
   = f.submit 'Create new state', class: 'btn btn-default'

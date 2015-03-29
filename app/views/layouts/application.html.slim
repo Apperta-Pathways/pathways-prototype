@@ -7,28 +7,21 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-body
-  .header
+  body
+    = render partial: '/layouts/header'
     .container
-      .row
-        .col-md-4
-          a href='http://www.guysandstthomas.nhs.uk/Home.aspx'
-            = image_tag "nhs_logo.png", { height: 50, class: 'gstt_logo' }
-        .col-md-4
-          h2 PATHWAYS
-        .col-md-4
-          a href='http://www.guysandstthomas.nhs.uk/Home.aspx'
-            = image_tag "gstt_logo.png", { height: 50, class: 'gstt_logo' }
-
       == render_flash
+    = yield :breadcrumbs
+
   == yield
 
-  .footer.container
-    .footerrow
-      'Patient Pathways - by the Guy's and St. Thomas' Hospital Trust.
-    .footerrow
-      'Pathways is a tool for you to access your past, present and future treatment information, it is not a substitute for your doctor. In an emergency always call 999.
-    .footerrow
-      a href=eula_path Click to view the End User License Agreement
-    .footerrow
-      '© 2015 Guy's and St. Thomas' NHS Foundation Trust.
+  .footer
+    .container
+      .row.text-center
+        'Patient Pathways - by the Guy's and St. Thomas' Hospital Trust.
+      .row.text-center
+        'Pathways is a tool for you to access your past, present and future treatment information, it is not a substitute for your doctor. In an emergency always call 999.
+      .row.text-center
+        a href=eula_path Click to view the End User License Agreement
+      .row.text-center
+        '© 2015 Guy's and St. Thomas' NHS Foundation Trust.

@@ -1,21 +1,25 @@
 .bluebar
-  .edit_box.container
+  .container
     .row
-      #introduction = "You are modifying the treatment state of: #{@patient.name}."
-    .row
-      #introduction
-        'Information you select here will be available to #{@patient.name} on their hub.
+      .col-md-8
+        ol.breadcrumb
+          li
+            a href=doctor_hub_path(1) Hub
+          li
+            a href=doctor_hub_path(@patient.id) = "Patient: #{@patient.name}"
+          li.active Edit treatment state
 
-  = render partial: 'date_picker_form'
+      .col-md-4.text-right
+        = render partial: 'date_picker_form'
 
 .container
   .row.headers
     .col-md-4
-      h2 Categories
+      h4 Categories
     .col-md-4
-      h2 Subcategories
+      h4 Subcategories
     .col-md-4
-      h2 Information Modules
+      h4 Information Modules
 
   .row
     #categories.col-md-4

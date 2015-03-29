@@ -6,7 +6,6 @@ class DoctorsController < ApplicationController
 
   def info
     @recent_patients = same_team_patients
-    @focused_patient = @patient
     @treatment_states = @patient.treatment_states
   end
 
@@ -45,7 +44,7 @@ class DoctorsController < ApplicationController
   end
 
   def set_patient
-    @patient = Patient.find_by_id params[:id] if @doctor.patients.include?(Patient.find_by_id params[:id])
+    @patient = Patient.find_by_id params[:id]
   end
 
   def doctor_params
