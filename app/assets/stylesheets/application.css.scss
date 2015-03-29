@@ -28,7 +28,7 @@ body {
 .header {
   padding-top: 20px;
   padding-bottom: 20px;
-  background: #487996;
+  background: #3e96cb;
   color: white;
   margin-bottom: 20px;
   .title-tagline {
@@ -36,6 +36,10 @@ body {
     * {
       display: inline-block;
     }
+  }
+
+  img {
+    margin-top: 10px;
   }
 
 }
