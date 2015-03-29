@@ -2,10 +2,11 @@ class DoctorsController < ApplicationController
   before_action :authenticate_doctor!
 
   before_action :set_doctor, only: [:show, :edit, :update, :destroy, :info]
+  before_action :assert_superuser, only: [:edit, :update, :destroy, :new]
   before_action :set_patient, only: [:info]
 
   def info
-    @recent_patients = same_team_patients
+    @recent_patients = @doctor.patients.order(:updated_at)
     @treatment_states = @patient.treatment_states
   end
 
@@ -63,6 +64,13 @@ class DoctorsController < ApplicationController
 
   def assign_patients
     @doctor.patients
+  end
+
+  def assert_superuser
+    unless @doctor.superuser
+      flash[:error] = 'You do not have permission to access this page'
+      redirect_to doctor_hub_path
+    end
   end
 
 end
