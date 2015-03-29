@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get '/eula', to: 'home#eula'
 
-  get '/admin/state/:id', to: 'treatment_states#edit'
+  get '/admin/state/:id', to: 'treatment_states#edit', as: 'edit_state'
   get '/admin/state/:id/:category_id', to: 'treatment_states#edit'
   get '/admin/state/:id/:category_id/:subcategory_id', to: 'treatment_states#edit'
 
