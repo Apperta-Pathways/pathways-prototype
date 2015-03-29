@@ -3,20 +3,18 @@
 /    a href=categories_path category
 
 
-container
-  .title_bar
-    .col-md-2.col-md-offset-1
-      .back_text
-        a href=categories_path back
-    .col-md-6.col
-      .title_text
-        = @category.name
+.container
+  .text-center
+    ol.breadcrumb
+      li
+        a.lead href=categories_path Home
+      li.lead = "Category: #{@category.name}"
 
 .container
   .row
     .col-md-8.col-md-offset-2
       - @subcategories.each do |sc|
-        h3.text-center = sc.name
+        h4.text-center = sc.name
         #accordion.panel-group.present_treatment_state
           - sc.assigned_tms_in_state(@state).each do |tm|
             .panel.panel-default
