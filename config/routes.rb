@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'download/log'
+
   get 'categories/show'
 
   devise_for :doctors, skip: :registrations
