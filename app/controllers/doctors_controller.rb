@@ -35,7 +35,7 @@ class DoctorsController < ApplicationController
     params[:doctor][:confirm_password] = params[:doctor][:password]
     if(@doctor.update(doctor_params))
 
-      flash[:success] = "Successfully updated account for #{params[:doctor][:password]}"
+      flash[:success] = "Successfully updated account for #{@doctor.name}"
       redirect_to doctors_path
     else
 
