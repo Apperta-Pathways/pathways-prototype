@@ -13,10 +13,14 @@ class TreatmentState < ActiveRecord::Base
   delegate :patient, to: :pathway
 
   def self.most_recent_for_patient(patient, category_id)
-    TreatmentState.joins({ pathway: :patient }, { treatment_modules: { data_module: { subcategory: :category }}}).
+    @in_past = TreatmentState.joins({ pathway: :patient }, { treatment_modules: { data_module: { subcategory: :category }}}).
       where(patients: { id: patient.id}, categories: { id: category_id }).
       where('assigned_date <= ?', Time.now).
       order(assigned_date: :desc).take
+    return @in_past if @in_past
+    return TreatmentState.joins({ pathway: :patient }, { treatment_modules: { data_module: { subcategory: :category }}}).
+      where(patients: { id: patient.id}, categories: { id: category_id }).
+      order(assigned_date: :asc).take
   end
 
   # for patient hub
