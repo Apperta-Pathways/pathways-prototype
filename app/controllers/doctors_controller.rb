@@ -2,7 +2,8 @@ class DoctorsController < ApplicationController
   before_action :authenticate_doctor!
 
   before_action :set_doctor, only: [:show, :edit, :update, :destroy, :info, :reset_password]
-  before_action :assert_superuser, only: [:edit, :update, :destroy, :new]
+  before_action :assert_superuser, only: [:destroy, :new]
+  before_action :assert_accessing_own_profile, only: [:edit, :update]
   before_action :set_patient, only: [:info]
 
   def info
@@ -93,6 +94,12 @@ class DoctorsController < ApplicationController
     unless current_doctor.superuser
       flash[:error] = 'You do not have permission to access this page'
       redirect_to doctor_hub_path
+    end
+  end
+
+  def assert_accessing_own_profile
+    unless current_doctor == Doctor.find_by_id(params[:id])
+      assert_superuser
     end
   end
 
