@@ -5,9 +5,12 @@
 .categories
   .container
       .row
-        - @categories.each do |cat|
-          a href=category_treatment_states_path(cat.id)
-            .col-md-4
-              .col-md-10.col-md-offset-1.category
-                .title = cat.name
-                = icon "medkit"
+        - if @categories
+          - @categories.each do |cat|
+            a href=category_treatment_states_path(cat.id)
+              .col-md-4
+                .col-md-10.col-md-offset-1.category
+                  .title = cat.name
+                  = icon "medkit"
+        - else
+          h2.text-center You have no information assigned
