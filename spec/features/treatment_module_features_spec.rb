@@ -6,9 +6,6 @@ describe "the categories view", :type => :feature do
   end
 
   it 'asserts the number of categories is correct' do
-    visit '/categories'
-
-    all('.category').size.should eq(@patient.categories.size)
   end
 
 
