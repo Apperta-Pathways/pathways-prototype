@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :authenticate_doctor!
   before_action :set_team, only: [:destroy, :show, :update]
+  before_action :assert_superuser, only: [:index, :create, :show, :destroy]
 
   def index
     @teams = Team.all
