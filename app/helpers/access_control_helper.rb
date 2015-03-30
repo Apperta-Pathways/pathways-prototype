@@ -9,8 +9,7 @@ module AccessControlHelper
   
   def assert_superuser
     unless current_doctor.superuser
-      flash[:error] = 'You do not have permission to access this page'
-      redirect_to doctor_hub_path
+      default_redirect
     end
   end
 
