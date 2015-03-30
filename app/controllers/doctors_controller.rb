@@ -33,10 +33,16 @@ class DoctorsController < ApplicationController
 
   def update
     params[:doctor][:confirm_password] = params[:doctor][:password]
-    @doctor.update(doctor_params)
+    if(@doctor.update(doctor_params))
 
-    flash[:success] = "Successfully updated account for #{@doctor.name}"
-    redirect_to doctors_path
+      flash[:success] = "Successfully updated account for #{params[:doctor][:password]}"
+      redirect_to doctors_path
+    else
+
+      flash[:error] = @doctor.errors.full_messages.first 
+      redirect_to edit_doctor_path(@doctor)
+    end
+
   end
 
   def destroy
