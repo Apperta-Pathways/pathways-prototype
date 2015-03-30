@@ -6,6 +6,6 @@
       .well.username = "#{@patient.nhs_number}"
     .form-group
       label Password
-      .well.password = flash[:new_password]
+      .well.password = @password
     .alert.alert-warning It is important you save this password to give to the patient.
     a.btn.btn-default.text-right href="/admin/patient/#{@patient.id}" Return to admin
