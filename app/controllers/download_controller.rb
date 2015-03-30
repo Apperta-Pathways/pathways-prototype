@@ -3,7 +3,7 @@ class DownloadController < ApplicationController
 
   def log
 
-  	file_path = "#{Rails.root}/log/development.log"
+  	file_path = "#{Rails.root}/log/production.log"
 
   	File.open(file_path, "r") do |f|
       send_data f.read, filename: "log_file.txt", type: "application/log"
