@@ -1,5 +1,5 @@
 class DownloadController < ApplicationController
-  before_action :authenticate_doctor!
+  before_action :grant_access, only: [:log]
 
   def log
 
@@ -10,4 +10,15 @@ class DownloadController < ApplicationController
     end
 
   end
+
+  private
+
+  	def grant_access
+  		if(current_doctor)
+  			assert_superuser
+  		else
+  			flash[:error] = 'You do not have permission to access this page'
+  			redirect_to categories_path
+  		end
+  	end
 end

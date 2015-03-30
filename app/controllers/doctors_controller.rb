@@ -96,17 +96,4 @@ class DoctorsController < ApplicationController
     @doctor.patients
   end
 
-  def assert_superuser
-    unless current_doctor.superuser
-      flash[:error] = 'You do not have permission to access this page'
-      redirect_to doctor_hub_path
-    end
-  end
-
-  def assert_accessing_own_profile
-    unless current_doctor == Doctor.find_by_id(params[:id])
-      assert_superuser
-    end
-  end
-
 end
