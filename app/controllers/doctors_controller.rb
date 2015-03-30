@@ -3,14 +3,18 @@ class DoctorsController < ApplicationController
 
   before_action :set_doctor, only: [:show, :edit, :update, :destroy, :info, :reset_password]
   before_action :assert_superuser, only: [:index, :destroy, :new]
-  before_action :assert_accessing_own_profile, only: [:edit, :update]
+  before_action :assert_accessing_own_profile, only: [:edit, :update, :reset_password]
   before_action :set_patient, only: [:info]
 
   def index
   end
 
   def info
-    @recent_patients = current_doctor.patients.order(:updated_at)
+    if(current_doctor.superuser)
+      @recent_patients = Patient.all
+    else
+      @recent_patients = current_doctor.patients.order(:updated_at)
+    end
     @treatment_states = @patient.treatment_states if @patient
   end
 
