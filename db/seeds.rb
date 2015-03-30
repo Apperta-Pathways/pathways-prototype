@@ -83,7 +83,8 @@ end
 end
 
 @doctors = []
-@test_doctor = FactoryGirl.create(:doctor, password: "test_pass", email: 'doctor@test.com', superuser: true)
+@test_doctor = FactoryGirl.create(:doctor, password: "test_pass", email: 'doctor@test.com', superuser: false)
+@test_doc = FactoryGirl.create(:doctor, password: "test_pass", email: 'doc@test.com', superuser: true)
 
 30.times do |s|
   @doctors << FactoryGirl.create(:doctor)

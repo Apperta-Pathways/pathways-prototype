@@ -42,7 +42,7 @@ module AccessControlHelper
   end
 
   def check_if_doctor_has_access_to_patient
-    if(params[:id] && (request.path == doctor_hub_path || request.path == edit_patient_path) )
+    if(params[:id] && (request.path == doctor_hub_path || request.path == edit_patient_path || request.path == patients_reset_password_path) )
       check_patient
     end
 

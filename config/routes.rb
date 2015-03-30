@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/admin/module/:id', to: 'data_modules#show'
   get '/admin/categories/edit', to: 'categories#edit', as: :edit_categories
 
-  get '/patients/:id/password/new', to: 'patients#reset_password'
+  get '/patients/:id/password/new', to: 'patients#reset_password', as: :patients_reset_password
   post '/patients/search', to: 'patients#search'
 
   get '/doctors/:id/password/new', to: 'doctors#reset_password'
