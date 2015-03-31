@@ -32,10 +32,15 @@ class DoctorsController < ApplicationController
 
   def create
     @doctor = Doctor.new(doctor_params)
-    @doctor.save
-    flash[:success] = "Successfully created new account for #{@doctor.name}"
+    set_random_password_for @doctor
+    if(@doctor.save)
+      flash[:success] = "Successfully created new account for #{@doctor.name}"
+      render '/doctors/created'
+    else
+      flash[:error] = @doctor.errors.full_messages.first
+      redirect_to new_doctor_path
+    end
 
-    redirect_to '/admin'
   end
 
   def update
@@ -101,6 +106,13 @@ class DoctorsController < ApplicationController
 
   def assign_patients
     @doctor.patients
+  end
+
+  def set_random_password_for(doctor)
+    @password = Faker::Lorem.words(2).join('-')
+    doctor.password = @password
+    doctor.password_confirmation = @password
+    doctor.save
   end
 
 end
