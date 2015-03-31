@@ -2,9 +2,10 @@
   - @categories.each do |category|
     .row class=class_for_category(category)
       .col-md-7 = category.name
-      .col-md-5
+      .col-md-3
         a.btn.btn-default href=link_to_edit_category(category) Edit Subcats
         button.btn.btn-default data-toggle='modal' data-target='#cat_#{category.id}' Edit Name
+        = category_delete_button category.id
     = render partial: 'category_edit_modal', locals: { category: category }
 
 

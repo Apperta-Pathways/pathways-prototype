@@ -1,4 +1,7 @@
 module SubcategoriesHelper
+  def subcategory_delete_button(id)
+    link_to "Delete", subcategory_path(id), :method => 'delete', class: 'btn btn-danger'
+  end
 
   def data_module_delete_button(id)
     link_to "Delete", data_module_path(id), :method => 'delete', class: 'btn btn-danger'

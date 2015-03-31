@@ -3,4 +3,8 @@ module CategoriesHelper
     "/categories/#{category.id}/edit"
   end
 
+  def category_delete_button(id)
+    link_to "Delete", category_path(id), :method => 'delete', class: 'btn btn-danger'
+  end
+
 end

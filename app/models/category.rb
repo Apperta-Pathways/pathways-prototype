@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  has_many :subcategories
+  has_many :subcategories, dependent: :destroy
   has_many :data_modules, through: :subcategories
 
   alias_attribute :title, :name

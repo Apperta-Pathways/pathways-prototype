@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   resources :teams, only: [:index, :create, :show, :update, :destroy]
 
-  resources :subcategories, only: [:update, :show]
+  resources :subcategories, only: [:update, :show, :destroy]
 
   resources :data_modules
 

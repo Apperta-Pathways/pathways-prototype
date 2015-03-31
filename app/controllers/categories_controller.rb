@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   before_action :set_patient
   # before_action :set_state, only: [:edit]
-  before_action :set_category, only: [:edit, :update, :show]
+  before_action :set_category, only: [:edit, :update, :show, :destroy]
 
   def index
     @categories = @patient.categories
@@ -30,6 +30,12 @@ class CategoriesController < ApplicationController
       @category.update(strong_params)
     end
     redirect_to action: :edit
+  end
+
+  def destroy
+    @category.destroy
+    flash[:success] = "Category successfully deleted"
+    redirect_to edit_categories_path
   end
 
   private

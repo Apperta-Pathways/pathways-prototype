@@ -23,6 +23,12 @@ class SubcategoriesController < ApplicationController
     redirect_to edit_category_path(strong_params[:category_id])
   end
 
+  def destroy
+    @subcat.destroy
+    flash[:success] = "Subcategory successfully deleted"
+    redirect_to edit_categories_path
+  end
+
   private
 
   def strong_params
