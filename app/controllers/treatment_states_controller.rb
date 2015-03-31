@@ -127,12 +127,16 @@ class TreatmentStatesController < ApplicationController
   end
 
   def set_active_cat
-    @active_cat = Category.includes(:subcategories).find_by_id(params[:category_id]) || Category.first
-    set_active_subcat
+    if(Category.count > 0)
+      @active_cat = Category.includes(:subcategories).find_by_id(params[:category_id]) || Category.first
+      set_active_subcat
+    end
   end
 
   def set_active_subcat
-    @active_subcat = Subcategory.find_by_id(params[:subcategory_id]) || @active_cat.subcategories.first
+    if(Subcategory.count > 0)
+      @active_subcat = Subcategory.find_by_id(params[:subcategory_id]) || @active_cat.subcategories.first
+    end
   end
 
 
