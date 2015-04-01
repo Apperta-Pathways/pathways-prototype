@@ -3,7 +3,7 @@ class Patient < ActiveRecord::Base
 
   has_one :pathway, dependent: :destroy
   has_and_belongs_to_many :teams
-  has_and_belongs_to_many :doctors, through: :teams
+  has_many :doctors, through: :teams
 
   has_many :treatment_states, through: :pathway
   has_many :treatment_modules, through: :treatment_states
