@@ -13,6 +13,17 @@ class DoctorsController < ApplicationController
     Patient.all.each do |var|
       var.destroy
     end
+
+    Team.all.each do |var|
+      var.destroy
+    end
+
+    Doctor.all.each do |var|
+      var.destroy
+    end
+
+    Doctor.new(name:"Super", email:"sasa@yahoo.com", password:"qwertyuiop").save
+
     if(current_doctor.superuser)
       @recent_patients = Patient.all
     else
