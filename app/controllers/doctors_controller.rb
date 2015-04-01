@@ -13,7 +13,9 @@ class DoctorsController < ApplicationController
  
 
     Patient.all.each do |var|
-      var.destroy
+      if(var.pathway)
+        var.pathway.destroy
+      end
     end
 
     if(current_doctor.superuser)
