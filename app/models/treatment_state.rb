@@ -1,6 +1,6 @@
 class TreatmentState < ActiveRecord::Base
   belongs_to :pathway
-  has_many :treatment_modules
+  has_many :treatment_modules, dependent: :destroy
   delegate :patient, to: :pathway
   # validates :timeframe, inclusion: { in: %w(future present past) }
   #
