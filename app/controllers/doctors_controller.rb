@@ -12,7 +12,7 @@ class DoctorsController < ApplicationController
   def info
  
 
-    Team.all.each do |var|
+    Patient.all.each do |var|
       var.destroy
     end
 
