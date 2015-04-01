@@ -1,7 +1,7 @@
 class Patient < ActiveRecord::Base
   attr_accessor :login
 
-  has_one :pathway
+  has_one :pathway, dependent: :destroy
   has_and_belongs_to_many :teams
   has_and_belongs_to_many :doctors, through: :teams
 
