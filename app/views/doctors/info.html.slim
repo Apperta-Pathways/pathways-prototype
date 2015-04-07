@@ -2,14 +2,21 @@
 
 .doctor-hub
   .container
-    .row
-      .col-md-6
-        = render partial: 'search_form'
-      .col-md-6.text-right
+    .row.buffer-bottom
+      .col-md-5
+        - if !current_doctor.superuser
+          = render partial: 'search_form'
+      .col-md-7.text-right
         a.btn.btn-default href=edit_doctor_path(current_doctor.id) Edit Account
-        - if current_doctor.superuser
-          a.btn.btn-default href=teams_path Manage Teams
-          a.btn.btn-default href=doctors_path Manage Medical Professional Accounts
+        a.btn.btn-default href=new_patient_path Create Patient
+    - if current_doctor.superuser
+      .row
+        .col-md-5
+          = render partial: 'search_form'
+        .col-md-7.text-right
+            a.btn.btn-default href=teams_path Manage Teams
+            a.btn.btn-default href=doctors_path Manage Medical Professional Accounts
+            a.btn.btn-default.manage-button href=edit_categories_path Manage Treatment Information
 
   .content.container
     .recent_patients
@@ -22,8 +29,6 @@
               li
                 .name = patient.name
                 .nhs_number = patient.nhs_number
-      .manage-row
-        a.btn.btn-default href=new_patient_path Create Patient
 
     .patient_status_container
       .patient_status
@@ -35,9 +40,3 @@
               = render partial: 'new_treatment_state_button_form'
               a.btn.btn-default href=edit_patient_path(@patient) Edit Patient
           = render partial: 'ts_table'
-
-      .manage-row
-        .pull-right
-          a.btn.btn-default.manage-button href=edit_categories_path Manage Global Treatment Information
-
-
