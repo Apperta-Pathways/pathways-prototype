@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329122232) do
+ActiveRecord::Schema.define(version: 20150407123836) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150329122232) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.integer  "nhs_number"
+    t.string   "nhs_number"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20150329122232) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "patients", ["email"], name: "index_patients_on_email", unique: true
+  add_index "patients", ["email"], name: "index_patients_on_email"
   add_index "patients", ["nhs_number"], name: "index_patients_on_nhs_number"
   add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
 
