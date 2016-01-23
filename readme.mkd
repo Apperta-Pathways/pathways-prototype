@@ -1,0 +1,29 @@
+#Pathways
+
+Pathways is a web application that aims to make it easier for patients to access information about their symptoms and treatment, helping them make informed decisions about treatment options, increasing their understanding of their medical condition and helping reduce their anxiety and confusion about the future.
+
+Pathways is the result of a collaboration between [UCL Computer Science](http://www.cs.ucl.ac.uk) and [Guy's and St. Thomas' NHS Foundation Trust](http://www.guysandstthomas.nhs.uk).
+
+## Development
+
+Pathways is written in [Ruby](https://www.ruby-lang.org/en/) using the [Ruby on Rails](http://rubyonrails.org/) framework. It normally uses [PostgreSQL](http://www.postgresql.org/) as a database engine, but can also interface with [SQLite](https://www.sqlite.org/) (which is easier to set up in a dev environment).
+
+To set up a dev environment, simply run:
+
+    vagrant up
+    
+This may take a long time (30 minutes to 1 hour) to complete.
+
+To start the service, run:
+
+    vagrant ssh
+    cd /vagrant/
+    rails server
+    
+If you want to populate the database with fake data, run:
+
+    rake db:seed
+    
+## Production
+
+If you decide to use Postgres as your database, make sure you update the settings in `config/database.yaml`.
