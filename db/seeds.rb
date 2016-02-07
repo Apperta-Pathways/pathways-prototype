@@ -1,42 +1,51 @@
 require 'database_cleaner'
+require 'pathname'
 
 DatabaseCleaner.strategy = :truncation
 
 DatabaseCleaner.clean
 
 # Categories,subcategories and data modules
-@category = []
+@category = [] 
 @subcategory= []
 @datamodule = []
 
-@category << FactoryGirl.create(:category, name:'Respiratory diseases')
-@category << FactoryGirl.create(:category, name:'Eating disoders')
-@category << FactoryGirl.create(:category, name:'Skin conditions')
+        
+base_path = File.join(Rails.root, 'db', 'content')
 
-@subcategory << FactoryGirl.create(:subcategory, name:'Inflamatory lung disease', category: @category[0])
-@subcategory << FactoryGirl.create(:subcategory, name:'Restrictive lung diseases', category: @category[0])
-@subcategory << FactoryGirl.create(:subcategory, name:'Respiratory tract infection', category: @category[0])
+categories = Pathname.new(base_path).children.select { |c| c.directory? }.collect { |p| p.basename.to_s }
 
-@datamodule << FactoryGirl.create(:data_module, subcategory: @subcategory[0], title: 'Description', data: "Characterized by a high neutrophil count, e.g. asthma, cystic fibrosis, emphysema, chronic obstructive pulmonary disorder or acute respiratory distress syndrome.[1] Asthma is one of the deadly lung diseases. Asthma is a disease that infects the airways leading to the loss of the control over the smooth muscles that line the bronchi and bronchioles. When exposed to an irritant such as dust or smoke, the smooth muscles that line airways of the asthmatic patient start to contract faster and stronger leading to difficulty breathing.[11]")
+for cat in categories
+    @category << FactoryGirl.create(:category, name: cat)
+    puts 'Category: ' + cat
 
-@datamodule << FactoryGirl.create(:data_module, subcategory: @subcategory[1], title: 'Description', data: "Restrictive lung diseases are a category of respiratory disease characterized by a loss of lung compliance,[2] causing incomplete lung expansion and increased lung stiffness, such as in infants with respiratory distress syndrome.")
+    subcategories = Pathname.new(File.join(base_path, cat)).children.select { |c| c.directory? }.collect { |p| p.basename.to_s }
+    for subcat in subcategories 
+        @subcategory << FactoryGirl.create(:subcategory, name: subcat, category: @category[-1]) 
+        puts 'Subcategory: ' + subcat
 
-@datamodule << FactoryGirl.create(:data_module, subcategory: @subcategory[2], title: 'Upper respiratory tract infection', data: "The most common upper respiratory tract infection is the common cold. However, infections of specific organs of the upper respiratory tract such as sinusitis, tonsillitis, otitis media, pharyngitis and laryngitis are also considered upper respiratory tract infections.")
-@datamodule << FactoryGirl.create(:data_module, subcategory: @subcategory[2], title: 'Lower respiratory tract infection', data: "The most common lower respiratory tract infection is pneumonia, an infection of the lungs which is usually caused by bacteria, particularly Streptococcus pneumoniae in Western countries. Worldwide, tuberculosis is an important cause of pneumonia. Other pathogens such as viruses and fungi can cause pneumonia for example severe acute respiratory syndrome and pneumocystis pneumonia. A pneumonia may develop complications such as a lung abscess, a round cavity in the lung caused by the infection, or may spread to the pleural cavity.")
+        data_modules = Pathname.new(File.join(base_path, cat, subcat)).children.select { |c| c.file? }.collect { |p| p.basename.to_s }
+        for dm in data_modules
+            filename = File.join(base_path, cat, subcat, dm)
+            @datamodule << FactoryGirl.create(:data_module, subcategory:@subcategory[-1], title: dm.to_s.split('.')[0], data: File.read(filename))
 
-3.times do |i|
-    @subcategory << FactoryGirl.create(:subcategory, category: @category[1])
+            puts 'Data module: ' + dm
+        end
+    end
 end
 
-2.times do |i|
-    @subcategory << FactoryGirl.create(:subcategory, category: @category[2])
-end
+# Test accounts
+@test_patient = FactoryGirl.create(:patient, email:'patient@test.com', password: 'test_pass')
+@test_superuser = FactoryGirl.create(:doctor, password: "test_pass", email: 'superuser@test.com', superuser: true)
+@test_doctor = FactoryGirl.create(:doctor, password: "test_pass", email: 'doctor@test.com', superuser: false)
 
 
 # Patients, pathways and treatment modules/states
 @pathway=[]
 @patients=[]
 @states = []
+
+@pathway << FactoryGirl.create(:pathway, patient: @test_patient)
 
 10.times do |i|
   @patient = FactoryGirl.create(:patient, password: 'test_pass')
@@ -65,11 +74,9 @@ end
     end
 end
 
-# Doctors and superusers
-@doctors = []
-@test_doctor = FactoryGirl.create(:doctor, password: "test_pass", email: 'superuser@test.com', superuser: true)
-@test_doc = FactoryGirl.create(:doctor, password: "test_pass", email: 'doctor@test.com', superuser: false)
 
+# Doctors
+@doctors = []
 10.times do |s|
   @doctors << FactoryGirl.create(:doctor)
 end
@@ -81,4 +88,7 @@ end
     @team.patients << @patients.sample
   end
 end
+
+
+
 
