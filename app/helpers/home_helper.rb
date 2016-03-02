@@ -1,7 +1,7 @@
 module HomeHelper
 
   def nhs_number_form_field
-    text_field_tag 'patient[email]', nil, class: "form-control", placeholder: 'Enter NHS Number'
+    text_field_tag 'patient[login]', nil, class: "form-control", placeholder: 'Enter NHS Number'
   end
 
   def password_form_field
