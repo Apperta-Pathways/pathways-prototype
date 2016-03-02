@@ -7,13 +7,6 @@ class ApplicationController < ActionController::Base
   include AccessControlHelper
   respond_to :html
 
-  # @@categories = ['Initial Visit',
-  #                 'Surgery',
-  #                 'Chemoradiation',
-  #                 'Follow Up',
-  #                 'Radiotherapy']
-  #
-
   def after_sign_in_path_for(resource)
     if resource.instance_of? Patient
       return categories_path
@@ -24,7 +17,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  # Allow users to sign in with NHS number instead
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:nhs_number, :email, :password, :password_confirmation, :remember_me)
