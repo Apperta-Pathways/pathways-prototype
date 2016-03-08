@@ -8,6 +8,11 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = @patient.categories
+    @teams = @patient.teams
+
+    puts "asdasdas"
+    puts YAML::dump(@teams)
+
   end
 
   def edit
