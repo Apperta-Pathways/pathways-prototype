@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get '/admin/module/new/cat/:id', to: 'data_modules#new', as: :data_module_cat
   get '/admin/module/:id', to: 'data_modules#show'
+
+
   get '/admin/categories/edit', to: 'categories#edit', as: :edit_categories
 
   get '/patients/:id/password/new', to: 'patients#reset_password', as: :patients_reset_password
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
 
   get '/api/patient/:id', to: 'patients#api'
 
+
   resources :patients
   resources :doctors
   resources :treatment_modules
@@ -41,7 +44,13 @@ Rails.application.routes.draw do
 
   resources :subcategories, only: [:update, :show, :destroy]
 
-  resources :data_modules
+  #post '/data_modules/:id/lock', to: 'data_modules#lock'
+  #post '/data_modules/:id/unlock', to: 'data_modules#unlock'
+
+  resources :data_modules do
+    post :lock, on: :member
+    post :unlock, on: :member
+  end
 
   resources :categories do
     resources :subcategories, only: [:new, :create, :index]
