@@ -22,6 +22,7 @@
               .col-md-7
                 = data_module_preview_button dm.id
                 = data_module_edit_button dm.id
-                = data_module_delete_button dm.id
+                button.btn.btn-danger data-toggle='modal' data-target='#data_module_delete_#{dm.id}' Delete
             .data == dm.data
 
+        = render partial: 'data_module_delete_modal', locals: {datamodule: dm}

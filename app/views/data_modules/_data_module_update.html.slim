@@ -1,0 +1,12 @@
+.modal.fade id="update_module" tabindex='-1' aria-labelledby="Modal Title" aria-hidden='true'
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss='modal'
+          span aria-hidden='true'
+        h4.modal-title = "Updating Data Module"
+      .modal-body
+        b Are you sure you want to save changes?
+      .modal-footer
+        button.btn.btn-default type='button' data-dismiss='modal' Close
+        = submit_tag 'Update module', :class => "btn btn-danger"
