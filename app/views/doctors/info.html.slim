@@ -9,6 +9,7 @@
       .col-md-7.text-right
         a.btn.btn-default href=edit_doctor_path(current_doctor.id) Edit Account
         a.btn.btn-default href=new_patient_path Create Patient
+        a.btn.btn-default.manage-button href=edit_categories_path Manage Treatment Information
     - if current_doctor.superuser
       .row
         .col-md-5
@@ -16,7 +17,7 @@
         .col-md-7.text-right
             a.btn.btn-default href=teams_path Manage Teams
             a.btn.btn-default href=doctors_path Manage Medical Professional Accounts
-            a.btn.btn-default.manage-button href=edit_categories_path Manage Treatment Information
+            
 
   .content.container
     .recent_patients
