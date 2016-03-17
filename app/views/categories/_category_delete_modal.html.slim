@@ -1,0 +1,12 @@
+.modal.fade id="cat_delete_#{category.id}" tabindex='-1' aria-labelledby="Modal Title" aria-hidden='true'
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss='modal'
+          span aria-hidden='true'
+        h4.modal-title = "Deleting Category"
+      .modal-body
+        b Are you sure you want to delete this category?
+      .modal-footer
+        button.btn.btn-default type='button' data-dismiss='modal' Close
+        =category_delete_button category.id

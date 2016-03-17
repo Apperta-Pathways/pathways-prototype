@@ -19,10 +19,10 @@
           .card.data-module
             .row
               = data_module_preview_button dm.id
-
               
               - if current_doctor.superuser or !dm.locked
-                .pull-right = data_module_delete_button dm.id
+                a.pull-right.button.btn.btn-danger data-toggle='modal' data-target='#data_module_delete_#{dm.id}' Delete
+
 
               - if current_doctor.superuser
                 - if dm.locked
@@ -41,3 +41,4 @@
             .row
               .data == dm.data
 
+        = render partial: 'data_module_delete_modal', locals: {datamodule: dm}
