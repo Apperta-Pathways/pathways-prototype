@@ -1,0 +1,14 @@
+plugins:
+  - image
+  - media
+  - link
+  - table
+  - code
+  - contextmenu
+  - hr
+  - wordcount
+  - preview
+  - print
+  - searchreplace
+  - paste
+  - lists
