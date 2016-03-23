@@ -5,14 +5,20 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.create(strong_params)
-    redirect_to '/images'
+    img = {file: strong_params}
+    @image = Image.create(img)
+
+    render json: {
+      image: {
+        url: @image.file.url
+      }
+    }, content_type: "text/html"
   end
 
   private
 
   def strong_params
-    params.require(:image).permit(:file)
+    params.require(:file)
   end
 
 end

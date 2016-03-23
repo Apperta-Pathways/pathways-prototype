@@ -1,13 +1,7 @@
-#image-upload
-  .card#image-upload
-    h1 Upload new image
-    = form_for Image.new, url: images_path, html: { multipart: true } do |f|
-      = f.file_field :file
-      .alert.alert-warning Do not upload images larger than 500 pixels wide, as it may distort the layout of the page
-      = f.submit "Upload", class: 'btn btn-default'
-
+  h1 Uploaded images
   .container
     - @images.each do |i|
       .col-md-2
-        = image_tag i.file.url, class: 'img-thumbnail'
+        a href=i.file.url
+            = image_tag i.file.url, class: 'img-thumbnail'
         .text-center = i.created_at.strftime('%d.%m.%y')
