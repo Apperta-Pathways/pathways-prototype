@@ -20,6 +20,6 @@
 
     .editor-container
       = f.text_area :data, class: 'tinymce', rows: 30, cols:120
-      = tinymce
+      = tinymce uploadimage_form_url:'/images'
 
 = render partial: 'data_module_update'
