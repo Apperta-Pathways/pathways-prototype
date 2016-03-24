@@ -13,7 +13,7 @@
       .pull-left
         a.btn.btn-default target='_blank' href='/images' = icon 'external-link', "Upload or fetch images"
       .pull-right
-        button.btn.btn-danger data-toggle='modal' data-target='#update_module' Update module
+        button.btn.btn-primary data-toggle='modal-confirm' data-target='#data_module_update' type='submit' data-message='Are you sure you want to update the data module?' data-title='Updating Module' Update Module 
         
     .editor-container
       = quill_editor nil, { name: 'data_module[data]', value: @module.data }
