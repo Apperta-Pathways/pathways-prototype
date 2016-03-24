@@ -43,7 +43,8 @@ gem "rails-erd"
 gem 'formtastic', '~> 3.0'
 
 gem "paperclip", "~> 4.2"
-gem 'quill-rails', git: "https://github.com/agamble/quill-rails.git"
+gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 
 gem 'ransack'
 
