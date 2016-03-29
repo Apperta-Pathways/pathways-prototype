@@ -1,6 +1,6 @@
 .list-group
   - if @active_subcat.data_modules.present?
-    = form_tag treatment_state_path(@state), method: 'PATCH' do
+    = form_tag treatment_state_path(@state), method: 'PATCH', id: 'treatment-state-form'
       = hidden_field_tag 'category', @active_cat.id
       = hidden_field_tag 'subcategory', @active_subcat.id
       - @active_subcat.data_modules.each do |dm|
@@ -20,8 +20,8 @@
           .collapse.preview id="collapse#{dm.id}"
             .well
               div == dm.preview
-      .list-group-item
-        button.btn.btn-danger data-toggle='modal-confirm' data-target='#treatment_state_dialog' type='submit' data-message='Are you sure you want to update the treatment state?' data-title='Updating Treatment State' Update Treatment State 
+              
+      button.btn.btn-danger id='submit-form' class='hidden' data-toggle='modal-confirm' data-target='#treatment_state_dialog' type='submit' data-message='Are you sure you want to update the treatment state?' data-title='Updating Treatment State' Update Treatment State
   - else
     .list-group-item No information modules under this category
 

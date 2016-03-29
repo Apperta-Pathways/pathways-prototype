@@ -34,10 +34,18 @@ class TreatmentStatesController < ApplicationController
   end
 
   def update
+    # When changing date
     if params[:treatment_state]
       @state.update(treatment_state_params)
       flash[:success] = "Date successfully altered"
+
+    # When updating content
     else
+      if params[:note]
+        puts YAML::dump(@state)
+        @state.note = params[:note]
+        @state.save
+      end
       update_treatment_state
     end
 
@@ -96,7 +104,8 @@ class TreatmentStatesController < ApplicationController
   end
 
   def strong_params
-    params.permit(:category, :state, :subcategory);
+    params.permit(:notes)
+    params.permit(:category, :state, :subcategory)
   end
 
   def update_params
@@ -141,4 +150,3 @@ class TreatmentStatesController < ApplicationController
 
 
 end
-

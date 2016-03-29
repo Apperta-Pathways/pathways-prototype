@@ -13,6 +13,9 @@
 .container
   .row
     .col-md-8.col-md-offset-2
+      == @state.note
+  .row
+    .col-md-8.col-md-offset-2
       - @subcategories.each do |sc|
         h4.text-center = sc.name
         #accordion.panel-group.present_treatment_state
