@@ -38,3 +38,9 @@
     margin-left: 10px;
   }
 }
+
+.note {
+  max-height: 15em;
+  overflow: auto;
+  background: white !important;
+}
