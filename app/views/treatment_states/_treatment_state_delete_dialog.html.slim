@@ -1,0 +1,12 @@
+.modal.fade id="treatment_state_delete_dialog_#{ts.id}" tabindex='-1' aria-labelledby="Modal Title" aria-hidden='true'
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss='modal'
+          span aria-hidden='true'
+        h4.modal-title = "Deleting Treatment State"
+      .modal-body
+        p Are you sure you want to delete the treatment state on <i>#{ts.british_assigned_date}</i>?
+      .modal-footer
+        button.btn.btn-default type='button' data-dismiss='modal' Close
+        =treatment_state_delete_button ts.id
