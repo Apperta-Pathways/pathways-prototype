@@ -1,6 +1,6 @@
 .list-group
   - if @active_subcat.data_modules.present?
-    = form_tag treatment_state_path(@state), method: 'PATCH', onSubmit: "return confirm_submit();" do
+    = form_tag treatment_state_path(@state), method: 'PATCH' do
       = hidden_field_tag 'category', @active_cat.id
       = hidden_field_tag 'subcategory', @active_subcat.id
       - @active_subcat.data_modules.each do |dm|
@@ -21,6 +21,8 @@
             .well
               div == dm.preview
       .list-group-item
-        = submit_tag "Update Treatment State", class: 'btn btn-default'
+        button.btn.btn-danger data-toggle='modal-confirm' data-target='#treatment_state_dialog' type='submit' data-message='Are you sure you want to update the treatment state?' data-title='Updating Treatment State' Update Treatment State 
   - else
     .list-group-item No information modules under this category
+
+= render partial: 'treatment_state_dialog'

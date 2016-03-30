@@ -1,3 +1,5 @@
+= tinymce_assets
+
 .bluebar
   h2.text-center = "Editing for #{@category.name}"
 .container.data_module_container
@@ -11,9 +13,13 @@
           = title_input f
     .row
       .pull-left
-        a.btn.btn-default target='_blank' href='/images' = icon 'external-link', "Upload or fetch images"
+        a.btn.btn-default target='_blank' href='/images' = icon 'external-link', "See uploaded images"
       .pull-right
-        button.btn.btn-default data-toggle='modal' data-target='#update_module' Update module
+
+        button.btn.btn-primary data-toggle='modal-confirm' data-target='#data_module_update' type='submit' data-message='Are you sure you want to create the data module?' data-title='Creating Data Module' Update Module 
+
     .editor-container
-      = quill_editor nil, { name: 'data_module[data]', value: @data_module.data }
+      = f.text_area :data, class: 'tinymce', rows: 30, cols:120
+      = tinymce uploadimage_form_url:'/images'
+
 = render partial: 'data_module_update'

@@ -1,16 +1,50 @@
-.welcome.bluebar
-  h2 = "Welcome to your hub, #{@patient.name}"
-  h4 Access your treatment information via the buttons below.
+.container
+  .row
+    .col-md-12
+      ul.nav.nav-tabs.nav-justified
+        li.active role="presentation" 
+          a data-toggle="tab" href="#hub_view" Hub
+        li role="presentation" 
+          a data-toggle="tab" href="#my_clinicians_view" My clinicians
 
-.categories
-  .container
-      .row
-        - if @categories
-          - @categories.each do |cat|
-            a href=category_treatment_states_path(cat.id)
+
+.tab-content        
+  #hub_view.tab-pane.active 
+    .welcome.bluebar
+      h2 = "Welcome to your hub, #{@patient.name}!"
+      h4 Access your treatment information via the buttons below.
+
+    .categories
+      .container
+          .row
+            - if @categories
+              - @categories.each do |cat|
+                a href=category_treatment_states_path(cat.id)
+                  .col-md-4
+                    .col-md-10.col-md-offset-1.category
+                      .title = cat.name
+                      = icon "medkit"
+            - else
+              h2.text-center You have no information assigned
+
+  #my_clinicians_view.tab-pane
+    .container
+      .welcome.bluebar
+        h2 = "Welcome, #{@patient.name}!"
+        h4 Here's how you can contact your clinicians.
+
+      -if @teams
+        - @teams.each do |team|
+          .container
+            h2 =team.name
+            - Doctor.joins(:doctors_teams).distinct.where(:doctors_teams => {:team_id => team.id}).each do |doc|
               .col-md-4
-                .col-md-10.col-md-offset-1.category
-                  .title = cat.name
-                  = icon "medkit"
-        - else
-          h2.text-center You have no information assigned
+                .doctor
+                  .row
+                    .col-md-12.text-center
+                      = doc.name
+                      hr
+                  .row
+                    .col-md-12.text-center
+                      == doc.contact_details
+

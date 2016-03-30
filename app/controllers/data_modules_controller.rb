@@ -13,6 +13,20 @@ class DataModulesController < ApplicationController
     # edit data module
   end
 
+  def lock
+    @module = DataModule.find_by_id(strong_params)
+    @module.update_attribute(:locked, true)
+
+    redirect_to subcat_path
+  end
+
+  def unlock
+    @module = DataModule.find_by_id(strong_params)
+    @module.update_attribute(:locked, false)
+
+    redirect_to subcat_path
+  end
+
   def update
     if @module
       @module.update(data_module_params)

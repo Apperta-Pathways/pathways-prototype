@@ -1,5 +1,6 @@
 class Doctor < ActiveRecord::Base
   attr_accessor :login
+  validates_confirmation_of :password, message: "doesn't match password"
 
   has_and_belongs_to_many :teams
   has_many :patients, through: :teams

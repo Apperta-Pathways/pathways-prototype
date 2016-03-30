@@ -18,11 +18,27 @@
         .col-md-6
           .card.data-module
             .row
-              h4.title.col-md-5 = dm.title
-              .col-md-7
-                = data_module_preview_button dm.id
-                = data_module_edit_button dm.id
-                button.btn.btn-danger data-toggle='modal' data-target='#data_module_delete_#{dm.id}' Delete
-            .data == dm.data
+              = data_module_preview_button dm.id
+              
+              - if current_doctor.superuser or !dm.locked
+                a.pull-right.button.btn.btn-danger data-toggle='modal' data-target='#data_module_delete_#{dm.id}' Delete
+
+
+              - if current_doctor.superuser
+                - if dm.locked
+                    .pull-right = data_module_unlock_button dm.id
+
+                - if !dm.locked
+                    .pull-right = data_module_lock_button dm.id
+
+              - if current_doctor.superuser or !dm.locked
+                .pull-right = data_module_edit_button dm.id
+
+
+            .row
+              h3.title.col-md-12.text-center = dm.title
+
+            .row
+              .data == dm.data
 
         = render partial: 'data_module_delete_modal', locals: {datamodule: dm}

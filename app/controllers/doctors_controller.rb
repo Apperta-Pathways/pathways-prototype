@@ -44,8 +44,11 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    params[:doctor][:confirm_password] = params[:doctor][:password]
-    if(@doctor.update(doctor_params))
+    # Is nil if password or password_confirmation are NOT blank
+    changed_params = doctor_params.select! { |key, value| !(['password', 'password_confirmation'].include?(key.to_s) and value.blank?) }
+
+
+    if(@doctor.update((changed_params or doctor_params)))
 
       flash[:success] = "Successfully updated account for #{@doctor.name}"
       redirect_to doctors_path
@@ -101,7 +104,7 @@ class DoctorsController < ApplicationController
   end
 
   def doctor_params
-    params.require(:doctor).permit(:name, :email, :superuser, :password, team_ids: [])
+    params.require(:doctor).permit(:name, :email, :contact_details, :password, :password_confirmation, :superuser, team_ids: [])
   end
 
   def assign_patients

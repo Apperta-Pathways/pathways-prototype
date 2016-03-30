@@ -4,9 +4,9 @@
       .modal-header
         button.close type='button' data-dismiss='modal'
           span aria-hidden='true'
-        h4.modal-title == "Deleting Subcategory <i>#{@active_cat.name}</i>"
+        h4.modal-title == "Deleting Subcategory"
       .modal-body
-        b Are you sure you want to delete this subcategory?
+        p Are you sure you want to delete subcategory <i>#{subcategory.name}</i>?
       .modal-footer
         button.btn.btn-default type='button' data-dismiss='modal' Close
         =subcategory_delete_button subcategory.id
