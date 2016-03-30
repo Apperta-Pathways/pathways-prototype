@@ -34,5 +34,9 @@ module TreatmentStatesHelper
     return 'btn-default'
   end
 
+  def treatment_state_delete_button(id)
+     link_to 'Delete', treatment_state_path(id), method: :delete, class: 'btn btn-danger'  
+  end
+
 
 end

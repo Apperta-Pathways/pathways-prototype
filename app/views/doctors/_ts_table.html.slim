@@ -12,7 +12,8 @@
             th.col-md-3 Subcategory
             th.col-md-3.text-right
               = edit_link_for_ts ts
-              = button_to 'Delete', ts, method: :delete, class: 'btn btn-danger'
+              button.btn.btn-danger data-toggle='modal' data-target='#treatment_state_delete_dialog_#{ts.id}' Delete
+
         - ts.treatment_modules.each_with_index do |tm, i|
           tr
             td.col-md-1 = i+1
@@ -30,6 +31,8 @@
                 a data-toggle='collapse' data-parent='#accordion' href="#note-#{ts.id}" aria-expanded="false" = icon 'plus-square-o', 'Notes for ' +  ts.british_assigned_date
             .panel-collapse.collapse id="note-#{ts.id}" aria-labelledby="notes-heading"
               .small-note == ts.note
+
+    = render partial: '/treatment_states/treatment_state_delete_dialog', locals: { ts: ts }
 
 - else
   h5.well No treatment states have been created for #{@patient.name}
