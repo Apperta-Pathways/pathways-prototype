@@ -20,5 +20,16 @@
             td.col-md-2.category = tm.category.name
             td.col-md-3.subcategory = tm.subcategory.name
             td.col-md-3
+
+      - if ts.note
+        hr
+        #accordion.panel-group
+          .panel.panel-default
+            .panel-heading id="notes-heading"
+              p.panel-title
+                a data-toggle='collapse' data-parent='#accordion' href="#note-#{ts.id}" aria-expanded="false" = icon 'plus-square-o', 'Notes for ' +  ts.british_assigned_date
+            .panel-collapse.collapse id="note-#{ts.id}" aria-labelledby="notes-heading"
+              .small-note == ts.note
+
 - else
   h5.well No treatment states have been created for #{@patient.name}

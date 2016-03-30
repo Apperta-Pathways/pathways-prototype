@@ -11,8 +11,20 @@
       li.lead = "Category: #{@category.name}"
 
 .container
+  - if @state.note
+    .row
+      .col-md-10.col-md-offset-1
+        h3 Notes from your clinician:
+    .row
+      .col-md-10.col-md-offset-1
+        .well.note
+          == @state.note
+
   .row
-    .col-md-8.col-md-offset-2
+    .col-md-10.col-md-offset-1
+      h3 Your assigned documents:
+  .row
+    .col-md-10.col-md-offset-1
       - @subcategories.each do |sc|
         h4.text-center = sc.name
         #accordion.panel-group.present_treatment_state

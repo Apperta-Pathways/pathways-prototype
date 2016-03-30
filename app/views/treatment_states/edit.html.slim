@@ -1,3 +1,5 @@
+= tinymce_assets
+
 .bluebar
   .container
     .row
@@ -30,3 +32,18 @@
     #modules.col-md-4
       - if @active_subcat
         = render partial: 'modules_list'
+
+  .row
+    #accordion.panel-group
+      .panel.panel-default
+        .panel-heading id="notes-heading"
+          p.panel-title
+            a data-toggle='collapse' data-parent='#accordion' href="#notes-editor" aria-expanded="false" = icon 'plus-square-o', 'Notes for ' +  @state.british_assigned_date
+        .panel-collapse.collapse id="notes-editor" aria-labelledby="notes-heading"
+          .editor-container
+            textarea form='treatment-state-form' name="note" class='tinymce' rows=15 cols=120
+              = @state.note
+            = tinymce uploadimage_form_url:'/images', relative_urls: false
+  .row
+    .col-md-4.col-md-offset-8
+      label.btn.btn-danger.center-block for='submit-form' Update Treatment State
