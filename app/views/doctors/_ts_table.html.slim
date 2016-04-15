@@ -1,6 +1,6 @@
 - unless @treatment_states.empty?
   p = "This is the information #{@patient.name} will see: "
-  - @treatment_states.each do |ts|
+  - (@treatment_states.sort_by &:assigned_date).reverse.each do |ts|
     .treatment_state.well
       h5 = "Information dated #{ts.british_assigned_date}: "
       table.table

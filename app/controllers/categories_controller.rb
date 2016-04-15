@@ -7,19 +7,15 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :show, :destroy]
 
   def index
-    @categories = @patient.categories
+    @categories = @patient.categories.sort_by &:name
     @teams = @patient.teams
-
-    puts "asdasdas"
-    puts YAML::dump(@teams)
-
   end
 
   def edit
-    @categories = Category.all
+    @categories = Category.all.sort_by &:name
     if @category
       @active_cat = @category
-      @subcategories = @category.subcategories
+      @subcategories = @category.subcategories.sort_by &:name
     end
   end
 

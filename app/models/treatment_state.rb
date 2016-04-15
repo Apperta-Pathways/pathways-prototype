@@ -28,6 +28,10 @@ class TreatmentState < ActiveRecord::Base
     TreatmentState.joins(pathway: :patient, treatment_modules: { data_module: { subcategory: :category}}).where(categories: { id: category.id }, patients: { id: patient.id }).order(assigned_date: :asc).distinct
   end
 
+  def categories(patient)
+      TreatmentState.joins(pathway: :patient, treatment_modules: { data_module: { subcategory: :category}}).group(:data_module)
+  end
+
   def subcategories_of(category)
     Subcategory.joins(data_modules:
                          { treatment_modules: :treatment_state }).
