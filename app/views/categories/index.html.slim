@@ -2,16 +2,16 @@
   .row
     .col-md-12
       ul.nav.nav-tabs.nav-justified
-        li role="presentation"
-          a data-toggle="tab" href="#timeline_view" Timeline
         li.active role="presentation"
+          a data-toggle="tab" href="#timeline_view" Timeline
+        li role="presentation"
           a data-toggle="tab" href="#hub_view" Hub
         li role="presentation"
           a data-toggle="tab" href="#my_clinicians_view" My clinicians
 
 
 .tab-content
-  #hub_view.tab-pane.active
+  #hub_view.tab-pane
     .welcome.bluebar
       h2 = "Welcome to your hub, #{@patient.name}!"
       h4 Access your treatment information via the buttons below.
@@ -29,58 +29,98 @@
             - else
               h2.text-center You have no information assigned
 
-  #timeline_view.tab-pane
+  #timeline_view.tab-pane.active
     .container
         .welcome.bluebar
           h2 = "Welcome to your timeline, #{@patient.name}!"
           h4 Scroll through the entries below to review your treatment history.
 
-        - if @patient.treatment_states
+    .container
+      .row
+        .col-md-12
+          #reportrange
+              i.glyphicon.glyphicon-calendar.fa.fa-calendar &nbsp
+              span
+              b.caret
 
-          - last_ts = nil
-          - (@patient.treatment_states.sort_by &:assigned_date).reverse.each do |ts|
-            - if !last_ts
-              h3 = I18n.l(ts.assigned_date, format: "%B %Y")
-            - if last_ts && ts.assigned_date.month != last_ts.assigned_date.month
-              h3 = I18n.l(ts.assigned_date, format: "%B %Y")
-            .container.timeline-entry
-                .row
-                  .col-md-12
-                    h3.text-center #{ts.british_assigned_date}
+        javascript:
+          function cb(start, end) {
+                  $('#reportrange span').html('From ' + start.format('DD/MM/YYYY') + ' to ' + end.format('DD/MM/YYYY'));
+          }
 
-                .row
-                  .col-md-12
-                    h4 Your assigned documents:
+          var initial_start_date = '#{@start_date}';
+          var initial_end_date = '#{@end_date}';
 
-                - (@categories.sort_by &:name).each do |cat|
-                  - if cat.assigned_tms_in_state(ts).count > 0
+          cb(moment(initial_start_date), moment(initial_end_date));
+
+          $('#reportrange').daterangepicker({
+              ranges: {
+                 'Next 6 Months': [moment(), moment().add(6, 'month')],
+                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                 'Last 6 Months': [moment().subtract(6, 'month').startOf('month'), moment()],
+                 'Last Year': [moment().subtract(1, 'year'), moment()],
+                 'All Time': [moment(0), moment()]
+              }
+          }, cb);
+
+          $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
+            var start_date = moment(picker.startDate).format('YYYY-MM-DD');
+            var end_date = moment(picker.endDate).format('YYYY-MM-DD');
+
+            if (start_date == '1970-01-01') {
+                location.assign('categories');
+            }
+            else {
+                location.assign('categories?start_date='+start_date+'&end_date='+end_date);
+            }
+          });
+
+    - if @patient.treatment_states
+      .container
+        - last_ts = nil
+        - timeline_in_range(@start_date, @end_date).each do |ts|
+          - if !last_ts
+            h3 = I18n.l(ts.assigned_date, format: "%B %Y")
+          - if last_ts && ts.assigned_date.month != last_ts.assigned_date.month
+            h3 = I18n.l(ts.assigned_date, format: "%B %Y")
+          .container.timeline-entry
+              .row
+                .col-md-12
+                  h3.text-center #{ts.british_assigned_date}
+
+              .row
+                .col-md-12
+                  h4 Your assigned documents:
+
+              - (@categories.sort_by &:name).each do |cat|
+                - if cat.assigned_tms_in_state(ts).count > 0
+                  .row
+                    .col-md-12
+                      h5 = cat.name
+                  - cat.assigned_tms_in_state(ts).each do |tm|
                     .row
                       .col-md-12
-                        h5 = cat.name
-                    - cat.assigned_tms_in_state(ts).each do |tm|
-                      .row
-                        .col-md-12
-                          .panel.panel-default
-                            .panel-heading id="module-heading-#{tm.id}"
-                              h2.panel-title
-                                a data-toggle='collapse' href="#module-#{tm.id}" aria-expanded="false" aria-controls="module-#{tm.id}" = icon 'plus-square-o', tm.title
-                            .panel-collapse.collapse id="module-#{tm.id}" aria-labelledby="module-heading-#{tm.id}"
-                              .panel-body == tm.data
+                        .panel.panel-default
+                          .panel-heading id="module-heading-#{tm.id}"
+                            h2.panel-title
+                              a data-toggle='collapse' href="#module-#{tm.id}" aria-expanded="false" aria-controls="module-#{tm.id}" = icon 'plus-square-o', tm.title
+                          .panel-collapse.collapse id="module-#{tm.id}" aria-labelledby="module-heading-#{tm.id}"
+                            .panel-body == tm.data
 
-                - if ts.note
-                  hr
-                  .row
-                    .col-md-12
-                      h4 Notes from your clinician:
-                  .row
-                    .col-md-12
-                          .panel.panel-default
-                            .panel-heading id="notes-heading"
-                              p.panel-title
-                                a data-toggle='collapse' href="#note-#{ts.id}" aria-expanded="false" = icon 'plus-square-o', 'Notes from your clinician'
-                            .panel-collapse.collapse id="note-#{ts.id}" aria-labelledby="notes-heading"
-                              .small-note == ts.note
-                - last_ts = ts
+              - if ts.note
+                hr
+                .row
+                  .col-md-12
+                    h4 Notes from your clinician:
+                .row
+                  .col-md-12
+                        .panel.panel-default
+                          .panel-heading id="notes-heading"
+                            p.panel-title
+                              a data-toggle='collapse' href="#note-#{ts.id}" aria-expanded="false" = icon 'plus-square-o', 'Notes from your clinician'
+                          .panel-collapse.collapse id="note-#{ts.id}" aria-labelledby="notes-heading"
+                            .small-note == ts.note
+              - last_ts = ts
 
   #my_clinicians_view.tab-pane
     .container

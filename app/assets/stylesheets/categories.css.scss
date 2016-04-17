@@ -1,9 +1,20 @@
+/*
+ *= require daterangepicker-bs2
+*/
+
 a:hover, a:focus {
   text-decoration: none /!important;
 }
 
 .present_treatment_state{
    margin: 0 0 5% 0;
+}
+
+#reportrange {
+  background: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
 }
 
 .category_title{

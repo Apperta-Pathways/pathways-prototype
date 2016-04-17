@@ -7,6 +7,10 @@ module CategoriesHelper
     link_to "Delete", category_path(id), method: :delete, :class => "btn btn-danger"
   end
 
-  
+  def timeline_in_range(start_date, end_date)
+    @timeline = (@patient.treatment_states.where("assigned_date >= ? AND
+    assigned_date <= ?", start_date, end_date).sort_by &:assigned_date).reverse
+  end
+
 
 end

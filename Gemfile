@@ -7,6 +7,9 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
+
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sass-rails', '>= 3.2'
 gem "autoprefixer-rails"

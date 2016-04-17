@@ -9,6 +9,10 @@ class CategoriesController < ApplicationController
   def index
     @categories = @patient.categories.sort_by &:name
     @teams = @patient.teams
+    @timeline = (@patient.treatment_states.sort_by &:assigned_date).reverse
+
+    @start_date = params[:start_date] || @timeline.last.assigned_date
+    @end_date = params[:end_date] || @timeline.first.assigned_date
   end
 
   def edit
@@ -58,7 +62,7 @@ class CategoriesController < ApplicationController
   #   @patient.pathway.treatment_states.each do |i|
   #     if (i.categories.include? @category) && i.timeframe == "present"
   #       return i.id
-  #     end
+  #     end`
   #     if i.categories.include? @category
   #       id = i.id
   #     end
