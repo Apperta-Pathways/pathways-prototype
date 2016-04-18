@@ -7,19 +7,19 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :show, :destroy]
 
   def index
-    @categories = @patient.categories
+    @categories = @patient.categories.sort_by &:name
     @teams = @patient.teams
+    @timeline = (@patient.treatment_states.sort_by &:assigned_date).reverse
 
-    puts "asdasdas"
-    puts YAML::dump(@teams)
-
+    @start_date = params[:start_date] || @timeline.last.assigned_date
+    @end_date = params[:end_date] || @timeline.first.assigned_date
   end
 
   def edit
-    @categories = Category.all
+    @categories = Category.all.sort_by &:name
     if @category
       @active_cat = @category
-      @subcategories = @category.subcategories
+      @subcategories = @category.subcategories.sort_by &:name
     end
   end
 
@@ -62,7 +62,7 @@ class CategoriesController < ApplicationController
   #   @patient.pathway.treatment_states.each do |i|
   #     if (i.categories.include? @category) && i.timeframe == "present"
   #       return i.id
-  #     end
+  #     end`
   #     if i.categories.include? @category
   #       id = i.id
   #     end
