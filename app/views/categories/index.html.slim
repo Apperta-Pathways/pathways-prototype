@@ -107,7 +107,7 @@
                           .panel-collapse.collapse id="module-#{tm.id}" aria-labelledby="module-heading-#{tm.id}"
                             .panel-body == tm.data
 
-              - if ts.note
+              - if !ts.note.blank?
                 hr
                 .row
                   .col-md-12
