@@ -11,7 +11,7 @@
       li.lead = "Category: #{@category.name}"
 
 .container
-  - if @state.note
+  - if !@state.note.blank?
     .row
       .col-md-10.col-md-offset-1
         h3 Notes from your clinician:
