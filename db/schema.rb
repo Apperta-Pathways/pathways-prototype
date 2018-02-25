@@ -13,6 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20160329122107) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
+  enable_extension "pg_buffercache"
+
   create_table "categories", force: true do |t|
     t.string   "name"
     t.string   "icon"
@@ -29,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160329122107) do
     t.boolean  "locked",         default: false
   end
 
-  add_index "data_modules", ["subcategory_id"], name: "index_data_modules_on_subcategory_id"
+  add_index "data_modules", ["subcategory_id"], name: "index_data_modules_on_subcategory_id", using: :btree
 
   create_table "doctors", force: true do |t|
     t.datetime "created_at"
@@ -49,16 +54,16 @@ ActiveRecord::Schema.define(version: 20160329122107) do
     t.string   "contact_details"
   end
 
-  add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true
-  add_index "doctors", ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
+  add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree
+  add_index "doctors", ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true, using: :btree
 
   create_table "doctors_teams", id: false, force: true do |t|
     t.integer "team_id",   null: false
     t.integer "doctor_id", null: false
   end
 
-  add_index "doctors_teams", ["doctor_id"], name: "index_doctors_teams_on_doctor_id"
-  add_index "doctors_teams", ["team_id"], name: "index_doctors_teams_on_team_id"
+  add_index "doctors_teams", ["doctor_id"], name: "index_doctors_teams_on_doctor_id", using: :btree
+  add_index "doctors_teams", ["team_id"], name: "index_doctors_teams_on_team_id", using: :btree
 
   create_table "images", force: true do |t|
     t.datetime "created_at"
@@ -76,7 +81,7 @@ ActiveRecord::Schema.define(version: 20160329122107) do
     t.datetime "updated_at"
   end
 
-  add_index "pathways", ["patient_id"], name: "index_pathways_on_patient_id"
+  add_index "pathways", ["patient_id"], name: "index_pathways_on_patient_id", using: :btree
 
   create_table "patients", force: true do |t|
     t.datetime "created_at"
@@ -95,17 +100,17 @@ ActiveRecord::Schema.define(version: 20160329122107) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "patients", ["email"], name: "index_patients_on_email"
-  add_index "patients", ["nhs_number"], name: "index_patients_on_nhs_number"
-  add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
+  add_index "patients", ["email"], name: "index_patients_on_email", using: :btree
+  add_index "patients", ["nhs_number"], name: "index_patients_on_nhs_number", using: :btree
+  add_index "patients", ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true, using: :btree
 
   create_table "patients_teams", id: false, force: true do |t|
     t.integer "team_id",    null: false
     t.integer "patient_id", null: false
   end
 
-  add_index "patients_teams", ["patient_id"], name: "index_patients_teams_on_patient_id"
-  add_index "patients_teams", ["team_id"], name: "index_patients_teams_on_team_id"
+  add_index "patients_teams", ["patient_id"], name: "index_patients_teams_on_patient_id", using: :btree
+  add_index "patients_teams", ["team_id"], name: "index_patients_teams_on_team_id", using: :btree
 
   create_table "rich_rich_files", force: true do |t|
     t.datetime "created_at"
@@ -127,7 +132,7 @@ ActiveRecord::Schema.define(version: 20160329122107) do
     t.datetime "updated_at"
   end
 
-  add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id"
+  add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"
@@ -143,7 +148,7 @@ ActiveRecord::Schema.define(version: 20160329122107) do
     t.integer  "data_module_id"
   end
 
-  add_index "treatment_modules", ["treatment_state_id"], name: "index_treatment_modules_on_treatment_state_id"
+  add_index "treatment_modules", ["treatment_state_id"], name: "index_treatment_modules_on_treatment_state_id", using: :btree
 
   create_table "treatment_states", force: true do |t|
     t.string   "timeframe"
@@ -155,6 +160,6 @@ ActiveRecord::Schema.define(version: 20160329122107) do
     t.text     "note"
   end
 
-  add_index "treatment_states", ["pathway_id"], name: "index_treatment_states_on_pathway_id"
+  add_index "treatment_states", ["pathway_id"], name: "index_treatment_states_on_pathway_id", using: :btree
 
 end

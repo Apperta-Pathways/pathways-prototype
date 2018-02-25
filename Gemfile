@@ -53,7 +53,7 @@ gem 'capistrano-rvm'
 gem 'capistrano-rails-console'
 gem 'capistrano-passenger'
 
-gem 'pg'
+gem 'pg', '~> 0.20'
 gem 'faker'
 
 group :development, :test do
@@ -66,4 +66,5 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry-rails'
   gem 'awesome_print'
+  gem 'rails_12factor'
 end

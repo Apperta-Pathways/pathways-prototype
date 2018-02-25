@@ -10,8 +10,14 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  host: synapse-data-store.postgres.database.azure.com
+  pool: 5
+  encoding: unicode
+  database: pathways_dev
+  username: synapse@synapse-data-store
+  password: N3ur0n!Dev
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
