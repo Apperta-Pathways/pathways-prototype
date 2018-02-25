@@ -60,7 +60,8 @@ group :development, :test do
   gem 'railroady'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'rubocop', require: false
-  gem 'database_cleaner', '~> 1.3.0'
+  #gem 'database_cleaner', '~> 1.3.0'
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'shoulda-matchers'
