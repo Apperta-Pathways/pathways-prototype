@@ -28,9 +28,9 @@ test:
 
 production:
   adapter: postgresql
-  host: localhost
+  host: synapse-data-store.postgres.database.azure.com
   pool: 5
   encoding: unicode
-  database: gstt
-  username: gsttdev
-  password: nutrition
+  database: pathways_dev
+  username: synapse@synapse-data-store
+  password: N3ur0n!Dev
