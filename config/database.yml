@@ -11,12 +11,12 @@ default: &default
 
 development:
   adapter: postgresql
-  host: synapse-data-store.postgres.database.azure.com
+  host: ec2-174-129-33-29.compute-1.amazonaws.com
   pool: 5
   encoding: unicode
-  database: pathways_dev
-  username: synapse@synapse-data-store
-  password: N3ur0n!Dev
+  database: d6sadjl07oh0it
+  username: vgbjgnqyebkbbc
+  password: 11f04e004baca8da790ae986b75a2ed4756643d94d59f45c17f847377f6e9532
 
 
 # Warning: The database defined as "test" will be erased and
