@@ -3,7 +3,7 @@
 lock '3.4.0'
 
 set :application, 'gstt-rails'
-set :repo_url, 'git@github.com:agamble/gstt-rails.git'
+set :repo_url, 'git@github.com:pperta-Pathways/pathways-prototype.git'
 
 set :deploy_to, "/home/deployer/gstt-rails"
 
