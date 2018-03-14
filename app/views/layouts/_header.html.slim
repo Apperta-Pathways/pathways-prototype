@@ -19,11 +19,8 @@
       .col-md-9.text-right
         a href='http://www.guysandstthomas.nhs.uk/Home.aspx'
           = image_tag "nhs_logo.png", { height: 50, class: 'gstt_logo' }
-        a href='http://www.guysandstthomas.nhs.uk/Home.aspx'
-          = image_tag "gstt_logo.png", { height: 50, class: 'gstt_logo' }
         .login-info.pull-right
           - if current_patient
             = link_to "Logout", destroy_patient_session_path, { method: :delete,  class: 'btn btn-default' }
           - elsif current_doctor
             = link_to "Logout", destroy_doctor_session_path, { method: :delete, class: 'btn btn-default' }
-
